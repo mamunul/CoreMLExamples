@@ -11,7 +11,7 @@ import UIKit
 
 class Presenter {
     let hed = HEDImplementor()
-    let deepLap = DeepLabImplementor()
+    let deepLap = DeepLabSegmenter()
     let yolo = YoloObjectDetector()
     let fcrn = FCRNDepthMapper()
     let mobileNet = MobileNetClassifier()
