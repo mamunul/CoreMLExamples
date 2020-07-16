@@ -12,9 +12,15 @@ import UIKit
 class Presenter {
     let hed = HEDImplementor()
     let deepLap = DeepLabImplementor()
+    let yolo = YoloImplementor()
 
     func apply(in image: UIImage) -> UIImage? {
 //        hed.doInferencePressed(inputImage: image)
-        deepLap.runModel(image: image)
+//        deepLap.runModel(image: image)
+
+        yolo.runModel(image: image) { box in
+            print(box)
+        }
+        return nil
     }
 }

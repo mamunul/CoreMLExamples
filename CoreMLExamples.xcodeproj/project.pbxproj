@@ -17,6 +17,11 @@
 		EE47ED5324C04E480097CCDB /* CoreMLExamplesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47ED5224C04E480097CCDB /* CoreMLExamplesUITests.swift */; };
 		EE47ED6124C04EFB0097CCDB /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47ED6024C04EFB0097CCDB /* Presenter.swift */; };
 		EE47ED6324C04FD00097CCDB /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47ED6224C04FD00097CCDB /* ImagePickerView.swift */; };
+		EE89213724C078B400B42480 /* YoloImplmplementor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89213624C078B400B42480 /* YoloImplmplementor.swift */; };
+		EE89213924C07A6100B42480 /* YOLOv3Tiny.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EE89213824C07A6100B42480 /* YOLOv3Tiny.mlmodel */; };
+		EE89213B24C07A6800B42480 /* YOLOv3TinyFP16.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EE89213A24C07A6800B42480 /* YOLOv3TinyFP16.mlmodel */; };
+		EE89213D24C07A6C00B42480 /* YOLOv3TinyInt8LUT.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EE89213C24C07A6C00B42480 /* YOLOv3TinyInt8LUT.mlmodel */; };
+		EE89213F24C085CA00B42480 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89213E24C085CA00B42480 /* UIHelper.swift */; };
 		EE8FD72124C0581B0095A68F /* HEDImplementor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8FD72024C0581B0095A68F /* HEDImplementor.swift */; };
 		EE8FD72624C0587F0095A68F /* HED_so.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EE8FD72324C0587F0095A68F /* HED_so.mlmodel */; };
 		EE8FD72724C0587F0095A68F /* HED_fuse.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EE8FD72424C0587F0095A68F /* HED_fuse.mlmodel */; };
@@ -77,6 +82,11 @@
 		EE47ED5424C04E480097CCDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EE47ED6024C04EFB0097CCDB /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
 		EE47ED6224C04FD00097CCDB /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
+		EE89213624C078B400B42480 /* YoloImplmplementor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoloImplmplementor.swift; sourceTree = "<group>"; };
+		EE89213824C07A6100B42480 /* YOLOv3Tiny.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = YOLOv3Tiny.mlmodel; sourceTree = "<group>"; };
+		EE89213A24C07A6800B42480 /* YOLOv3TinyFP16.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = YOLOv3TinyFP16.mlmodel; sourceTree = "<group>"; };
+		EE89213C24C07A6C00B42480 /* YOLOv3TinyInt8LUT.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = YOLOv3TinyInt8LUT.mlmodel; sourceTree = "<group>"; };
+		EE89213E24C085CA00B42480 /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		EE8FD72024C0581B0095A68F /* HEDImplementor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HEDImplementor.swift; sourceTree = "<group>"; };
 		EE8FD72324C0587F0095A68F /* HED_so.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = HED_so.mlmodel; sourceTree = "<group>"; };
 		EE8FD72424C0587F0095A68F /* HED_fuse.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = HED_fuse.mlmodel; sourceTree = "<group>"; };
@@ -196,6 +206,7 @@
 			children = (
 				EE8FD74D24C073290095A68F /* DeepLabImplementor.swift */,
 				EE8FD72024C0581B0095A68F /* HEDImplementor.swift */,
+				EE89213624C078B400B42480 /* YoloImplmplementor.swift */,
 			);
 			path = ModelImplementation;
 			sourceTree = "<group>";
@@ -205,6 +216,7 @@
 			children = (
 				EE47ED3424C04E410097CCDB /* ContentView.swift */,
 				EE47ED6224C04FD00097CCDB /* ImagePickerView.swift */,
+				EE89213E24C085CA00B42480 /* UIHelper.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -222,6 +234,9 @@
 		EE8FD72224C0583F0095A68F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				EE89213824C07A6100B42480 /* YOLOv3Tiny.mlmodel */,
+				EE89213A24C07A6800B42480 /* YOLOv3TinyFP16.mlmodel */,
+				EE89213C24C07A6C00B42480 /* YOLOv3TinyInt8LUT.mlmodel */,
 				EE8FD75024C073420095A68F /* DeepLabV3.mlmodel */,
 				EE8FD75124C073420095A68F /* DeepLabV3FP16.mlmodel */,
 				EE8FD74F24C073420095A68F /* DeepLabV3Int8LUT.mlmodel */,
@@ -393,9 +408,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE89213924C07A6100B42480 /* YOLOv3Tiny.mlmodel in Sources */,
 				EE8FD72124C0581B0095A68F /* HEDImplementor.swift in Sources */,
 				EE8FD74624C05FD70095A68F /* CVPixelBuffer+Helpers.swift in Sources */,
 				EE8FD74E24C073290095A68F /* DeepLabImplementor.swift in Sources */,
+				EE89213724C078B400B42480 /* YoloImplmplementor.swift in Sources */,
 				EE8FD75424C073420095A68F /* DeepLabV3FP16.mlmodel in Sources */,
 				EE8FD73F24C05FD70095A68F /* Math.swift in Sources */,
 				EE47ED3124C04E410097CCDB /* AppDelegate.swift in Sources */,
@@ -418,7 +435,10 @@
 				EE8FD74024C05FD70095A68F /* UIImage+CVPixelBuffer.swift in Sources */,
 				EE8FD74924C05FD70095A68F /* CGImage+CVPixelBuffer.swift in Sources */,
 				EE47ED3524C04E410097CCDB /* ContentView.swift in Sources */,
+				EE89213B24C07A6800B42480 /* YOLOv3TinyFP16.mlmodel in Sources */,
 				EE47ED6324C04FD00097CCDB /* ImagePickerView.swift in Sources */,
+				EE89213F24C085CA00B42480 /* UIHelper.swift in Sources */,
+				EE89213D24C07A6C00B42480 /* YOLOv3TinyInt8LUT.mlmodel in Sources */,
 				EE8FD74324C05FD70095A68F /* CGImagePropertyOrientation.swift in Sources */,
 				EE8FD74A24C05FD70095A68F /* NonMaxSuppression.swift in Sources */,
 				EE8FD74224C05FD70095A68F /* UIImage+Extensions.swift in Sources */,
