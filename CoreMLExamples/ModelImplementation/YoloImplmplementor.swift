@@ -19,7 +19,7 @@ struct ObjectBox {
 
 class YoloImplementor {
     func runModel(image: UIImage, onCompletion: @escaping ([ObjectBox]) -> Void) {
-         let nimage = image.resized(to: CGSize(width: 416, height: 416))
+        let nimage = image.resized(to: CGSize(width: 416, height: 416))
         var objectBoxArray = [ObjectBox]()
         guard let modelURL = Bundle.main.url(forResource: "YOLOv3Tiny", withExtension: "mlmodelc") else { return }
         var visionModel: VNCoreMLModel?
@@ -31,7 +31,7 @@ class YoloImplementor {
 
         let objectRecognition = VNCoreMLRequest(model: visionModel!, completionHandler: { request, _ in
             if let results = request.results {
-                objectBoxArray = self.drawVisionRequestResults(results, size: nimage.size)
+                objectBoxArray = VisionHelper.processResult(results, size: nimage.size)
                 onCompletion(objectBoxArray)
             }
         })
@@ -45,8 +45,10 @@ class YoloImplementor {
             onCompletion(objectBoxArray)
         }
     }
+}
 
-    func drawVisionRequestResults(_ results: [Any], size: CGSize) -> [ObjectBox] {
+class VisionHelper {
+    class func processResult(_ results: [Any], size: CGSize) -> [ObjectBox] {
         var objectBoxArray = [ObjectBox]()
         for observation in results where observation is VNRecognizedObjectObservation {
             guard let objectObservation = observation as? VNRecognizedObjectObservation else {

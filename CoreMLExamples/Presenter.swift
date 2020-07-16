@@ -14,6 +14,7 @@ class Presenter {
     let deepLap = DeepLabImplementor()
     let yolo = YoloImplementor()
     let fcrn = FCRNDepthImplementor()
+    let mobileNet = MobileNetImplementor()
 
     func apply(in image: UIImage) -> UIImage? {
 //        hed.doInferencePressed(inputImage: image)
@@ -22,9 +23,12 @@ class Presenter {
 //        yolo.runModel(image: image) { box in
 //            print(box)
 //        }
-        
-        return fcrn.runModel(image: image)
-        
+
+//        fcrn.runModel(image: image)
+
+//        mobileNet.runVision(image: image) { _ in
+//        }
+
         return nil
     }
 }
