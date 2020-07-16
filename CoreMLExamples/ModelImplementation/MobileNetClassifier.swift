@@ -27,7 +27,7 @@ class MobileNetClassifier {
 
     func runVision(image: UIImage, onCompletion: @escaping (ObjectBox) -> Void) {
         let nimage = image.resized(to: CGSize(width: 224, height: 224))
-        guard let modelURL = Bundle.main.url(forResource: "MobileNet", withExtension: "mlmodelc") else { return }
+        guard let modelURL = Bundle.main.url(forResource: "Resnet50", withExtension: "mlmodelc") else { return }
         var visionModel: VNCoreMLModel?
         do {
             visionModel = try VNCoreMLModel(for: MLModel(contentsOf: modelURL))

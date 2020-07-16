@@ -12,9 +12,9 @@ import UIKit
 class Presenter {
     let hed = HEDImplementor()
     let deepLap = DeepLabImplementor()
-    let yolo = YoloImplementor()
-    let fcrn = FCRNDepthImplementor()
-    let mobileNet = MobileNetImplementor()
+    let yolo = YoloObjectDetector()
+    let fcrn = FCRNDepthMapper()
+    let mobileNet = MobileNetClassifier()
 
     func apply(in image: UIImage) -> UIImage? {
 //        hed.doInferencePressed(inputImage: image)
@@ -24,11 +24,10 @@ class Presenter {
 //            print(box)
 //        }
 
-//        fcrn.runModel(image: image)
+//        return fcrn.runModel(image: image)
 
-//        mobileNet.runVision(image: image) { _ in
-//        }
-
+        mobileNet.runVision(image: image) { _ in
+        }
         return nil
     }
 }
