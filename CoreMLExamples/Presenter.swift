@@ -11,8 +11,10 @@ import UIKit
 
 class Presenter {
     let hed = HEDImplementor()
+    let deepLap = DeepLabImplementor()
 
     func apply(in image: UIImage) -> UIImage? {
-        hed.doInferencePressed(inputImage: image)
+//        hed.doInferencePressed(inputImage: image)
+        deepLap.runModel(image: image)
     }
 }

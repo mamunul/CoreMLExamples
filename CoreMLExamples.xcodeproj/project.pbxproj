@@ -37,6 +37,10 @@
 		EE8FD74A24C05FD70095A68F /* NonMaxSuppression.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8FD73B24C05FD70095A68F /* NonMaxSuppression.swift */; };
 		EE8FD74B24C05FD70095A68F /* CGImage+RawBytes.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8FD73C24C05FD70095A68F /* CGImage+RawBytes.swift */; };
 		EE8FD74C24C05FD70095A68F /* MLMultiArray+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8FD73D24C05FD70095A68F /* MLMultiArray+Image.swift */; };
+		EE8FD74E24C073290095A68F /* DeepLabImplementor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8FD74D24C073290095A68F /* DeepLabImplementor.swift */; };
+		EE8FD75224C073420095A68F /* DeepLabV3Int8LUT.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EE8FD74F24C073420095A68F /* DeepLabV3Int8LUT.mlmodel */; };
+		EE8FD75324C073420095A68F /* DeepLabV3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EE8FD75024C073420095A68F /* DeepLabV3.mlmodel */; };
+		EE8FD75424C073420095A68F /* DeepLabV3FP16.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EE8FD75124C073420095A68F /* DeepLabV3FP16.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +97,10 @@
 		EE8FD73B24C05FD70095A68F /* NonMaxSuppression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NonMaxSuppression.swift; sourceTree = "<group>"; };
 		EE8FD73C24C05FD70095A68F /* CGImage+RawBytes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGImage+RawBytes.swift"; sourceTree = "<group>"; };
 		EE8FD73D24C05FD70095A68F /* MLMultiArray+Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MLMultiArray+Image.swift"; sourceTree = "<group>"; };
+		EE8FD74D24C073290095A68F /* DeepLabImplementor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeepLabImplementor.swift; sourceTree = "<group>"; };
+		EE8FD74F24C073420095A68F /* DeepLabV3Int8LUT.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = DeepLabV3Int8LUT.mlmodel; sourceTree = "<group>"; };
+		EE8FD75024C073420095A68F /* DeepLabV3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = DeepLabV3.mlmodel; sourceTree = "<group>"; };
+		EE8FD75124C073420095A68F /* DeepLabV3FP16.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = DeepLabV3FP16.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +160,7 @@
 				EE47ED3E24C04E470097CCDB /* Info.plist */,
 				EE47ED3824C04E470097CCDB /* Preview Content */,
 				EE47ED6024C04EFB0097CCDB /* Presenter.swift */,
+				EE8FD74D24C073290095A68F /* DeepLabImplementor.swift */,
 				EE8FD72024C0581B0095A68F /* HEDImplementor.swift */,
 			);
 			path = CoreMLExamples;
@@ -205,6 +214,9 @@
 		EE8FD72224C0583F0095A68F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				EE8FD75024C073420095A68F /* DeepLabV3.mlmodel */,
+				EE8FD75124C073420095A68F /* DeepLabV3FP16.mlmodel */,
+				EE8FD74F24C073420095A68F /* DeepLabV3Int8LUT.mlmodel */,
 				EE8FD72424C0587F0095A68F /* HED_fuse.mlmodel */,
 				EE8FD72324C0587F0095A68F /* HED_so.mlmodel */,
 				EE8FD72524C0587F0095A68F /* HED_so3.mlmodel */,
@@ -375,14 +387,18 @@
 			files = (
 				EE8FD72124C0581B0095A68F /* HEDImplementor.swift in Sources */,
 				EE8FD74624C05FD70095A68F /* CVPixelBuffer+Helpers.swift in Sources */,
+				EE8FD74E24C073290095A68F /* DeepLabImplementor.swift in Sources */,
+				EE8FD75424C073420095A68F /* DeepLabV3FP16.mlmodel in Sources */,
 				EE8FD73F24C05FD70095A68F /* Math.swift in Sources */,
 				EE47ED3124C04E410097CCDB /* AppDelegate.swift in Sources */,
 				EE47ED3324C04E410097CCDB /* SceneDelegate.swift in Sources */,
 				EE8FD72C24C05CB00095A68F /* UIImage+Resize.swift in Sources */,
+				EE8FD75324C073420095A68F /* DeepLabV3.mlmodel in Sources */,
 				EE8FD74424C05FD70095A68F /* UIImage+RawBytes.swift in Sources */,
 				EE8FD72724C0587F0095A68F /* HED_fuse.mlmodel in Sources */,
 				EE8FD72624C0587F0095A68F /* HED_so.mlmodel in Sources */,
 				EE8FD74724C05FD70095A68F /* MLModel+Images.swift in Sources */,
+				EE8FD75224C073420095A68F /* DeepLabV3Int8LUT.mlmodel in Sources */,
 				EE8FD73E24C05FD70095A68F /* Array+Extensions.swift in Sources */,
 				EE8FD72824C0587F0095A68F /* HED_so3.mlmodel in Sources */,
 				EE8FD74524C05FD70095A68F /* MLMultiArray+Helpers.swift in Sources */,
