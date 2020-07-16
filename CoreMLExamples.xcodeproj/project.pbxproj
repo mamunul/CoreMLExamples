@@ -103,11 +103,9 @@
 		EE47ED2F24C04E410097CCDB /* CoreMLExamples */ = {
 			isa = PBXGroup;
 			children = (
-				EE47ED3024C04E410097CCDB /* AppDelegate.swift */,
-				EE47ED3224C04E410097CCDB /* SceneDelegate.swift */,
+				EE8FD71F24C056CA0095A68F /* AppLifeCycle */,
 				EE8FD71E24C0569C0095A68F /* View */,
 				EE47ED3624C04E470097CCDB /* Assets.xcassets */,
-				EE47ED3B24C04E470097CCDB /* LaunchScreen.storyboard */,
 				EE47ED3E24C04E470097CCDB /* Info.plist */,
 				EE47ED3824C04E470097CCDB /* Preview Content */,
 				EE47ED6024C04EFB0097CCDB /* Presenter.swift */,
@@ -148,6 +146,16 @@
 				EE47ED6224C04FD00097CCDB /* ImagePickerView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		EE8FD71F24C056CA0095A68F /* AppLifeCycle */ = {
+			isa = PBXGroup;
+			children = (
+				EE47ED3024C04E410097CCDB /* AppDelegate.swift */,
+				EE47ED3224C04E410097CCDB /* SceneDelegate.swift */,
+				EE47ED3B24C04E470097CCDB /* LaunchScreen.storyboard */,
+			);
+			path = AppLifeCycle;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
