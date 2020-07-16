@@ -36,5 +36,96 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "56A91F3E-B0CB-400D-A7E6-64E33B567FC9"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CoreMLExamples/HEDImplementor.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "92"
+            endingLineNumber = "92">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8FB4CC37-F396-447F-B7E7-183BE74FAA1E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CoreMLExamples/HEDImplementor.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "92"
+            endingLineNumber = "92">
+            <Locations>
+               <Location
+                  uuid = "8FB4CC37-F396-447F-B7E7-183BE74FAA1E - df4e6f3eec9aaaed"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CoreMLExamples.HEDImplementor.doInferencePressed(inputImage: __C.UIImage) -&gt; Swift.Optional&lt;__C.UIImage&gt;"
+                  moduleName = "CoreMLExamples"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mamunulmazid/Documents/ios_workspace/Working/CoreMLExamples/CoreMLExamples/HEDImplementor.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "55"
+                  endingLineNumber = "55"
+                  offsetFromSymbolStart = "1988">
+               </Location>
+               <Location
+                  uuid = "8FB4CC37-F396-447F-B7E7-183BE74FAA1E - d1f85260beb808e6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.NSNumber) -&gt; Swift.Int in CoreMLExamples.HEDImplementor.doInferencePressed(inputImage: __C.UIImage) -&gt; Swift.Optional&lt;__C.UIImage&gt;"
+                  moduleName = "CoreMLExamples"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mamunulmazid/Documents/ios_workspace/Working/CoreMLExamples/CoreMLExamples/HEDImplementor.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "55"
+                  endingLineNumber = "55"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  uuid = "8FB4CC37-F396-447F-B7E7-183BE74FAA1E - b7989c75bbf8ab83"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Int, Swift.Int) -&gt; Swift.Int in CoreMLExamples.HEDImplementor.doInferencePressed(inputImage: __C.UIImage) -&gt; Swift.Optional&lt;__C.UIImage&gt;"
+                  moduleName = "CoreMLExamples"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mamunulmazid/Documents/ios_workspace/Working/CoreMLExamples/CoreMLExamples/HEDImplementor.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "55"
+                  endingLineNumber = "55"
+                  offsetFromSymbolStart = "82">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "00089A72-10A2-44C1-93D5-C70D0D691E9B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CoreMLExamples/HEDImplementor.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "doInferencePressed(inputImage:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

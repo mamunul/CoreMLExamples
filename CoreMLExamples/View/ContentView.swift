@@ -29,7 +29,9 @@ struct ContentView: View {
         }.sheet(isPresented: $showPicker, onDismiss: {
             if self.uiImage != nil {
                 self.image = Image(uiImage: self.uiImage!)
-                self.presenterObject.apply(in: self.uiImage!)
+                if let uiImage = self.presenterObject.apply(in: self.uiImage!) {
+                    self.image = Image(uiImage: uiImage)
+                }
             }
         }) {
             ImagePickerView(uiImage: self.$uiImage)
