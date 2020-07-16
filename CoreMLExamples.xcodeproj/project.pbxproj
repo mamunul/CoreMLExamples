@@ -160,8 +160,7 @@
 				EE47ED3E24C04E470097CCDB /* Info.plist */,
 				EE47ED3824C04E470097CCDB /* Preview Content */,
 				EE47ED6024C04EFB0097CCDB /* Presenter.swift */,
-				EE8FD74D24C073290095A68F /* DeepLabImplementor.swift */,
-				EE8FD72024C0581B0095A68F /* HEDImplementor.swift */,
+				EE89213524C0785500B42480 /* ModelImplementation */,
 			);
 			path = CoreMLExamples;
 			sourceTree = "<group>";
@@ -190,6 +189,15 @@
 				EE47ED5424C04E480097CCDB /* Info.plist */,
 			);
 			path = CoreMLExamplesUITests;
+			sourceTree = "<group>";
+		};
+		EE89213524C0785500B42480 /* ModelImplementation */ = {
+			isa = PBXGroup;
+			children = (
+				EE8FD74D24C073290095A68F /* DeepLabImplementor.swift */,
+				EE8FD72024C0581B0095A68F /* HEDImplementor.swift */,
+			);
+			path = ModelImplementation;
 			sourceTree = "<group>";
 		};
 		EE8FD71E24C0569C0095A68F /* View */ = {
