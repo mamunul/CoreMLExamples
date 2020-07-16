@@ -9,8 +9,34 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var image: Image?
+    @State var showPicker = false
+    @State var uiImage: UIImage?
     var body: some View {
-        Text("Hello, World!")
+        ZStack {
+            ImagePreview(image: $image)
+
+            Button(action: {
+                self.showPicker = true
+            }) {
+                Text("choose")
+            }
+        }.sheet(isPresented: $showPicker, onDismiss: {
+            if self.uiImage != nil {
+                self.image = Image(uiImage: self.uiImage!)
+            }
+        }) {
+            ImagePickerView(uiImage: self.$uiImage)
+        }
+    }
+}
+
+struct ImagePreview: View {
+    @Binding var image: Image?
+    var body: some View {
+        image?
+            .resizable()
+            .aspectRatio(contentMode: .fit)
     }
 }
 

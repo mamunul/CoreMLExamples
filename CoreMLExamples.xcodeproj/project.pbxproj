@@ -15,6 +15,8 @@
 		EE47ED3D24C04E470097CCDB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE47ED3B24C04E470097CCDB /* LaunchScreen.storyboard */; };
 		EE47ED4824C04E470097CCDB /* CoreMLExamplesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47ED4724C04E470097CCDB /* CoreMLExamplesTests.swift */; };
 		EE47ED5324C04E480097CCDB /* CoreMLExamplesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47ED5224C04E480097CCDB /* CoreMLExamplesUITests.swift */; };
+		EE47ED6124C04EFB0097CCDB /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47ED6024C04EFB0097CCDB /* Presenter.swift */; };
+		EE47ED6324C04FD00097CCDB /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47ED6224C04FD00097CCDB /* ImagePickerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		EE47ED4E24C04E480097CCDB /* CoreMLExamplesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreMLExamplesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE47ED5224C04E480097CCDB /* CoreMLExamplesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMLExamplesUITests.swift; sourceTree = "<group>"; };
 		EE47ED5424C04E480097CCDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EE47ED6024C04EFB0097CCDB /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
+		EE47ED6224C04FD00097CCDB /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +110,8 @@
 				EE47ED3B24C04E470097CCDB /* LaunchScreen.storyboard */,
 				EE47ED3E24C04E470097CCDB /* Info.plist */,
 				EE47ED3824C04E470097CCDB /* Preview Content */,
+				EE47ED6024C04EFB0097CCDB /* Presenter.swift */,
+				EE47ED6224C04FD00097CCDB /* ImagePickerView.swift */,
 			);
 			path = CoreMLExamples;
 			sourceTree = "<group>";
@@ -269,7 +275,9 @@
 			files = (
 				EE47ED3124C04E410097CCDB /* AppDelegate.swift in Sources */,
 				EE47ED3324C04E410097CCDB /* SceneDelegate.swift in Sources */,
+				EE47ED6124C04EFB0097CCDB /* Presenter.swift in Sources */,
 				EE47ED3524C04E410097CCDB /* ContentView.swift in Sources */,
+				EE47ED6324C04FD00097CCDB /* ImagePickerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
