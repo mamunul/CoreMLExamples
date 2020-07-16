@@ -13,14 +13,18 @@ class Presenter {
     let hed = HEDImplementor()
     let deepLap = DeepLabImplementor()
     let yolo = YoloImplementor()
+    let fcrn = FCRNDepthImplementor()
 
     func apply(in image: UIImage) -> UIImage? {
 //        hed.doInferencePressed(inputImage: image)
 //        deepLap.runModel(image: image)
 
-        yolo.runModel(image: image) { box in
-            print(box)
-        }
+//        yolo.runModel(image: image) { box in
+//            print(box)
+//        }
+        
+        return fcrn.runModel(image: image)
+        
         return nil
     }
 }

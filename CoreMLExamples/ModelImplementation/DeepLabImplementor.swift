@@ -16,7 +16,6 @@ class DeepLabImplementor {
         guard let model = makeModel() else { return nil }
 
         let nimage = image.resized(to: CGSize(width: 513, height: 513))
-
         let pixelBuffer = nimage.pixelBuffer(width: Int((nimage.size.width)), height: Int((nimage.size.height)))
 
         do {

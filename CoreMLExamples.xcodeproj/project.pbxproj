@@ -22,6 +22,9 @@
 		EE89213B24C07A6800B42480 /* YOLOv3TinyFP16.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EE89213A24C07A6800B42480 /* YOLOv3TinyFP16.mlmodel */; };
 		EE89213D24C07A6C00B42480 /* YOLOv3TinyInt8LUT.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EE89213C24C07A6C00B42480 /* YOLOv3TinyInt8LUT.mlmodel */; };
 		EE89213F24C085CA00B42480 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89213E24C085CA00B42480 /* UIHelper.swift */; };
+		EE89214124C08E7B00B42480 /* FCRNDepthImplementor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89214024C08E7B00B42480 /* FCRNDepthImplementor.swift */; };
+		EE89214324C09B6E00B42480 /* FCRNFP16.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EE89214224C09B6E00B42480 /* FCRNFP16.mlmodel */; };
+		EE89214524C09B8100B42480 /* FCRN.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EE89214424C09B8100B42480 /* FCRN.mlmodel */; };
 		EE8FD72124C0581B0095A68F /* HEDImplementor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8FD72024C0581B0095A68F /* HEDImplementor.swift */; };
 		EE8FD72624C0587F0095A68F /* HED_so.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EE8FD72324C0587F0095A68F /* HED_so.mlmodel */; };
 		EE8FD72724C0587F0095A68F /* HED_fuse.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EE8FD72424C0587F0095A68F /* HED_fuse.mlmodel */; };
@@ -87,6 +90,9 @@
 		EE89213A24C07A6800B42480 /* YOLOv3TinyFP16.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = YOLOv3TinyFP16.mlmodel; sourceTree = "<group>"; };
 		EE89213C24C07A6C00B42480 /* YOLOv3TinyInt8LUT.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = YOLOv3TinyInt8LUT.mlmodel; sourceTree = "<group>"; };
 		EE89213E24C085CA00B42480 /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
+		EE89214024C08E7B00B42480 /* FCRNDepthImplementor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCRNDepthImplementor.swift; sourceTree = "<group>"; };
+		EE89214224C09B6E00B42480 /* FCRNFP16.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = FCRNFP16.mlmodel; sourceTree = "<group>"; };
+		EE89214424C09B8100B42480 /* FCRN.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = FCRN.mlmodel; sourceTree = "<group>"; };
 		EE8FD72024C0581B0095A68F /* HEDImplementor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HEDImplementor.swift; sourceTree = "<group>"; };
 		EE8FD72324C0587F0095A68F /* HED_so.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = HED_so.mlmodel; sourceTree = "<group>"; };
 		EE8FD72424C0587F0095A68F /* HED_fuse.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = HED_fuse.mlmodel; sourceTree = "<group>"; };
@@ -207,6 +213,7 @@
 				EE8FD74D24C073290095A68F /* DeepLabImplementor.swift */,
 				EE8FD72024C0581B0095A68F /* HEDImplementor.swift */,
 				EE89213624C078B400B42480 /* YoloImplmplementor.swift */,
+				EE89214024C08E7B00B42480 /* FCRNDepthImplementor.swift */,
 			);
 			path = ModelImplementation;
 			sourceTree = "<group>";
@@ -234,6 +241,8 @@
 		EE8FD72224C0583F0095A68F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				EE89214424C09B8100B42480 /* FCRN.mlmodel */,
+				EE89214224C09B6E00B42480 /* FCRNFP16.mlmodel */,
 				EE89213824C07A6100B42480 /* YOLOv3Tiny.mlmodel */,
 				EE89213A24C07A6800B42480 /* YOLOv3TinyFP16.mlmodel */,
 				EE89213C24C07A6C00B42480 /* YOLOv3TinyInt8LUT.mlmodel */,
@@ -414,6 +423,7 @@
 				EE8FD74E24C073290095A68F /* DeepLabImplementor.swift in Sources */,
 				EE89213724C078B400B42480 /* YoloImplmplementor.swift in Sources */,
 				EE8FD75424C073420095A68F /* DeepLabV3FP16.mlmodel in Sources */,
+				EE89214524C09B8100B42480 /* FCRN.mlmodel in Sources */,
 				EE8FD73F24C05FD70095A68F /* Math.swift in Sources */,
 				EE47ED3124C04E410097CCDB /* AppDelegate.swift in Sources */,
 				EE47ED3324C04E410097CCDB /* SceneDelegate.swift in Sources */,
@@ -422,12 +432,14 @@
 				EE8FD74424C05FD70095A68F /* UIImage+RawBytes.swift in Sources */,
 				EE8FD72724C0587F0095A68F /* HED_fuse.mlmodel in Sources */,
 				EE8FD72624C0587F0095A68F /* HED_so.mlmodel in Sources */,
+				EE89214324C09B6E00B42480 /* FCRNFP16.mlmodel in Sources */,
 				EE8FD74724C05FD70095A68F /* MLModel+Images.swift in Sources */,
 				EE8FD75224C073420095A68F /* DeepLabV3Int8LUT.mlmodel in Sources */,
 				EE8FD73E24C05FD70095A68F /* Array+Extensions.swift in Sources */,
 				EE8FD72824C0587F0095A68F /* HED_so3.mlmodel in Sources */,
 				EE8FD74524C05FD70095A68F /* MLMultiArray+Helpers.swift in Sources */,
 				EE8FD74124C05FD70095A68F /* Predictions.swift in Sources */,
+				EE89214124C08E7B00B42480 /* FCRNDepthImplementor.swift in Sources */,
 				EE8FD74B24C05FD70095A68F /* CGImage+RawBytes.swift in Sources */,
 				EE8FD74C24C05FD70095A68F /* MLMultiArray+Image.swift in Sources */,
 				EE8FD74824C05FD70095A68F /* CoreML+Combine.swift in Sources */,
