@@ -8,10 +8,15 @@
 
 import SwiftUI
 
+let presenter = Presenter()
+
 struct ContentView: View {
     @State var image: Image?
     @State var showPicker = false
     @State var uiImage: UIImage?
+
+    var presenterObject = presenter
+
     var body: some View {
         ZStack {
             ImagePreview(image: $image)
@@ -24,6 +29,7 @@ struct ContentView: View {
         }.sheet(isPresented: $showPicker, onDismiss: {
             if self.uiImage != nil {
                 self.image = Image(uiImage: self.uiImage!)
+                self.presenterObject.apply(in: self.uiImage!)
             }
         }) {
             ImagePickerView(uiImage: self.$uiImage)

@@ -7,6 +7,12 @@
 //
 
 import Foundation
+import UIKit
 
 class Presenter {
+    let hed = HEDImplementor()
+
+    func apply(in image: UIImage) {
+        hed.doInferencePressed(inputImage: image)
+    }
 }
