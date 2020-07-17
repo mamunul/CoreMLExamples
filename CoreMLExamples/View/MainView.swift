@@ -26,6 +26,22 @@ struct IntelligenceCategoryView: View {
     }
 }
 
+struct IntelligentConsoleView: View {
+    var body: some View {
+        VStack {
+            HStack {
+                Text("ms ")
+                Text("MB ")
+                Text(" ")
+            }
+            HStack {
+                Text("Confidence: ")
+                Text("Title: ")
+            }
+        }
+    }
+}
+
 struct MainView: View {
     @State var image: Image?
     @State var showPicker = false
@@ -41,8 +57,10 @@ struct MainView: View {
                 Button(action: {
                     self.showPicker = true
                 }) {
-                    Text("choose")
+                    Text("Change Photo")
                 }
+                
+                IntelligentConsoleView()
             }
             IntelligenceCategoryView(presenterObject: presenterObject)
         }.sheet(isPresented: $showPicker, onDismiss: {
