@@ -21,10 +21,17 @@ struct MainView: View {
             ZStack {
                 ImagePreview(image: $image)
 
-                Button(action: {
-                    self.showPicker = true
-                }) {
-                    Text("Change Photo")
+                VStack {
+                    HStack {
+                        Spacer()
+                        Button(action: {
+                            self.showPicker = true
+                        }) {
+                            Text("Change Photo")
+                                .padding()
+                        }
+                    }
+                    Spacer()
                 }
 
                 IntelligentConsoleView(output: $presenterObject.output)
@@ -36,7 +43,7 @@ struct MainView: View {
                 self.image = Image(uiImage: image)
             }
         }
-        .onAppear{
+        .onAppear {
             self.image = Image(uiImage: self.presenterObject.uiImage)
         }
         .sheet(isPresented: $showPicker, onDismiss: {
