@@ -15,6 +15,7 @@ class Presenter {
     let yolo = YoloObjectDetector()
     let fcrn = FCRNDepthMapper()
     let mobileNet = MobileNetClassifier()
+    let poseEstimator = PoseEstimator()
 
     func apply(in image: UIImage) -> UIImage? {
 //        hed.doInferencePressed(inputImage: image)
@@ -26,8 +27,18 @@ class Presenter {
 
 //        return fcrn.runModel(image: image)
 
-        mobileNet.runVision(image: image) { _ in
-        }
-        return nil
+//        mobileNet.runVision(image: image) { _ in
+//        }
+
+        let poses = poseEstimator.runModel(image: image)
+
+        let imageView = PoseMarkerGenerator()
+        let modelInputSize = CGSize(width: 513, height: 513)
+        let nimage = image.resized(to: modelInputSize)
+        let img = imageView.show(poses: poses, on: image.cgImage!)
+
+        return img
+
+//        return nil
     }
 }

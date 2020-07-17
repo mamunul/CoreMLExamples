@@ -37,6 +37,18 @@
 		EE89215A24C0C04500B42480 /* PoseNetMobileNet100S8FP16.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EE89215624C0C04500B42480 /* PoseNetMobileNet100S8FP16.mlmodel */; };
 		EE89215B24C0C04500B42480 /* PoseNetMobileNet100S16FP16.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EE89215724C0C04500B42480 /* PoseNetMobileNet100S16FP16.mlmodel */; };
 		EE89215D24C0C06200B42480 /* PoseEstimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89215C24C0C06200B42480 /* PoseEstimator.swift */; };
+		EE89217624C1911F00B42480 /* PoseMarkerGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89217524C1911F00B42480 /* PoseMarkerGenerator.swift */; };
+		EE89217824C1933B00B42480 /* CGPoint+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89217724C1933B00B42480 /* CGPoint+Extension.swift */; };
+		EE89217A24C1934300B42480 /* CGImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89217924C1934300B42480 /* CGImage+Extension.swift */; };
+		EE89218724C1999400B42480 /* Joint.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89217C24C1999300B42480 /* Joint.swift */; };
+		EE89218824C1999400B42480 /* PoseBuilder+Multiple.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89217D24C1999300B42480 /* PoseBuilder+Multiple.swift */; };
+		EE89218924C1999400B42480 /* PoseBuilder+Single.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89217E24C1999300B42480 /* PoseBuilder+Single.swift */; };
+		EE89218A24C1999400B42480 /* Pose.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89217F24C1999300B42480 /* Pose.swift */; };
+		EE89218B24C1999400B42480 /* PoseBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89218024C1999300B42480 /* PoseBuilder.swift */; };
+		EE89218C24C1999400B42480 /* PoseBuilderConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89218124C1999300B42480 /* PoseBuilderConfiguration.swift */; };
+		EE89218D24C1999400B42480 /* PoseNetOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89218324C1999300B42480 /* PoseNetOutput.swift */; };
+		EE89218E24C1999400B42480 /* PoseNet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89218424C1999300B42480 /* PoseNet.swift */; };
+		EE89218F24C1999400B42480 /* PoseNetInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89218524C1999300B42480 /* PoseNetInput.swift */; };
 		EE8FD72124C0581B0095A68F /* HEDImplementor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8FD72024C0581B0095A68F /* HEDImplementor.swift */; };
 		EE8FD72624C0587F0095A68F /* HED_so.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EE8FD72324C0587F0095A68F /* HED_so.mlmodel */; };
 		EE8FD72724C0587F0095A68F /* HED_fuse.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EE8FD72424C0587F0095A68F /* HED_fuse.mlmodel */; };
@@ -117,6 +129,18 @@
 		EE89215624C0C04500B42480 /* PoseNetMobileNet100S8FP16.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = PoseNetMobileNet100S8FP16.mlmodel; sourceTree = "<group>"; };
 		EE89215724C0C04500B42480 /* PoseNetMobileNet100S16FP16.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = PoseNetMobileNet100S16FP16.mlmodel; sourceTree = "<group>"; };
 		EE89215C24C0C06200B42480 /* PoseEstimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoseEstimator.swift; sourceTree = "<group>"; };
+		EE89217524C1911F00B42480 /* PoseMarkerGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PoseMarkerGenerator.swift; sourceTree = "<group>"; };
+		EE89217724C1933B00B42480 /* CGPoint+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extension.swift"; sourceTree = "<group>"; };
+		EE89217924C1934300B42480 /* CGImage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGImage+Extension.swift"; sourceTree = "<group>"; };
+		EE89217C24C1999300B42480 /* Joint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Joint.swift; sourceTree = "<group>"; };
+		EE89217D24C1999300B42480 /* PoseBuilder+Multiple.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PoseBuilder+Multiple.swift"; sourceTree = "<group>"; };
+		EE89217E24C1999300B42480 /* PoseBuilder+Single.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PoseBuilder+Single.swift"; sourceTree = "<group>"; };
+		EE89217F24C1999300B42480 /* Pose.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pose.swift; sourceTree = "<group>"; };
+		EE89218024C1999300B42480 /* PoseBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PoseBuilder.swift; sourceTree = "<group>"; };
+		EE89218124C1999300B42480 /* PoseBuilderConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PoseBuilderConfiguration.swift; sourceTree = "<group>"; };
+		EE89218324C1999300B42480 /* PoseNetOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PoseNetOutput.swift; sourceTree = "<group>"; };
+		EE89218424C1999300B42480 /* PoseNet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PoseNet.swift; sourceTree = "<group>"; };
+		EE89218524C1999300B42480 /* PoseNetInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PoseNetInput.swift; sourceTree = "<group>"; };
 		EE8FD72024C0581B0095A68F /* HEDImplementor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HEDImplementor.swift; sourceTree = "<group>"; };
 		EE8FD72324C0587F0095A68F /* HED_so.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = HED_so.mlmodel; sourceTree = "<group>"; };
 		EE8FD72424C0587F0095A68F /* HED_fuse.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = HED_fuse.mlmodel; sourceTree = "<group>"; };
@@ -191,8 +215,7 @@
 		EE47ED2F24C04E410097CCDB /* CoreMLExamples */ = {
 			isa = PBXGroup;
 			children = (
-				EE8FD72E24C05FD70095A68F /* CoreMLHelpers */,
-				EE8FD72924C05CA40095A68F /* Extensions */,
+				EE8FD72E24C05FD70095A68F /* Extensions */,
 				EE8FD72224C0583F0095A68F /* Models */,
 				EE8FD71F24C056CA0095A68F /* AppLifeCycle */,
 				EE8FD71E24C0569C0095A68F /* View */,
@@ -239,14 +262,48 @@
 				EE89213624C078B400B42480 /* YoloObjectDetector.swift */,
 				EE89214024C08E7B00B42480 /* FCRNDepthMapper.swift */,
 				EE89214824C0B50A00B42480 /* MobileNetClassifier.swift */,
-				EE89215C24C0C06200B42480 /* PoseEstimator.swift */,
+				EE89215E24C190B400B42480 /* PoseEstimator */,
 			);
 			path = ModelImplementation;
+			sourceTree = "<group>";
+		};
+		EE89215E24C190B400B42480 /* PoseEstimator */ = {
+			isa = PBXGroup;
+			children = (
+				EE89218224C1999300B42480 /* Model */,
+				EE89217B24C1999300B42480 /* Pose */,
+				EE89215C24C0C06200B42480 /* PoseEstimator.swift */,
+			);
+			path = PoseEstimator;
+			sourceTree = "<group>";
+		};
+		EE89217B24C1999300B42480 /* Pose */ = {
+			isa = PBXGroup;
+			children = (
+				EE89217C24C1999300B42480 /* Joint.swift */,
+				EE89217D24C1999300B42480 /* PoseBuilder+Multiple.swift */,
+				EE89217E24C1999300B42480 /* PoseBuilder+Single.swift */,
+				EE89217F24C1999300B42480 /* Pose.swift */,
+				EE89218024C1999300B42480 /* PoseBuilder.swift */,
+				EE89218124C1999300B42480 /* PoseBuilderConfiguration.swift */,
+			);
+			path = Pose;
+			sourceTree = "<group>";
+		};
+		EE89218224C1999300B42480 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EE89218324C1999300B42480 /* PoseNetOutput.swift */,
+				EE89218424C1999300B42480 /* PoseNet.swift */,
+				EE89218524C1999300B42480 /* PoseNetInput.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		EE8FD71E24C0569C0095A68F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				EE89217524C1911F00B42480 /* PoseMarkerGenerator.swift */,
 				EE47ED3424C04E410097CCDB /* ContentView.swift */,
 				EE47ED6224C04FD00097CCDB /* ImagePickerView.swift */,
 				EE89213E24C085CA00B42480 /* UIHelper.swift */,
@@ -292,17 +349,12 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		EE8FD72924C05CA40095A68F /* Extensions */ = {
+		EE8FD72E24C05FD70095A68F /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				EE89217924C1934300B42480 /* CGImage+Extension.swift */,
+				EE89217724C1933B00B42480 /* CGPoint+Extension.swift */,
 				EE8FD72A24C05CB00095A68F /* UIImage+Resize.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
-		EE8FD72E24C05FD70095A68F /* CoreMLHelpers */ = {
-			isa = PBXGroup;
-			children = (
 				EE8FD72F24C05FD70095A68F /* Array+Extensions.swift */,
 				EE8FD73024C05FD70095A68F /* Math.swift */,
 				EE8FD73124C05FD70095A68F /* UIImage+CVPixelBuffer.swift */,
@@ -319,7 +371,7 @@
 				EE8FD73C24C05FD70095A68F /* CGImage+RawBytes.swift */,
 				EE8FD73D24C05FD70095A68F /* MLMultiArray+Image.swift */,
 			);
-			path = CoreMLHelpers;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -456,6 +508,8 @@
 				EE89213924C07A6100B42480 /* YOLOv3Tiny.mlmodel in Sources */,
 				EE8FD72124C0581B0095A68F /* HEDImplementor.swift in Sources */,
 				EE8FD74624C05FD70095A68F /* CVPixelBuffer+Helpers.swift in Sources */,
+				EE89217624C1911F00B42480 /* PoseMarkerGenerator.swift in Sources */,
+				EE89218824C1999400B42480 /* PoseBuilder+Multiple.swift in Sources */,
 				EE8FD74E24C073290095A68F /* DeepLabSegmenter.swift in Sources */,
 				EE89213724C078B400B42480 /* YoloObjectDetector.swift in Sources */,
 				EE89215224C0BEAE00B42480 /* Resnet50.mlmodel in Sources */,
@@ -463,7 +517,9 @@
 				EE89214524C09B8100B42480 /* FCRN.mlmodel in Sources */,
 				EE89214F24C0BEAE00B42480 /* Resnet50FP16.mlmodel in Sources */,
 				EE8FD73F24C05FD70095A68F /* Math.swift in Sources */,
+				EE89218F24C1999400B42480 /* PoseNetInput.swift in Sources */,
 				EE47ED3124C04E410097CCDB /* AppDelegate.swift in Sources */,
+				EE89218B24C1999400B42480 /* PoseBuilder.swift in Sources */,
 				EE47ED3324C04E410097CCDB /* SceneDelegate.swift in Sources */,
 				EE8FD72C24C05CB00095A68F /* UIImage+Resize.swift in Sources */,
 				EE8FD75324C073420095A68F /* DeepLabV3.mlmodel in Sources */,
@@ -481,12 +537,19 @@
 				EE8FD74524C05FD70095A68F /* MLMultiArray+Helpers.swift in Sources */,
 				EE8FD74124C05FD70095A68F /* Predictions.swift in Sources */,
 				EE89214124C08E7B00B42480 /* FCRNDepthMapper.swift in Sources */,
+				EE89218C24C1999400B42480 /* PoseBuilderConfiguration.swift in Sources */,
 				EE8FD74B24C05FD70095A68F /* CGImage+RawBytes.swift in Sources */,
+				EE89218724C1999400B42480 /* Joint.swift in Sources */,
 				EE8FD74C24C05FD70095A68F /* MLMultiArray+Image.swift in Sources */,
 				EE8FD74824C05FD70095A68F /* CoreML+Combine.swift in Sources */,
 				EE89214924C0B50A00B42480 /* MobileNetClassifier.swift in Sources */,
+				EE89217824C1933B00B42480 /* CGPoint+Extension.swift in Sources */,
+				EE89218A24C1999400B42480 /* Pose.swift in Sources */,
 				EE47ED6124C04EFB0097CCDB /* Presenter.swift in Sources */,
+				EE89218D24C1999400B42480 /* PoseNetOutput.swift in Sources */,
 				EE8FD74024C05FD70095A68F /* UIImage+CVPixelBuffer.swift in Sources */,
+				EE89218E24C1999400B42480 /* PoseNet.swift in Sources */,
+				EE89217A24C1934300B42480 /* CGImage+Extension.swift in Sources */,
 				EE89215D24C0C06200B42480 /* PoseEstimator.swift in Sources */,
 				EE89215A24C0C04500B42480 /* PoseNetMobileNet100S8FP16.mlmodel in Sources */,
 				EE89215024C0BEAE00B42480 /* Resnet50Int8LUT.mlmodel in Sources */,
@@ -502,6 +565,7 @@
 				EE8FD74A24C05FD70095A68F /* NonMaxSuppression.swift in Sources */,
 				EE8FD74224C05FD70095A68F /* UIImage+Extensions.swift in Sources */,
 				EE89215324C0BEAE00B42480 /* SqueezeNet.mlmodel in Sources */,
+				EE89218924C1999400B42480 /* PoseBuilder+Single.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
