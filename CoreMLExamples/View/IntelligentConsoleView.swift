@@ -12,14 +12,17 @@ struct IntelligentConsoleView: View {
     @Binding var output: IntelligenceOutput
     var body: some View {
         VStack {
+            Spacer()
             HStack {
                 Text("\(Int(output.executionTime))ms ")
                 Text("\(Int(output.modelSize))MB ")
                 Text("\(Int(output.imageSize.width)) : \(Int(output.imageSize.height))res")
+                Spacer()
             }
             HStack {
                 Text("Confidence: \(output.confidence)")
                 Text("Title: \(output.title)")
+                Spacer()
             }
         }
     }

@@ -37,6 +37,7 @@ struct MainView: View {
                 IntelligentConsoleView(output: $presenterObject.output)
             }
             IntelligenceCategoryView(presenterObject: presenterObject)
+                .padding([.bottom, .top])
         }
         .onReceive(self.presenterObject.$output) { output in
             if let image = output.image {

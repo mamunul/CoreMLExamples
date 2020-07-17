@@ -60,8 +60,9 @@ class Presenter: ObservableObject {
                 modelSize: 0,
                 imageSize: CGSize(width: 0, height: 0)
             )
-        let intelligent1 = Intelligent(name: "HED", object: hed)
+        var intelligent1 = Intelligent(name: "HED", object: hed)
         selectedIntelligent = intelligent1
+        intelligent1.isSelected = true
         uiImage = Presenter.from(color: UIColor.gray)
         intelligentArray.append(intelligent1)
 

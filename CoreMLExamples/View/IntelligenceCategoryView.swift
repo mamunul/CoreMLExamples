@@ -19,7 +19,7 @@ struct IntelligenceCategoryView: View {
             HStack {
                 ForEach(presenterObject.intelligentArray, id: \.self) { intelligent in
                     HStack {
-                        Text(intelligent.name)
+                        Text(intelligent.name).fontWeight(.medium)
                             .background(self.getBindingInstance(intelligent).wrappedValue.isSelected ? self.selectedBGColor : self.nonSelectedBGColor)
                         Divider().frame(height: self.dividerHeight)
                     }
