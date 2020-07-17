@@ -10,13 +10,15 @@ import Foundation
 import UIKit
 
 protocol Intelligence {
-    var modelOptions: [ModelOption] { get }
+    var modelOptions: [ModelOption] { get set }
     func execute(in image: UIImage, onCompletion: @escaping (IntelligenceOutput?) -> Void)
 }
 
-struct ModelOption {
+struct ModelOption: Hashable {
+    var id = UUID()
     var modelFileName: String
     var modelOptionParameter: String?
+    var isSelected = false
 }
 
 struct IntelligenceOutput {
@@ -55,7 +57,8 @@ class MainPresenter: ObservableObject {
     private let depthMapper = DepthMapGenerator()
     private let classifier = ObjectClassifier()
     private let poseEstimator = PoseEstimator()
-    private var selectedIntelligent: Intelligent
+    @Published var selectedIntelligent: Intelligent
+    private var selectedModel: ModelOption
 
     init() {
         output =
@@ -70,7 +73,10 @@ class MainPresenter: ObservableObject {
         var intelligent1 = Intelligent(name: "Edge Detection", object: edgeDetector)
         selectedIntelligent = intelligent1
         intelligent1.isSelected = true
+        selectedModel = intelligent1.object.modelOptions.first!
+
         uiImage = MainPresenter.from(color: UIColor.gray)
+        selectModel(model: selectedModel)
         intelligentArray.append(intelligent1)
 
         let intelligent2 = Intelligent(name: "Segmentation", object: segmenter)
@@ -95,14 +101,43 @@ class MainPresenter: ObservableObject {
     }
 
     func update(intelligent: Intelligent) {
-        selectedIntelligent = intelligent
         removePreviousSelection(excludeing: intelligent)
+        selectedIntelligent = intelligent
+        selectedModel = intelligent.object.modelOptions.first!
+        removePreviousSelection(excludeing: selectedModel)
+        selectModel(model: selectedModel)
         executeOperation()
+    }
+
+    func updateIntelligent(model: ModelOption) {
+        selectedModel = model
+        removePreviousSelection(excludeing: selectedModel)
+        selectModel(model: selectedModel)
+        executeOperation()
+    }
+
+    private func selectModel(model: ModelOption) {
+        for index in 0 ..< intelligentArray.count {
+            if let ind = intelligentArray[index].object.modelOptions.firstIndex(where: { model == $0 }) {
+                intelligentArray[index].object.modelOptions[ind].isSelected = true
+            }
+        }
+    }
+
+    private func removePreviousSelection(excludeing it: ModelOption) {
+        for index in 0 ..< intelligentArray.count {
+            if let ind = intelligentArray[index].object.modelOptions.firstIndex(where: { $0.isSelected && it != $0 }) {
+                intelligentArray[index].object.modelOptions[ind].isSelected = false
+            }
+        }
     }
 
     private func removePreviousSelection(excludeing it: Intelligent) {
         if let index = intelligentArray.firstIndex(where: { $0.isSelected && it != $0 }) {
             intelligentArray[index].isSelected = false
+            if let ind = intelligentArray[index].object.modelOptions.firstIndex(where: { $0.isSelected }) {
+                intelligentArray[index].object.modelOptions[ind].isSelected = false
+            }
         }
     }
 

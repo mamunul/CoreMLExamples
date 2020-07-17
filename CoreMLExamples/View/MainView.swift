@@ -10,6 +10,37 @@ import SwiftUI
 
 let mainPresenter = MainPresenter()
 
+struct ModelSelectionView: View {
+    @Binding var modelOptions: [ModelOption]
+    @ObservedObject var presenter: MainPresenter
+    private let selectedBGColor = Color(red: 0.5, green: 0.5, blue: 0.5, opacity: 0.4)
+    private let nonSelectedBGColor = Color.clear
+    private let dividerHeight: CGFloat = 10
+
+    var body: some View {
+        ScrollView(.horizontal) {
+            HStack {
+                ForEach(modelOptions, id: \.self) { model in
+                    HStack {
+                        Text(model.modelFileName).fontWeight(.medium)
+                            .padding()
+                            .background(self.getBindingInstance(model).wrappedValue.isSelected ? self.selectedBGColor : self.nonSelectedBGColor)
+                        Divider().frame(height: self.dividerHeight)
+                    }
+                    .onTapGesture {
+                        self.getBindingInstance(model).wrappedValue.isSelected = true
+                        self.presenter.updateIntelligent(model: model)
+                    }
+                }
+            }
+        }
+    }
+
+    func getBindingInstance(_ model: ModelOption) -> Binding<ModelOption> {
+        $modelOptions[modelOptions.firstIndex(of: model)!]
+    }
+}
+
 struct MainView: View {
     @State var image: Image?
     @State var showPicker = false
@@ -25,6 +56,9 @@ struct MainView: View {
                 IntelligentConsoleView(output: $presenter.output)
             }
             IntelligenceCategoryView(presenter: presenter)
+                .padding([.bottom, .top])
+                .disabled(self.$presenter.loading.wrappedValue)
+            ModelSelectionView(modelOptions: self.$presenter.selectedIntelligent.object.modelOptions, presenter: presenter)
                 .padding([.bottom, .top])
                 .disabled(self.$presenter.loading.wrappedValue)
         }
