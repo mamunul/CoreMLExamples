@@ -17,7 +17,7 @@ struct ObjectBox {
     var bound: CGRect
 }
 
-class YoloObjectDetector {
+class YoloObjectDetector:Intelligence {
     func runModel(image: UIImage, onCompletion: @escaping ([ObjectBox]) -> Void) {
         let nimage = image.resized(to: CGSize(width: 416, height: 416))
         var objectBoxArray = [ObjectBox]()

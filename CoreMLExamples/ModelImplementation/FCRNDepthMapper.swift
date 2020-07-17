@@ -11,7 +11,7 @@ import Foundation
 import SwiftUI
 import UIKit
 
-class FCRNDepthMapper {
+class FCRNDepthMapper:Intelligence {
     func runModel(image: UIImage) -> UIImage? {
         guard let model = makeModel() else { return nil }
 

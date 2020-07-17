@@ -10,7 +10,23 @@ import SwiftUI
 
 let presenter = Presenter()
 
-struct ContentView: View {
+struct IntelligenceCategoryView: View {
+    @ObservedObject var presenterObject: Presenter
+    var body: some View {
+        ScrollView(.horizontal) {
+            HStack {
+                ForEach(presenterObject.intelligentArray, id: \.self) { intelligent in
+                    HStack {
+                        Text(intelligent.name)
+                        Divider().frame(height: 10)
+                    }
+                }
+            }
+        }
+    }
+}
+
+struct MainView: View {
     @State var image: Image?
     @State var showPicker = false
     @State var uiImage: UIImage?
@@ -18,14 +34,17 @@ struct ContentView: View {
     var presenterObject = presenter
 
     var body: some View {
-        ZStack {
-            ImagePreview(image: $image)
+        VStack {
+            ZStack {
+                ImagePreview(image: $image)
 
-            Button(action: {
-                self.showPicker = true
-            }) {
-                Text("choose")
+                Button(action: {
+                    self.showPicker = true
+                }) {
+                    Text("choose")
+                }
             }
+            IntelligenceCategoryView(presenterObject: presenterObject)
         }.sheet(isPresented: $showPicker, onDismiss: {
             if self.uiImage != nil {
                 self.image = Image(uiImage: self.uiImage!)
@@ -50,6 +69,6 @@ struct ImagePreview: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        MainView()
     }
 }

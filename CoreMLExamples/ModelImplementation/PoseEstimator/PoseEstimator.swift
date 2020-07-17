@@ -11,14 +11,14 @@ import SwiftUI
 import UIKit
 import Vision
 
-class PoseEstimator {
+class PoseEstimator: Intelligence {
     private let modelInputSize = CGSize(width: 513, height: 513)
     private let outputStride = 16
     private var poseBuilderConfiguration = PoseBuilderConfiguration()
 
     func runModel(image: UIImage) -> [Pose] {
         guard let model = makeModel() else { return [Pose]() }
-        let input = PoseNetInput(image: image.cgImage!, size: self.modelInputSize)
+        let input = PoseNetInput(image: image.cgImage!, size: modelInputSize)
         let nimage = image.resized(to: modelInputSize)
         let pixelBuffer = nimage.pixelBuffer(width: Int(nimage.size.width), height: Int(nimage.size.height))
 

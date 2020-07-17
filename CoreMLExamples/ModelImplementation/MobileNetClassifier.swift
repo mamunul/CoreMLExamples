@@ -12,7 +12,7 @@ import SwiftUI
 import UIKit
 import Vision
 
-class MobileNetClassifier {
+class MobileNetClassifier:Intelligence {
     func runModel(image: UIImage, onCompletion: @escaping () -> Void) {
         guard let model = makeModel() else { return }
 

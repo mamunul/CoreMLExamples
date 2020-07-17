@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		EE47ED3124C04E410097CCDB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47ED3024C04E410097CCDB /* AppDelegate.swift */; };
 		EE47ED3324C04E410097CCDB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47ED3224C04E410097CCDB /* SceneDelegate.swift */; };
-		EE47ED3524C04E410097CCDB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47ED3424C04E410097CCDB /* ContentView.swift */; };
+		EE47ED3524C04E410097CCDB /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47ED3424C04E410097CCDB /* MainView.swift */; };
 		EE47ED3724C04E470097CCDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE47ED3624C04E470097CCDB /* Assets.xcassets */; };
 		EE47ED3A24C04E470097CCDB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE47ED3924C04E470097CCDB /* Preview Assets.xcassets */; };
 		EE47ED3D24C04E470097CCDB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE47ED3B24C04E470097CCDB /* LaunchScreen.storyboard */; };
@@ -96,7 +96,7 @@
 		EE47ED2D24C04E410097CCDB /* CoreMLExamples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreMLExamples.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE47ED3024C04E410097CCDB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EE47ED3224C04E410097CCDB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		EE47ED3424C04E410097CCDB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		EE47ED3424C04E410097CCDB /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		EE47ED3624C04E470097CCDB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EE47ED3924C04E470097CCDB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EE47ED3C24C04E470097CCDB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -304,7 +304,7 @@
 			isa = PBXGroup;
 			children = (
 				EE89217524C1911F00B42480 /* PoseMarkerGenerator.swift */,
-				EE47ED3424C04E410097CCDB /* ContentView.swift */,
+				EE47ED3424C04E410097CCDB /* MainView.swift */,
 				EE47ED6224C04FD00097CCDB /* ImagePickerView.swift */,
 				EE89213E24C085CA00B42480 /* UIHelper.swift */,
 			);
@@ -554,7 +554,7 @@
 				EE89215A24C0C04500B42480 /* PoseNetMobileNet100S8FP16.mlmodel in Sources */,
 				EE89215024C0BEAE00B42480 /* Resnet50Int8LUT.mlmodel in Sources */,
 				EE8FD74924C05FD70095A68F /* CGImage+CVPixelBuffer.swift in Sources */,
-				EE47ED3524C04E410097CCDB /* ContentView.swift in Sources */,
+				EE47ED3524C04E410097CCDB /* MainView.swift in Sources */,
 				EE89214724C0B4F500B42480 /* MobileNet.mlmodel in Sources */,
 				EE89213B24C07A6800B42480 /* YOLOv3TinyFP16.mlmodel in Sources */,
 				EE47ED6324C04FD00097CCDB /* ImagePickerView.swift in Sources */,
