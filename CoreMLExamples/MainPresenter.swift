@@ -10,7 +10,13 @@ import Foundation
 import UIKit
 
 protocol Intelligence {
+    var modelOptions: [ModelOption] { get }
     func execute(in image: UIImage, onCompletion: @escaping (IntelligenceOutput?) -> Void)
+}
+
+struct ModelOption {
+    var modelFileName: String
+    var modelOptionParameter: String?
 }
 
 struct IntelligenceOutput {
@@ -114,7 +120,7 @@ class MainPresenter: ObservableObject {
                     DispatchQueue.main.async {
                         self.output = output!
                         self.output.executionTime = Float(interval)
-                          self.loading = false
+                        self.loading = false
                     }
                 }
             }

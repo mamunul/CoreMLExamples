@@ -15,6 +15,18 @@ class PoseEstimator: Intelligence {
     private let modelInputSize = CGSize(width: 513, height: 513)
     private let outputStride = 16
     private var poseBuilderConfiguration = PoseBuilderConfiguration()
+    var modelOptions: [ModelOption]
+    
+    init() {
+        let modelOption1 = ModelOption(modelFileName: "DeepLabV3", modelOptionParameter: nil)
+        let modelOption2 = ModelOption(modelFileName: "DeepLabV3FP16", modelOptionParameter: nil)
+        let modelOption3 = ModelOption(modelFileName: "DeepLabV3Int8LUT", modelOptionParameter: nil)
+        modelOptions = [ModelOption]()
+        modelOptions.append(modelOption1)
+        modelOptions.append(modelOption2)
+        modelOptions.append(modelOption3)
+    }
+
 
     func execute(in image: UIImage, onCompletion: @escaping (IntelligenceOutput?) -> Void) {
         let output = runModel(image: image)

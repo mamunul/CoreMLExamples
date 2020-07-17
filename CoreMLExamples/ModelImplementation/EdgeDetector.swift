@@ -17,6 +17,19 @@ enum HEDOptions: String {
 }
 
 class EdgeDetector: Intelligence {
+    var modelOptions: [ModelOption]
+    
+    init() {
+        let modelOption1 = ModelOption(modelFileName: "DeepLabV3", modelOptionParameter: nil)
+        let modelOption2 = ModelOption(modelFileName: "DeepLabV3FP16", modelOptionParameter: nil)
+        let modelOption3 = ModelOption(modelFileName: "DeepLabV3Int8LUT", modelOptionParameter: nil)
+        modelOptions = [ModelOption]()
+        modelOptions.append(modelOption1)
+        modelOptions.append(modelOption2)
+        modelOptions.append(modelOption3)
+    }
+
+    
     private let hedMain = HED_fuse()
     private let hedSO = HED_so()
 
