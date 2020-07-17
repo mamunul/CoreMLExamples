@@ -100,9 +100,18 @@ class Presenter: ObservableObject {
     }
 
     private func executeOperation() {
-        selectedIntelligent.object.execute(in: uiImage) { output in
-            if output != nil {
-                self.output = output!
+        let startTime = CACurrentMediaTime()
+        DispatchQueue.global().async {
+            self.selectedIntelligent.object.execute(in: self.uiImage) { output in
+                if output != nil {
+                    let endTime = CACurrentMediaTime()
+                    let interval = (endTime - startTime) * 1000
+
+                    DispatchQueue.main.async {
+                        self.output = output!
+                        self.output.executionTime = Float(interval)
+                    }
+                }
             }
         }
     }
