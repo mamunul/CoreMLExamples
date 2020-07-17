@@ -21,17 +21,24 @@ class HEDImplementor: Intelligence {
     private let hedSO = HED_so()
 
     private var modelOption: HEDOptions = .fuse
-
-    func execute(in image: UIImage, onCompletion: @escaping (Any?) -> Void) {
+    private let imageSize = CGSize(width: 500, height: 500)
+    func execute(in image: UIImage, onCompletion: @escaping (IntelligenceOutput?) -> Void) {
         let output = doInferencePressed(inputImage: image)
-        onCompletion(output)
+        let result =
+            IntelligenceOutput(
+                image: output,
+                confidence: -0,
+                executionTime: -0,
+                title: "NA",
+                modelSize: 0,
+                imageSize: imageSize
+            )
+        onCompletion(result)
     }
 
     private func doInferencePressed(inputImage: UIImage) -> UIImage? {
-        let inputW = 500
-        let inputH = 500
-        guard let inputPixelBuffer = inputImage.resized(width: inputW, height: inputH)
-            .pixelBuffer(width: inputW, height: inputH) else {
+        guard let inputPixelBuffer = inputImage.resized(width: Int(imageSize.width), height: Int(imageSize.height))
+            .pixelBuffer(width: Int(imageSize.width), height: Int(imageSize.height)) else {
             return nil
         }
 
@@ -58,9 +65,9 @@ class HEDImplementor: Intelligence {
 
         var imgData = [UInt8](repeating: 0, count: bufferSize)
 
-        for i in 0 ..< inputW {
-            for j in 0 ..< inputH {
-                let idx = i * inputW + j
+        for i in 0 ..< Int(imageSize.width) {
+            for j in 0 ..< Int(imageSize.height) {
+                let idx = i * Int(imageSize.width) + j
                 let value = dataPointer[idx]
 
                 let sigmoid = { (input: Double) -> Double in
@@ -76,11 +83,11 @@ class HEDImplementor: Intelligence {
         let dataProvider = CGDataProvider(data: cfbuffer)!
         let colorSpace = CGColorSpaceCreateDeviceGray()
         let cgImage2 = CGImage(
-            width: inputW,
-            height: inputH,
+            width: Int(imageSize.width),
+            height: Int(imageSize.height),
             bitsPerComponent: 8,
             bitsPerPixel: 8,
-            bytesPerRow: inputW,
+            bytesPerRow: Int(imageSize.width),
             space: colorSpace,
             bitmapInfo: [],
             provider: dataProvider,

@@ -315,8 +315,10 @@
             filePath = "CoreMLExamples/Presenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103">
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "Presenter"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -329,8 +331,10 @@
             filePath = "CoreMLExamples/Presenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103">
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "Presenter"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -343,8 +347,10 @@
             filePath = "CoreMLExamples/Presenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103">
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "Presenter"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -373,8 +379,10 @@
             filePath = "CoreMLExamples/Presenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103">
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "Presenter"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

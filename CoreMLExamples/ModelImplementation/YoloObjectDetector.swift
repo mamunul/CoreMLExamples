@@ -18,14 +18,24 @@ struct ObjectBox {
 }
 
 class YoloObjectDetector: Intelligence {
-    func execute(in image: UIImage, onCompletion: @escaping (Any?) -> Void) {
-        runModel(image: image) { output in
-            onCompletion(output)
+    private let imageSize = CGSize(width: 416, height: 416)
+    func execute(in image: UIImage, onCompletion: @escaping (IntelligenceOutput?) -> Void) {
+        runModel(image: image) { _ in // FIXME: generate Image
+            let result =
+                IntelligenceOutput(
+                    image: nil,
+                    confidence: -0,
+                    executionTime: -0,
+                    title: "NA",
+                    modelSize: 0,
+                    imageSize: self.imageSize
+                )
+            onCompletion(result)
         }
     }
 
     private func runModel(image: UIImage, onCompletion: @escaping ([ObjectBox]) -> Void) {
-        let nimage = image.resized(to: CGSize(width: 416, height: 416))
+        let nimage = image.resized(to: imageSize)
         var objectBoxArray = [ObjectBox]()
         guard let modelURL = Bundle.main.url(forResource: "YOLOv3Tiny", withExtension: "mlmodelc") else { return }
         var visionModel: VNCoreMLModel?

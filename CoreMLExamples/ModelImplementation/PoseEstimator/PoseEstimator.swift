@@ -15,20 +15,32 @@ class PoseEstimator: Intelligence {
     private let modelInputSize = CGSize(width: 513, height: 513)
     private let outputStride = 16
     private var poseBuilderConfiguration = PoseBuilderConfiguration()
-    
-    func execute(in image: UIImage, onCompletion:@escaping (Any?) -> Void) {
+
+    func execute(in image: UIImage, onCompletion: @escaping (IntelligenceOutput?) -> Void) {
         let output = runModel(image: image)
-        onCompletion(output)
+
+        let imageView = PoseMarkerGenerator()
+        let modelInputSize = CGSize(width: 513, height: 513)
+        let img = imageView.show(poses: output, on: image.cgImage!)
+
+        let result =
+            IntelligenceOutput(
+                image: img,
+                confidence: -0,
+                executionTime: -0,
+                title: "NA",
+                modelSize: 0,
+                imageSize: modelInputSize
+            )
+        onCompletion(result)
     }
 
     func runModel(image: UIImage) -> [Pose] {
         guard let model = makeModel() else { return [Pose]() }
-        let input = PoseNetInput(image: image.cgImage!, size: modelInputSize)
         let nimage = image.resized(to: modelInputSize)
         let pixelBuffer = nimage.pixelBuffer(width: Int(nimage.size.width), height: Int(nimage.size.height))
 
         do {
-//            let predictions = try model.model.prediction(from: input)
             let predictions = try model.prediction(image: pixelBuffer!)
 
             let poseNetOutput =

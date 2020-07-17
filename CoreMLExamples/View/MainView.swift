@@ -40,16 +40,17 @@ struct IntelligenceCategoryView: View {
 }
 
 struct IntelligentConsoleView: View {
+    @Binding var output: IntelligenceOutput
     var body: some View {
         VStack {
             HStack {
-                Text("ms ")
-                Text("MB ")
-                Text(" ")
+                Text("\(output.executionTime)ms ")
+                Text("\(output.modelSize)MB ")
+                Text("\(output.imageSize.width) : \(output.imageSize.height)res")
             }
             HStack {
-                Text("Confidence: ")
-                Text("Title: ")
+                Text("Confidence: \(output.confidence)")
+                Text("Title: \(output.title)")
             }
         }
     }
@@ -60,7 +61,7 @@ struct MainView: View {
     @State var showPicker = false
     @State var uiImage: UIImage?
 
-    var presenterObject = presenter
+    @ObservedObject var presenterObject = presenter
 
     var body: some View {
         VStack {
@@ -73,10 +74,16 @@ struct MainView: View {
                     Text("Change Photo")
                 }
 
-                IntelligentConsoleView()
+                IntelligentConsoleView(output: $presenterObject.output)
             }
             IntelligenceCategoryView(presenterObject: presenterObject)
-        }.sheet(isPresented: $showPicker, onDismiss: {
+        }
+        .onReceive(self.presenterObject.$output) { output in
+            if let image = output.image {
+                self.image = Image(uiImage: image)
+            }
+        }
+        .sheet(isPresented: $showPicker, onDismiss: {
             if self.uiImage != nil {
                 self.image = Image(uiImage: self.uiImage!)
                 self.presenterObject.update(image: self.uiImage!)

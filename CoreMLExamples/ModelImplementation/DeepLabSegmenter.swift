@@ -12,15 +12,25 @@ import SwiftUI
 import UIKit
 
 class DeepLabSegmenter: Intelligence {
-    func execute(in image: UIImage, onCompletion: @escaping (Any?) -> Void) {
+    private let imageSize = CGSize(width: 513, height: 513)
+    func execute(in image: UIImage, onCompletion: @escaping (IntelligenceOutput?) -> Void) {
         let output = runModel(image: image)
-        onCompletion(output)
+        let result =
+            IntelligenceOutput(
+                image: output,
+                confidence: -0,
+                executionTime: -0,
+                title: "NA",
+                modelSize: 0,
+                imageSize: imageSize
+            )
+        onCompletion(result)
     }
 
     private func runModel(image: UIImage) -> UIImage? {
         guard let model = makeModel() else { return nil }
 
-        let nimage = image.resized(to: CGSize(width: 513, height: 513))
+        let nimage = image.resized(to: imageSize)
         let pixelBuffer = nimage.pixelBuffer(width: Int(nimage.size.width), height: Int(nimage.size.height))
 
         do {

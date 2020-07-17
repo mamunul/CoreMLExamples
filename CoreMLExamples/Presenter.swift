@@ -10,7 +10,16 @@ import Foundation
 import UIKit
 
 protocol Intelligence {
-    func execute(in image: UIImage, onCompletion: @escaping (Any?) -> Void)
+    func execute(in image: UIImage, onCompletion: @escaping (IntelligenceOutput?) -> Void)
+}
+
+struct IntelligenceOutput {
+    var image: UIImage?
+    var confidence: Float
+    var executionTime: Float
+    var title: String
+    var modelSize: Float
+    var imageSize: CGSize
 }
 
 struct Intelligent: Hashable {
@@ -30,6 +39,7 @@ struct Intelligent: Hashable {
 
 class Presenter: ObservableObject {
     @Published var intelligentArray = [Intelligent]()
+    @Published var output: IntelligenceOutput
 
     private let hed = HEDImplementor()
     private let deepLap = DeepLabSegmenter()
@@ -41,6 +51,15 @@ class Presenter: ObservableObject {
     private var image: UIImage?
 
     init() {
+        output =
+            IntelligenceOutput(
+                image: nil,
+                confidence: 0,
+                executionTime: 0,
+                title: "",
+                modelSize: 0,
+                imageSize: CGSize(width: 0, height: 0)
+            )
         let intelligent1 = Intelligent(name: "HED", object: hed)
         selectedIntelligent = intelligent1
         intelligentArray.append(intelligent1)
@@ -63,40 +82,22 @@ class Presenter: ObservableObject {
 
     func update(image: UIImage) {
         self.image = image
+        executeOperation()
     }
 
     func update(intelligent: Intelligent) {
         selectedIntelligent = intelligent
 
         if image != nil {
-            selectedIntelligent.object.execute(in: image!) { output in
-                print(output)
-            }
+            executeOperation()
         }
     }
 
-    func apply(in image: UIImage) -> UIImage? {
-//        hed.doInferencePressed(inputImage: image)
-//        deepLap.runModel(image: image)
-
-//        yolo.runModel(image: image) { box in
-//            print(box)
-//        }
-
-//        return fcrn.runModel(image: image)
-
-//        mobileNet.runVision(image: image) { _ in
-//        }
-
-        let poses = poseEstimator.runModel(image: image)
-
-        let imageView = PoseMarkerGenerator()
-        let modelInputSize = CGSize(width: 513, height: 513)
-        let nimage = image.resized(to: modelInputSize)
-        let img = imageView.show(poses: poses, on: image.cgImage!)
-
-        return img
-
-//        return nil
+    private func executeOperation() {
+        selectedIntelligent.object.execute(in: image!) { output in
+            if output != nil {
+                self.output = output!
+            }
+        }
     }
 }
