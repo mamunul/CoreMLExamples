@@ -13,7 +13,7 @@ import UIKit
 struct ImagePickerView: UIViewControllerRepresentable {
     typealias UIViewControllerType = UIImagePickerController
 
-    @Binding var uiImage: UIImage?
+    @Binding var uiImage: UIImage
 
     func makeCoordinator() -> ImagePickerView.Coordinator {
         return Coordinator(pickerView: self)
@@ -50,7 +50,7 @@ struct ImagePickerView: UIViewControllerRepresentable {
 }
 
 struct ImagePickerView_Previews: PreviewProvider {
-    @State static var image: UIImage? = UIImage()
+    @State static var image: UIImage = UIImage()
     static var previews: some View {
         ImagePickerView(uiImage: $image)
     }

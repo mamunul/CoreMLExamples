@@ -59,7 +59,6 @@ struct IntelligentConsoleView: View {
 struct MainView: View {
     @State var image: Image?
     @State var showPicker = false
-    @State var uiImage: UIImage?
 
     @ObservedObject var presenterObject = presenter
 
@@ -84,12 +83,11 @@ struct MainView: View {
             }
         }
         .sheet(isPresented: $showPicker, onDismiss: {
-            if self.uiImage != nil {
-                self.image = Image(uiImage: self.uiImage!)
-                self.presenterObject.update(image: self.uiImage!)
-            }
+            self.image = Image(uiImage: self.presenterObject.uiImage)
+            self.presenterObject.update(image: self.presenterObject.uiImage)
+
         }) {
-            ImagePickerView(uiImage: self.$uiImage)
+            ImagePickerView(uiImage: self.$presenterObject.uiImage)
         }
     }
 }

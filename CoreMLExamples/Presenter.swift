@@ -40,6 +40,7 @@ struct Intelligent: Hashable {
 class Presenter: ObservableObject {
     @Published var intelligentArray = [Intelligent]()
     @Published var output: IntelligenceOutput
+    @Published var uiImage: UIImage
 
     private let hed = HEDImplementor()
     private let deepLap = DeepLabSegmenter()
@@ -48,7 +49,6 @@ class Presenter: ObservableObject {
     private let mobileNet = MobileNetClassifier()
     private let poseEstimator = PoseEstimator()
     private var selectedIntelligent: Intelligent
-    private var image: UIImage?
 
     init() {
         output =
@@ -62,6 +62,7 @@ class Presenter: ObservableObject {
             )
         let intelligent1 = Intelligent(name: "HED", object: hed)
         selectedIntelligent = intelligent1
+        uiImage = Presenter.from(color: UIColor.gray)
         intelligentArray.append(intelligent1)
 
         let intelligent2 = Intelligent(name: "deepLap", object: deepLap)
@@ -81,23 +82,31 @@ class Presenter: ObservableObject {
     }
 
     func update(image: UIImage) {
-        self.image = image
+        uiImage = image
         executeOperation()
     }
 
     func update(intelligent: Intelligent) {
         selectedIntelligent = intelligent
-
-        if image != nil {
-            executeOperation()
-        }
+        executeOperation()
     }
 
     private func executeOperation() {
-        selectedIntelligent.object.execute(in: image!) { output in
+        selectedIntelligent.object.execute(in: uiImage) { output in
             if output != nil {
                 self.output = output!
             }
         }
+    }
+
+    private static func from(color: UIColor) -> UIImage {
+        let rect = CGRect(x: 0, y: 0, width: 200, height: 200)
+        UIGraphicsBeginImageContext(rect.size)
+        let context = UIGraphicsGetCurrentContext()
+        context!.setFillColor(color.cgColor)
+        context!.fill(rect)
+        let img = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return img!
     }
 }
