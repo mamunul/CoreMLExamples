@@ -44,9 +44,9 @@ struct IntelligentConsoleView: View {
     var body: some View {
         VStack {
             HStack {
-                Text("\(output.executionTime)ms ")
-                Text("\(output.modelSize)MB ")
-                Text("\(output.imageSize.width) : \(output.imageSize.height)res")
+                Text("\(Int(output.executionTime))ms ")
+                Text("\(Int(output.modelSize))MB ")
+                Text("\(Int(output.imageSize.width)) : \(Int(output.imageSize.height))res")
             }
             HStack {
                 Text("Confidence: \(output.confidence)")
@@ -81,6 +81,9 @@ struct MainView: View {
             if let image = output.image {
                 self.image = Image(uiImage: image)
             }
+        }
+        .onAppear{
+            self.image = Image(uiImage: self.presenterObject.uiImage)
         }
         .sheet(isPresented: $showPicker, onDismiss: {
             self.image = Image(uiImage: self.presenterObject.uiImage)
