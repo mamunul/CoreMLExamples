@@ -89,7 +89,14 @@ class Presenter: ObservableObject {
 
     func update(intelligent: Intelligent) {
         selectedIntelligent = intelligent
+        removePreviousSelection(excludeing: intelligent)
         executeOperation()
+    }
+
+    private func removePreviousSelection(excludeing it: Intelligent) {
+        if let index = intelligentArray.firstIndex(where: { $0.isSelected && it != $0 }) {
+            intelligentArray[index].isSelected = false
+        }
     }
 
     private func executeOperation() {
