@@ -15,7 +15,7 @@
 		EE47ED3D24C04E470097CCDB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE47ED3B24C04E470097CCDB /* LaunchScreen.storyboard */; };
 		EE47ED4824C04E470097CCDB /* CoreMLExamplesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47ED4724C04E470097CCDB /* CoreMLExamplesTests.swift */; };
 		EE47ED5324C04E480097CCDB /* CoreMLExamplesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47ED5224C04E480097CCDB /* CoreMLExamplesUITests.swift */; };
-		EE47ED6124C04EFB0097CCDB /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47ED6024C04EFB0097CCDB /* Presenter.swift */; };
+		EE47ED6124C04EFB0097CCDB /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47ED6024C04EFB0097CCDB /* MainPresenter.swift */; };
 		EE47ED6324C04FD00097CCDB /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47ED6224C04FD00097CCDB /* ImagePickerView.swift */; };
 		EE89213724C078B400B42480 /* YoloObjectDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89213624C078B400B42480 /* YoloObjectDetector.swift */; };
 		EE89213924C07A6100B42480 /* YOLOv3Tiny.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EE89213824C07A6100B42480 /* YOLOv3Tiny.mlmodel */; };
@@ -77,6 +77,7 @@
 		EEE39FFB24C1F7D800317BEE /* IntelligentConsoleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE39FFA24C1F7D800317BEE /* IntelligentConsoleView.swift */; };
 		EEE39FFD24C1F83700317BEE /* ImagePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE39FFC24C1F83700317BEE /* ImagePreview.swift */; };
 		EEE39FFF24C2001500317BEE /* ActivityIndicatiorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE39FFE24C2001500317BEE /* ActivityIndicatiorView.swift */; };
+		EEE3A00224C2055000317BEE /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE3A00124C2055000317BEE /* ButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,7 +112,7 @@
 		EE47ED4E24C04E480097CCDB /* CoreMLExamplesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreMLExamplesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE47ED5224C04E480097CCDB /* CoreMLExamplesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMLExamplesUITests.swift; sourceTree = "<group>"; };
 		EE47ED5424C04E480097CCDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EE47ED6024C04EFB0097CCDB /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
+		EE47ED6024C04EFB0097CCDB /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
 		EE47ED6224C04FD00097CCDB /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
 		EE89213624C078B400B42480 /* YoloObjectDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoloObjectDetector.swift; sourceTree = "<group>"; };
 		EE89213824C07A6100B42480 /* YOLOv3Tiny.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = YOLOv3Tiny.mlmodel; sourceTree = "<group>"; };
@@ -173,6 +174,7 @@
 		EEE39FFA24C1F7D800317BEE /* IntelligentConsoleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntelligentConsoleView.swift; sourceTree = "<group>"; };
 		EEE39FFC24C1F83700317BEE /* ImagePreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePreview.swift; sourceTree = "<group>"; };
 		EEE39FFE24C2001500317BEE /* ActivityIndicatiorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatiorView.swift; sourceTree = "<group>"; };
+		EEE3A00124C2055000317BEE /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,7 +232,7 @@
 				EE47ED3624C04E470097CCDB /* Assets.xcassets */,
 				EE47ED3E24C04E470097CCDB /* Info.plist */,
 				EE47ED3824C04E470097CCDB /* Preview Content */,
-				EE47ED6024C04EFB0097CCDB /* Presenter.swift */,
+				EE47ED6024C04EFB0097CCDB /* MainPresenter.swift */,
 				EE89213524C0785500B42480 /* ModelImplementation */,
 			);
 			path = CoreMLExamples;
@@ -316,6 +318,7 @@
 				EEE39FF824C1F75600317BEE /* IntelligenceCategoryView.swift */,
 				EEE39FFA24C1F7D800317BEE /* IntelligentConsoleView.swift */,
 				EEE39FFC24C1F83700317BEE /* ImagePreview.swift */,
+				EEE3A00124C2055000317BEE /* ButtonView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -568,13 +571,14 @@
 				EE89214924C0B50A00B42480 /* MobileNetClassifier.swift in Sources */,
 				EE89217824C1933B00B42480 /* CGPoint+Extension.swift in Sources */,
 				EE89218A24C1999400B42480 /* Pose.swift in Sources */,
-				EE47ED6124C04EFB0097CCDB /* Presenter.swift in Sources */,
+				EE47ED6124C04EFB0097CCDB /* MainPresenter.swift in Sources */,
 				EE89218D24C1999400B42480 /* PoseNetOutput.swift in Sources */,
 				EE8FD74024C05FD70095A68F /* UIImage+CVPixelBuffer.swift in Sources */,
 				EE89218E24C1999400B42480 /* PoseNet.swift in Sources */,
 				EE89217A24C1934300B42480 /* CGImage+Extension.swift in Sources */,
 				EE89215D24C0C06200B42480 /* PoseEstimator.swift in Sources */,
 				EE89215A24C0C04500B42480 /* PoseNetMobileNet100S8FP16.mlmodel in Sources */,
+				EEE3A00224C2055000317BEE /* ButtonView.swift in Sources */,
 				EE89215024C0BEAE00B42480 /* Resnet50Int8LUT.mlmodel in Sources */,
 				EEE39FFD24C1F83700317BEE /* ImagePreview.swift in Sources */,
 				EE8FD74924C05FD70095A68F /* CGImage+CVPixelBuffer.swift in Sources */,

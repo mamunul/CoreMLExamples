@@ -37,7 +37,7 @@ struct Intelligent: Hashable {
     var isSelected = false
 }
 
-class Presenter: ObservableObject {
+class MainPresenter: ObservableObject {
     @Published var intelligentArray = [Intelligent]()
     @Published var output: IntelligenceOutput
     @Published var uiImage: UIImage
@@ -64,7 +64,7 @@ class Presenter: ObservableObject {
         var intelligent1 = Intelligent(name: "Edge Detection", object: hed)
         selectedIntelligent = intelligent1
         intelligent1.isSelected = true
-        uiImage = Presenter.from(color: UIColor.gray)
+        uiImage = MainPresenter.from(color: UIColor.gray)
         intelligentArray.append(intelligent1)
 
         let intelligent2 = Intelligent(name: "Segmentation", object: deepLap)

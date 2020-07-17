@@ -8,53 +8,40 @@
 
 import SwiftUI
 
-let presenter = Presenter()
+let mainPresenter = MainPresenter()
 
 struct MainView: View {
     @State var image: Image?
     @State var showPicker = false
 
-    @ObservedObject var presenterObject = presenter
+    @ObservedObject var presenter = mainPresenter
 
     var body: some View {
         VStack {
             ZStack {
                 ImagePreview(image: $image)
-                ActivityIndicatorView(isAnimating: self.$presenterObject.loading)
-                VStack {
-                    HStack {
-                        Spacer()
-                        Button(action: {
-                            self.showPicker = true
-                        }) {
-                            Text("Change Photo")
-                                .padding()
-                        }
-                        .disabled(self.$presenterObject.loading.wrappedValue)
-                    }
-                    Spacer()
-                }
-
-                IntelligentConsoleView(output: $presenterObject.output)
+                ActivityIndicatorView(isAnimating: self.$presenter.loading)
+                ButtonView(showPicker: $showPicker, presenter: self.presenter)
+                IntelligentConsoleView(output: $presenter.output)
             }
-            IntelligenceCategoryView(presenterObject: presenterObject)
+            IntelligenceCategoryView(presenter: presenter)
                 .padding([.bottom, .top])
-                .disabled(self.$presenterObject.loading.wrappedValue)
+                .disabled(self.$presenter.loading.wrappedValue)
         }
-        .onReceive(self.presenterObject.$output) { output in
+        .onReceive(self.presenter.$output) { output in
             if let image = output.image {
                 self.image = Image(uiImage: image)
             }
         }
         .onAppear {
-            self.image = Image(uiImage: self.presenterObject.uiImage)
+            self.image = Image(uiImage: self.presenter.uiImage)
         }
         .sheet(isPresented: $showPicker, onDismiss: {
-            self.image = Image(uiImage: self.presenterObject.uiImage)
-            self.presenterObject.update(image: self.presenterObject.uiImage)
+            self.image = Image(uiImage: self.presenter.uiImage)
+            self.presenter.update(image: self.presenter.uiImage)
 
         }) {
-            ImagePickerView(uiImage: self.$presenterObject.uiImage)
+            ImagePickerView(uiImage: self.$presenter.uiImage)
         }
     }
 }

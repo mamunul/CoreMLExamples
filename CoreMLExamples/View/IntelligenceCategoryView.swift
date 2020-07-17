@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct IntelligenceCategoryView: View {
-    @ObservedObject var presenterObject: Presenter
+    @ObservedObject var presenter: MainPresenter
     private let selectedBGColor = Color(red: 0.5, green: 0.5, blue: 0.5, opacity: 0.4)
     private let nonSelectedBGColor = Color.clear
     private let dividerHeight: CGFloat = 10
@@ -17,7 +17,7 @@ struct IntelligenceCategoryView: View {
     var body: some View {
         ScrollView(.horizontal) {
             HStack {
-                ForEach(presenterObject.intelligentArray, id: \.self) { intelligent in
+                ForEach(presenter.intelligentArray, id: \.self) { intelligent in
                     HStack {
                         Text(intelligent.name).fontWeight(.medium)
                             .padding()
@@ -26,7 +26,7 @@ struct IntelligenceCategoryView: View {
                     }
                     .onTapGesture {
                         self.getBindingInstance(intelligent).wrappedValue.isSelected = true
-                        self.presenterObject.update(intelligent: intelligent)
+                        self.presenter.update(intelligent: intelligent)
                     }
                 }
             }
@@ -34,12 +34,12 @@ struct IntelligenceCategoryView: View {
     }
 
     func getBindingInstance(_ intelligent: Intelligent) -> Binding<Intelligent> {
-        $presenterObject.intelligentArray[presenterObject.intelligentArray.firstIndex(of: intelligent)!]
+        $presenter.intelligentArray[presenter.intelligentArray.firstIndex(of: intelligent)!]
     }
 }
 
 struct IntelligenceCategoryView_Previews: PreviewProvider {
     static var previews: some View {
-        IntelligenceCategoryView(presenterObject: Presenter())
+        IntelligenceCategoryView(presenter: MainPresenter())
     }
 }
