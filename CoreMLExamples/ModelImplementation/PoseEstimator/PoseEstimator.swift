@@ -15,6 +15,11 @@ class PoseEstimator: Intelligence {
     private let modelInputSize = CGSize(width: 513, height: 513)
     private let outputStride = 16
     private var poseBuilderConfiguration = PoseBuilderConfiguration()
+    
+    func execute(in image: UIImage, onCompletion:@escaping (Any?) -> Void) {
+        let output = runModel(image: image)
+        onCompletion(output)
+    }
 
     func runModel(image: UIImage) -> [Pose] {
         guard let model = makeModel() else { return [Pose]() }

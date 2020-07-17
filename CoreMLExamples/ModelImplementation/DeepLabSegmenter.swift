@@ -11,12 +11,17 @@ import Foundation
 import SwiftUI
 import UIKit
 
-class DeepLabSegmenter:Intelligence {
-    func runModel(image: UIImage) -> UIImage? {
+class DeepLabSegmenter: Intelligence {
+    func execute(in image: UIImage, onCompletion: @escaping (Any?) -> Void) {
+        let output = runModel(image: image)
+        onCompletion(output)
+    }
+
+    private func runModel(image: UIImage) -> UIImage? {
         guard let model = makeModel() else { return nil }
 
         let nimage = image.resized(to: CGSize(width: 513, height: 513))
-        let pixelBuffer = nimage.pixelBuffer(width: Int((nimage.size.width)), height: Int((nimage.size.height)))
+        let pixelBuffer = nimage.pixelBuffer(width: Int(nimage.size.width), height: Int(nimage.size.height))
 
         do {
             let result = try model.prediction(image: pixelBuffer!)

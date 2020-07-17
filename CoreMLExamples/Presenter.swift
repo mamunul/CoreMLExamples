@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 protocol Intelligence {
+    func execute(in image: UIImage, onCompletion: @escaping (Any?) -> Void)
 }
 
 struct Intelligent: Hashable {
@@ -24,20 +25,24 @@ struct Intelligent: Hashable {
     var id = UUID()
     var name: String
     var object: Intelligence
+    var isSelected = false
 }
 
 class Presenter: ObservableObject {
     @Published var intelligentArray = [Intelligent]()
 
-    let hed = HEDImplementor()
-    let deepLap = DeepLabSegmenter()
-    let yolo = YoloObjectDetector()
-    let fcrn = FCRNDepthMapper()
-    let mobileNet = MobileNetClassifier()
-    let poseEstimator = PoseEstimator()
+    private let hed = HEDImplementor()
+    private let deepLap = DeepLabSegmenter()
+    private let yolo = YoloObjectDetector()
+    private let fcrn = FCRNDepthMapper()
+    private let mobileNet = MobileNetClassifier()
+    private let poseEstimator = PoseEstimator()
+    private var selectedIntelligent: Intelligent
+    private var image: UIImage?
 
     init() {
         let intelligent1 = Intelligent(name: "HED", object: hed)
+        selectedIntelligent = intelligent1
         intelligentArray.append(intelligent1)
 
         let intelligent2 = Intelligent(name: "deepLap", object: deepLap)
@@ -54,6 +59,20 @@ class Presenter: ObservableObject {
 
         let intelligent6 = Intelligent(name: "poseEstimator", object: poseEstimator)
         intelligentArray.append(intelligent6)
+    }
+
+    func update(image: UIImage) {
+        self.image = image
+    }
+
+    func update(intelligent: Intelligent) {
+        selectedIntelligent = intelligent
+
+        if image != nil {
+            selectedIntelligent.object.execute(in: image!) { output in
+                print(output)
+            }
+        }
     }
 
     func apply(in image: UIImage) -> UIImage? {

@@ -12,17 +12,30 @@ let presenter = Presenter()
 
 struct IntelligenceCategoryView: View {
     @ObservedObject var presenterObject: Presenter
+    private let selectedBGColor = Color(red: 0.5, green: 0.5, blue: 0.5, opacity: 0.2)
+    private let nonSelectedBGColor = Color.clear
+    private let dividerHeight: CGFloat = 10
+
     var body: some View {
         ScrollView(.horizontal) {
             HStack {
                 ForEach(presenterObject.intelligentArray, id: \.self) { intelligent in
                     HStack {
                         Text(intelligent.name)
-                        Divider().frame(height: 10)
+                            .background(self.getBindingInstance(intelligent).wrappedValue.isSelected ? self.selectedBGColor : self.nonSelectedBGColor)
+                        Divider().frame(height: self.dividerHeight)
+                    }
+                    .onTapGesture {
+                        self.getBindingInstance(intelligent).wrappedValue.isSelected = true
+                        self.presenterObject.update(intelligent: intelligent)
                     }
                 }
             }
         }
+    }
+
+    func getBindingInstance(_ intelligent: Intelligent) -> Binding<Intelligent> {
+        $presenterObject.intelligentArray[presenterObject.intelligentArray.firstIndex(of: intelligent)!]
     }
 }
 
@@ -59,16 +72,14 @@ struct MainView: View {
                 }) {
                     Text("Change Photo")
                 }
-                
+
                 IntelligentConsoleView()
             }
             IntelligenceCategoryView(presenterObject: presenterObject)
         }.sheet(isPresented: $showPicker, onDismiss: {
             if self.uiImage != nil {
                 self.image = Image(uiImage: self.uiImage!)
-                if let uiImage = self.presenterObject.apply(in: self.uiImage!) {
-                    self.image = Image(uiImage: uiImage)
-                }
+                self.presenterObject.update(image: self.uiImage!)
             }
         }) {
             ImagePickerView(uiImage: self.$uiImage)

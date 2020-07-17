@@ -12,8 +12,14 @@ import SwiftUI
 import UIKit
 import Vision
 
-class MobileNetClassifier:Intelligence {
-    func runModel(image: UIImage, onCompletion: @escaping () -> Void) {
+class MobileNetClassifier: Intelligence {
+    func execute(in image: UIImage, onCompletion:@escaping (Any?) -> Void) {
+        _ = runVision(image: image) { output in
+            onCompletion(output)
+        }
+    }
+
+    private func runModel(image: UIImage, onCompletion: @escaping () -> Void) {
         guard let model = makeModel() else { return }
 
         let nimage = image.resized(to: CGSize(width: 224, height: 224))

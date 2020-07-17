@@ -11,8 +11,13 @@ import Foundation
 import SwiftUI
 import UIKit
 
-class FCRNDepthMapper:Intelligence {
-    func runModel(image: UIImage) -> UIImage? {
+class FCRNDepthMapper: Intelligence {
+    func execute(in image: UIImage, onCompletion: @escaping (Any?) -> Void) {
+        let output = runModel(image: image)
+        onCompletion(output)
+    }
+
+    private func runModel(image: UIImage) -> UIImage? {
         guard let model = makeModel() else { return nil }
 
         let nimage = image.resized(to: CGSize(width: 304, height: 228))

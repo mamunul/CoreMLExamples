@@ -17,8 +17,14 @@ struct ObjectBox {
     var bound: CGRect
 }
 
-class YoloObjectDetector:Intelligence {
-    func runModel(image: UIImage, onCompletion: @escaping ([ObjectBox]) -> Void) {
+class YoloObjectDetector: Intelligence {
+    func execute(in image: UIImage, onCompletion: @escaping (Any?) -> Void) {
+        runModel(image: image) { output in
+            onCompletion(output)
+        }
+    }
+
+    private func runModel(image: UIImage, onCompletion: @escaping ([ObjectBox]) -> Void) {
         let nimage = image.resized(to: CGSize(width: 416, height: 416))
         var objectBoxArray = [ObjectBox]()
         guard let modelURL = Bundle.main.url(forResource: "YOLOv3Tiny", withExtension: "mlmodelc") else { return }
