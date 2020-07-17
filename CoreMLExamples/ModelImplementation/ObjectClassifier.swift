@@ -12,7 +12,7 @@ import SwiftUI
 import UIKit
 import Vision
 
-class MobileNetClassifier: Intelligence {
+class ObjectClassifier: Intelligence {
     private let imageSize = CGSize(width: 224, height: 224)
     func execute(in image: UIImage, onCompletion: @escaping (IntelligenceOutput?) -> Void) {
         runVision(image: image) { output in

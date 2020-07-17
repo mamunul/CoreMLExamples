@@ -17,7 +17,7 @@ struct ObjectBox {
     var bound: CGRect
 }
 
-class YoloObjectDetector: Intelligence {
+class ObjectDetector: Intelligence {
     private let imageSize = CGSize(width: 416, height: 416)
     func execute(in image: UIImage, onCompletion: @escaping (IntelligenceOutput?) -> Void) {
         runModel(image: image) { _ in // FIXME: generate Image

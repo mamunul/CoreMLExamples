@@ -43,11 +43,11 @@ class MainPresenter: ObservableObject {
     @Published var uiImage: UIImage
     @Published var loading = false
 
-    private let hed = HEDImplementor()
-    private let deepLap = DeepLabSegmenter()
-    private let yolo = YoloObjectDetector()
-    private let fcrn = FCRNDepthMapper()
-    private let mobileNet = MobileNetClassifier()
+    private let edgeDetector = EdgeDetector()
+    private let segmenter = Segmenter()
+    private let objectDetector = ObjectDetector()
+    private let depthMapper = DepthMapGenerator()
+    private let classifier = ObjectClassifier()
     private let poseEstimator = PoseEstimator()
     private var selectedIntelligent: Intelligent
 
@@ -61,22 +61,22 @@ class MainPresenter: ObservableObject {
                 modelSize: 0,
                 imageSize: CGSize(width: 0, height: 0)
             )
-        var intelligent1 = Intelligent(name: "Edge Detection", object: hed)
+        var intelligent1 = Intelligent(name: "Edge Detection", object: edgeDetector)
         selectedIntelligent = intelligent1
         intelligent1.isSelected = true
         uiImage = MainPresenter.from(color: UIColor.gray)
         intelligentArray.append(intelligent1)
 
-        let intelligent2 = Intelligent(name: "Segmentation", object: deepLap)
+        let intelligent2 = Intelligent(name: "Segmentation", object: segmenter)
         intelligentArray.append(intelligent2)
 
-        let intelligent3 = Intelligent(name: "Object Detection", object: yolo)
+        let intelligent3 = Intelligent(name: "Object Detection", object: objectDetector)
         intelligentArray.append(intelligent3)
 
-        let intelligent4 = Intelligent(name: "Depth Mapping", object: fcrn)
+        let intelligent4 = Intelligent(name: "Depth Mapping", object: depthMapper)
         intelligentArray.append(intelligent4)
 
-        let intelligent5 = Intelligent(name: "Object Classification", object: mobileNet)
+        let intelligent5 = Intelligent(name: "Object Classification", object: classifier)
         intelligentArray.append(intelligent5)
 
         let intelligent6 = Intelligent(name: "Pose Estimation", object: poseEstimator)

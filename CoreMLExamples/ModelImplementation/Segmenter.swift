@@ -11,7 +11,7 @@ import Foundation
 import SwiftUI
 import UIKit
 
-class DeepLabSegmenter: Intelligence {
+class Segmenter: Intelligence {
     private let imageSize = CGSize(width: 513, height: 513)
     func execute(in image: UIImage, onCompletion: @escaping (IntelligenceOutput?) -> Void) {
         let output = runModel(image: image)

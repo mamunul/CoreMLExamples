@@ -16,7 +16,7 @@ enum HEDOptions: String {
     case fuse = "upscore-fuse", dsn5 = "upscore-dsn5", dsn4 = "upscore-dsn4", dsn3 = "upscore-dsn3", dsn2 = "upscore-dsn2", dsn1 = "upscore-dsn1"
 }
 
-class HEDImplementor: Intelligence {
+class EdgeDetector: Intelligence {
     private let hedMain = HED_fuse()
     private let hedSO = HED_so()
 

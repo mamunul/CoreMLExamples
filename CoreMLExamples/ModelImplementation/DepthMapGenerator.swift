@@ -11,7 +11,7 @@ import Foundation
 import SwiftUI
 import UIKit
 
-class FCRNDepthMapper: Intelligence {
+class DepthMapGenerator: Intelligence {
     private let imageSize = CGSize(width: 304, height: 228)
     func execute(in image: UIImage, onCompletion: @escaping (IntelligenceOutput?) -> Void) {
         let output = runModel(image: image)

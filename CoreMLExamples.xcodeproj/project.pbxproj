@@ -17,16 +17,16 @@
 		EE47ED5324C04E480097CCDB /* CoreMLExamplesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47ED5224C04E480097CCDB /* CoreMLExamplesUITests.swift */; };
 		EE47ED6124C04EFB0097CCDB /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47ED6024C04EFB0097CCDB /* MainPresenter.swift */; };
 		EE47ED6324C04FD00097CCDB /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47ED6224C04FD00097CCDB /* ImagePickerView.swift */; };
-		EE89213724C078B400B42480 /* YoloObjectDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89213624C078B400B42480 /* YoloObjectDetector.swift */; };
+		EE89213724C078B400B42480 /* ObjectDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89213624C078B400B42480 /* ObjectDetector.swift */; };
 		EE89213924C07A6100B42480 /* YOLOv3Tiny.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EE89213824C07A6100B42480 /* YOLOv3Tiny.mlmodel */; };
 		EE89213B24C07A6800B42480 /* YOLOv3TinyFP16.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EE89213A24C07A6800B42480 /* YOLOv3TinyFP16.mlmodel */; };
 		EE89213D24C07A6C00B42480 /* YOLOv3TinyInt8LUT.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EE89213C24C07A6C00B42480 /* YOLOv3TinyInt8LUT.mlmodel */; };
 		EE89213F24C085CA00B42480 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89213E24C085CA00B42480 /* UIHelper.swift */; };
-		EE89214124C08E7B00B42480 /* FCRNDepthMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89214024C08E7B00B42480 /* FCRNDepthMapper.swift */; };
+		EE89214124C08E7B00B42480 /* DepthMapGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89214024C08E7B00B42480 /* DepthMapGenerator.swift */; };
 		EE89214324C09B6E00B42480 /* FCRNFP16.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EE89214224C09B6E00B42480 /* FCRNFP16.mlmodel */; };
 		EE89214524C09B8100B42480 /* FCRN.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EE89214424C09B8100B42480 /* FCRN.mlmodel */; };
 		EE89214724C0B4F500B42480 /* MobileNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EE89214624C0B4F400B42480 /* MobileNet.mlmodel */; };
-		EE89214924C0B50A00B42480 /* MobileNetClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89214824C0B50A00B42480 /* MobileNetClassifier.swift */; };
+		EE89214924C0B50A00B42480 /* ObjectClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89214824C0B50A00B42480 /* ObjectClassifier.swift */; };
 		EE89214F24C0BEAE00B42480 /* Resnet50FP16.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EE89214A24C0BEAD00B42480 /* Resnet50FP16.mlmodel */; };
 		EE89215024C0BEAE00B42480 /* Resnet50Int8LUT.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EE89214B24C0BEAD00B42480 /* Resnet50Int8LUT.mlmodel */; };
 		EE89215124C0BEAE00B42480 /* SqueezeNetInt8LUT.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EE89214C24C0BEAD00B42480 /* SqueezeNetInt8LUT.mlmodel */; };
@@ -49,7 +49,7 @@
 		EE89218D24C1999400B42480 /* PoseNetOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89218324C1999300B42480 /* PoseNetOutput.swift */; };
 		EE89218E24C1999400B42480 /* PoseNet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89218424C1999300B42480 /* PoseNet.swift */; };
 		EE89218F24C1999400B42480 /* PoseNetInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89218524C1999300B42480 /* PoseNetInput.swift */; };
-		EE8FD72124C0581B0095A68F /* HEDImplementor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8FD72024C0581B0095A68F /* HEDImplementor.swift */; };
+		EE8FD72124C0581B0095A68F /* EdgeDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8FD72024C0581B0095A68F /* EdgeDetector.swift */; };
 		EE8FD72624C0587F0095A68F /* HED_so.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EE8FD72324C0587F0095A68F /* HED_so.mlmodel */; };
 		EE8FD72724C0587F0095A68F /* HED_fuse.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EE8FD72424C0587F0095A68F /* HED_fuse.mlmodel */; };
 		EE8FD72824C0587F0095A68F /* HED_so3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EE8FD72524C0587F0095A68F /* HED_so3.mlmodel */; };
@@ -69,7 +69,7 @@
 		EE8FD74A24C05FD70095A68F /* NonMaxSuppression.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8FD73B24C05FD70095A68F /* NonMaxSuppression.swift */; };
 		EE8FD74B24C05FD70095A68F /* CGImage+RawBytes.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8FD73C24C05FD70095A68F /* CGImage+RawBytes.swift */; };
 		EE8FD74C24C05FD70095A68F /* MLMultiArray+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8FD73D24C05FD70095A68F /* MLMultiArray+Image.swift */; };
-		EE8FD74E24C073290095A68F /* DeepLabSegmenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8FD74D24C073290095A68F /* DeepLabSegmenter.swift */; };
+		EE8FD74E24C073290095A68F /* Segmenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8FD74D24C073290095A68F /* Segmenter.swift */; };
 		EE8FD75224C073420095A68F /* DeepLabV3Int8LUT.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EE8FD74F24C073420095A68F /* DeepLabV3Int8LUT.mlmodel */; };
 		EE8FD75324C073420095A68F /* DeepLabV3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EE8FD75024C073420095A68F /* DeepLabV3.mlmodel */; };
 		EE8FD75424C073420095A68F /* DeepLabV3FP16.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EE8FD75124C073420095A68F /* DeepLabV3FP16.mlmodel */; };
@@ -114,16 +114,16 @@
 		EE47ED5424C04E480097CCDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EE47ED6024C04EFB0097CCDB /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
 		EE47ED6224C04FD00097CCDB /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
-		EE89213624C078B400B42480 /* YoloObjectDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoloObjectDetector.swift; sourceTree = "<group>"; };
+		EE89213624C078B400B42480 /* ObjectDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectDetector.swift; sourceTree = "<group>"; };
 		EE89213824C07A6100B42480 /* YOLOv3Tiny.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = YOLOv3Tiny.mlmodel; sourceTree = "<group>"; };
 		EE89213A24C07A6800B42480 /* YOLOv3TinyFP16.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = YOLOv3TinyFP16.mlmodel; sourceTree = "<group>"; };
 		EE89213C24C07A6C00B42480 /* YOLOv3TinyInt8LUT.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = YOLOv3TinyInt8LUT.mlmodel; sourceTree = "<group>"; };
 		EE89213E24C085CA00B42480 /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
-		EE89214024C08E7B00B42480 /* FCRNDepthMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCRNDepthMapper.swift; sourceTree = "<group>"; };
+		EE89214024C08E7B00B42480 /* DepthMapGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepthMapGenerator.swift; sourceTree = "<group>"; };
 		EE89214224C09B6E00B42480 /* FCRNFP16.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = FCRNFP16.mlmodel; sourceTree = "<group>"; };
 		EE89214424C09B8100B42480 /* FCRN.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = FCRN.mlmodel; sourceTree = "<group>"; };
 		EE89214624C0B4F400B42480 /* MobileNet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MobileNet.mlmodel; sourceTree = "<group>"; };
-		EE89214824C0B50A00B42480 /* MobileNetClassifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileNetClassifier.swift; sourceTree = "<group>"; };
+		EE89214824C0B50A00B42480 /* ObjectClassifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectClassifier.swift; sourceTree = "<group>"; };
 		EE89214A24C0BEAD00B42480 /* Resnet50FP16.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Resnet50FP16.mlmodel; sourceTree = "<group>"; };
 		EE89214B24C0BEAD00B42480 /* Resnet50Int8LUT.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Resnet50Int8LUT.mlmodel; sourceTree = "<group>"; };
 		EE89214C24C0BEAD00B42480 /* SqueezeNetInt8LUT.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = SqueezeNetInt8LUT.mlmodel; sourceTree = "<group>"; };
@@ -146,7 +146,7 @@
 		EE89218324C1999300B42480 /* PoseNetOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PoseNetOutput.swift; sourceTree = "<group>"; };
 		EE89218424C1999300B42480 /* PoseNet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PoseNet.swift; sourceTree = "<group>"; };
 		EE89218524C1999300B42480 /* PoseNetInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PoseNetInput.swift; sourceTree = "<group>"; };
-		EE8FD72024C0581B0095A68F /* HEDImplementor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HEDImplementor.swift; sourceTree = "<group>"; };
+		EE8FD72024C0581B0095A68F /* EdgeDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeDetector.swift; sourceTree = "<group>"; };
 		EE8FD72324C0587F0095A68F /* HED_so.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = HED_so.mlmodel; sourceTree = "<group>"; };
 		EE8FD72424C0587F0095A68F /* HED_fuse.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = HED_fuse.mlmodel; sourceTree = "<group>"; };
 		EE8FD72524C0587F0095A68F /* HED_so3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = HED_so3.mlmodel; sourceTree = "<group>"; };
@@ -166,7 +166,7 @@
 		EE8FD73B24C05FD70095A68F /* NonMaxSuppression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NonMaxSuppression.swift; sourceTree = "<group>"; };
 		EE8FD73C24C05FD70095A68F /* CGImage+RawBytes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGImage+RawBytes.swift"; sourceTree = "<group>"; };
 		EE8FD73D24C05FD70095A68F /* MLMultiArray+Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MLMultiArray+Image.swift"; sourceTree = "<group>"; };
-		EE8FD74D24C073290095A68F /* DeepLabSegmenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeepLabSegmenter.swift; sourceTree = "<group>"; };
+		EE8FD74D24C073290095A68F /* Segmenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Segmenter.swift; sourceTree = "<group>"; };
 		EE8FD74F24C073420095A68F /* DeepLabV3Int8LUT.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = DeepLabV3Int8LUT.mlmodel; sourceTree = "<group>"; };
 		EE8FD75024C073420095A68F /* DeepLabV3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = DeepLabV3.mlmodel; sourceTree = "<group>"; };
 		EE8FD75124C073420095A68F /* DeepLabV3FP16.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = DeepLabV3FP16.mlmodel; sourceTree = "<group>"; };
@@ -267,11 +267,11 @@
 		EE89213524C0785500B42480 /* ModelImplementation */ = {
 			isa = PBXGroup;
 			children = (
-				EE8FD74D24C073290095A68F /* DeepLabSegmenter.swift */,
-				EE8FD72024C0581B0095A68F /* HEDImplementor.swift */,
-				EE89213624C078B400B42480 /* YoloObjectDetector.swift */,
-				EE89214024C08E7B00B42480 /* FCRNDepthMapper.swift */,
-				EE89214824C0B50A00B42480 /* MobileNetClassifier.swift */,
+				EE8FD74D24C073290095A68F /* Segmenter.swift */,
+				EE8FD72024C0581B0095A68F /* EdgeDetector.swift */,
+				EE89213624C078B400B42480 /* ObjectDetector.swift */,
+				EE89214024C08E7B00B42480 /* DepthMapGenerator.swift */,
+				EE89214824C0B50A00B42480 /* ObjectClassifier.swift */,
 				EE89215E24C190B400B42480 /* PoseEstimator */,
 			);
 			path = ModelImplementation;
@@ -530,13 +530,13 @@
 			files = (
 				EEE39FFF24C2001500317BEE /* ActivityIndicatiorView.swift in Sources */,
 				EE89213924C07A6100B42480 /* YOLOv3Tiny.mlmodel in Sources */,
-				EE8FD72124C0581B0095A68F /* HEDImplementor.swift in Sources */,
+				EE8FD72124C0581B0095A68F /* EdgeDetector.swift in Sources */,
 				EE8FD74624C05FD70095A68F /* CVPixelBuffer+Helpers.swift in Sources */,
 				EEE39FFB24C1F7D800317BEE /* IntelligentConsoleView.swift in Sources */,
 				EE89217624C1911F00B42480 /* PoseMarkerGenerator.swift in Sources */,
 				EE89218824C1999400B42480 /* PoseBuilder+Multiple.swift in Sources */,
-				EE8FD74E24C073290095A68F /* DeepLabSegmenter.swift in Sources */,
-				EE89213724C078B400B42480 /* YoloObjectDetector.swift in Sources */,
+				EE8FD74E24C073290095A68F /* Segmenter.swift in Sources */,
+				EE89213724C078B400B42480 /* ObjectDetector.swift in Sources */,
 				EE89215224C0BEAE00B42480 /* Resnet50.mlmodel in Sources */,
 				EE8FD75424C073420095A68F /* DeepLabV3FP16.mlmodel in Sources */,
 				EE89214524C09B8100B42480 /* FCRN.mlmodel in Sources */,
@@ -562,13 +562,13 @@
 				EE89215924C0C04500B42480 /* PoseNetMobileNet075S8FP16.mlmodel in Sources */,
 				EE8FD74524C05FD70095A68F /* MLMultiArray+Helpers.swift in Sources */,
 				EE8FD74124C05FD70095A68F /* Predictions.swift in Sources */,
-				EE89214124C08E7B00B42480 /* FCRNDepthMapper.swift in Sources */,
+				EE89214124C08E7B00B42480 /* DepthMapGenerator.swift in Sources */,
 				EE89218C24C1999400B42480 /* PoseBuilderConfiguration.swift in Sources */,
 				EE8FD74B24C05FD70095A68F /* CGImage+RawBytes.swift in Sources */,
 				EE89218724C1999400B42480 /* Joint.swift in Sources */,
 				EE8FD74C24C05FD70095A68F /* MLMultiArray+Image.swift in Sources */,
 				EE8FD74824C05FD70095A68F /* CoreML+Combine.swift in Sources */,
-				EE89214924C0B50A00B42480 /* MobileNetClassifier.swift in Sources */,
+				EE89214924C0B50A00B42480 /* ObjectClassifier.swift in Sources */,
 				EE89217824C1933B00B42480 /* CGPoint+Extension.swift in Sources */,
 				EE89218A24C1999400B42480 /* Pose.swift in Sources */,
 				EE47ED6124C04EFB0097CCDB /* MainPresenter.swift in Sources */,
