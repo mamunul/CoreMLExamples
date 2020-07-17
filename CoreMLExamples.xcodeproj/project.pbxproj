@@ -73,6 +73,9 @@
 		EE8FD75224C073420095A68F /* DeepLabV3Int8LUT.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EE8FD74F24C073420095A68F /* DeepLabV3Int8LUT.mlmodel */; };
 		EE8FD75324C073420095A68F /* DeepLabV3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EE8FD75024C073420095A68F /* DeepLabV3.mlmodel */; };
 		EE8FD75424C073420095A68F /* DeepLabV3FP16.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EE8FD75124C073420095A68F /* DeepLabV3FP16.mlmodel */; };
+		EEE39FF924C1F75600317BEE /* IntelligenceCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE39FF824C1F75600317BEE /* IntelligenceCategoryView.swift */; };
+		EEE39FFB24C1F7D800317BEE /* IntelligentConsoleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE39FFA24C1F7D800317BEE /* IntelligentConsoleView.swift */; };
+		EEE39FFD24C1F83700317BEE /* ImagePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE39FFC24C1F83700317BEE /* ImagePreview.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -165,6 +168,9 @@
 		EE8FD74F24C073420095A68F /* DeepLabV3Int8LUT.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = DeepLabV3Int8LUT.mlmodel; sourceTree = "<group>"; };
 		EE8FD75024C073420095A68F /* DeepLabV3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = DeepLabV3.mlmodel; sourceTree = "<group>"; };
 		EE8FD75124C073420095A68F /* DeepLabV3FP16.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = DeepLabV3FP16.mlmodel; sourceTree = "<group>"; };
+		EEE39FF824C1F75600317BEE /* IntelligenceCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntelligenceCategoryView.swift; sourceTree = "<group>"; };
+		EEE39FFA24C1F7D800317BEE /* IntelligentConsoleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntelligentConsoleView.swift; sourceTree = "<group>"; };
+		EEE39FFC24C1F83700317BEE /* ImagePreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePreview.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -307,6 +313,9 @@
 				EE47ED3424C04E410097CCDB /* MainView.swift */,
 				EE47ED6224C04FD00097CCDB /* ImagePickerView.swift */,
 				EE89213E24C085CA00B42480 /* UIHelper.swift */,
+				EEE39FF824C1F75600317BEE /* IntelligenceCategoryView.swift */,
+				EEE39FFA24C1F7D800317BEE /* IntelligentConsoleView.swift */,
+				EEE39FFC24C1F83700317BEE /* ImagePreview.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -508,6 +517,7 @@
 				EE89213924C07A6100B42480 /* YOLOv3Tiny.mlmodel in Sources */,
 				EE8FD72124C0581B0095A68F /* HEDImplementor.swift in Sources */,
 				EE8FD74624C05FD70095A68F /* CVPixelBuffer+Helpers.swift in Sources */,
+				EEE39FFB24C1F7D800317BEE /* IntelligentConsoleView.swift in Sources */,
 				EE89217624C1911F00B42480 /* PoseMarkerGenerator.swift in Sources */,
 				EE89218824C1999400B42480 /* PoseBuilder+Multiple.swift in Sources */,
 				EE8FD74E24C073290095A68F /* DeepLabSegmenter.swift in Sources */,
@@ -524,6 +534,7 @@
 				EE8FD72C24C05CB00095A68F /* UIImage+Resize.swift in Sources */,
 				EE8FD75324C073420095A68F /* DeepLabV3.mlmodel in Sources */,
 				EE8FD74424C05FD70095A68F /* UIImage+RawBytes.swift in Sources */,
+				EEE39FF924C1F75600317BEE /* IntelligenceCategoryView.swift in Sources */,
 				EE89215124C0BEAE00B42480 /* SqueezeNetInt8LUT.mlmodel in Sources */,
 				EE8FD72724C0587F0095A68F /* HED_fuse.mlmodel in Sources */,
 				EE8FD72624C0587F0095A68F /* HED_so.mlmodel in Sources */,
@@ -553,6 +564,7 @@
 				EE89215D24C0C06200B42480 /* PoseEstimator.swift in Sources */,
 				EE89215A24C0C04500B42480 /* PoseNetMobileNet100S8FP16.mlmodel in Sources */,
 				EE89215024C0BEAE00B42480 /* Resnet50Int8LUT.mlmodel in Sources */,
+				EEE39FFD24C1F83700317BEE /* ImagePreview.swift in Sources */,
 				EE8FD74924C05FD70095A68F /* CGImage+CVPixelBuffer.swift in Sources */,
 				EE47ED3524C04E410097CCDB /* MainView.swift in Sources */,
 				EE89214724C0B4F500B42480 /* MobileNet.mlmodel in Sources */,

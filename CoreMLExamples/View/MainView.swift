@@ -10,52 +10,6 @@ import SwiftUI
 
 let presenter = Presenter()
 
-struct IntelligenceCategoryView: View {
-    @ObservedObject var presenterObject: Presenter
-    private let selectedBGColor = Color(red: 0.5, green: 0.5, blue: 0.5, opacity: 0.2)
-    private let nonSelectedBGColor = Color.clear
-    private let dividerHeight: CGFloat = 10
-
-    var body: some View {
-        ScrollView(.horizontal) {
-            HStack {
-                ForEach(presenterObject.intelligentArray, id: \.self) { intelligent in
-                    HStack {
-                        Text(intelligent.name)
-                            .background(self.getBindingInstance(intelligent).wrappedValue.isSelected ? self.selectedBGColor : self.nonSelectedBGColor)
-                        Divider().frame(height: self.dividerHeight)
-                    }
-                    .onTapGesture {
-                        self.getBindingInstance(intelligent).wrappedValue.isSelected = true
-                        self.presenterObject.update(intelligent: intelligent)
-                    }
-                }
-            }
-        }
-    }
-
-    func getBindingInstance(_ intelligent: Intelligent) -> Binding<Intelligent> {
-        $presenterObject.intelligentArray[presenterObject.intelligentArray.firstIndex(of: intelligent)!]
-    }
-}
-
-struct IntelligentConsoleView: View {
-    @Binding var output: IntelligenceOutput
-    var body: some View {
-        VStack {
-            HStack {
-                Text("\(Int(output.executionTime))ms ")
-                Text("\(Int(output.modelSize))MB ")
-                Text("\(Int(output.imageSize.width)) : \(Int(output.imageSize.height))res")
-            }
-            HStack {
-                Text("Confidence: \(output.confidence)")
-                Text("Title: \(output.title)")
-            }
-        }
-    }
-}
-
 struct MainView: View {
     @State var image: Image?
     @State var showPicker = false
@@ -92,15 +46,6 @@ struct MainView: View {
         }) {
             ImagePickerView(uiImage: self.$presenterObject.uiImage)
         }
-    }
-}
-
-struct ImagePreview: View {
-    @Binding var image: Image?
-    var body: some View {
-        image?
-            .resizable()
-            .aspectRatio(contentMode: .fit)
     }
 }
 
