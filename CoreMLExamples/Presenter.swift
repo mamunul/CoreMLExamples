@@ -60,25 +60,25 @@ class Presenter: ObservableObject {
                 modelSize: 0,
                 imageSize: CGSize(width: 0, height: 0)
             )
-        var intelligent1 = Intelligent(name: "HED", object: hed)
+        var intelligent1 = Intelligent(name: "Edge Detection", object: hed)
         selectedIntelligent = intelligent1
         intelligent1.isSelected = true
         uiImage = Presenter.from(color: UIColor.gray)
         intelligentArray.append(intelligent1)
 
-        let intelligent2 = Intelligent(name: "deepLap", object: deepLap)
+        let intelligent2 = Intelligent(name: "Segmentation", object: deepLap)
         intelligentArray.append(intelligent2)
 
-        let intelligent3 = Intelligent(name: "yolo", object: yolo)
+        let intelligent3 = Intelligent(name: "Object Detection", object: yolo)
         intelligentArray.append(intelligent3)
 
-        let intelligent4 = Intelligent(name: "fcrn", object: fcrn)
+        let intelligent4 = Intelligent(name: "Depth Mapping", object: fcrn)
         intelligentArray.append(intelligent4)
 
-        let intelligent5 = Intelligent(name: "mobileNet", object: mobileNet)
+        let intelligent5 = Intelligent(name: "Object Classification", object: mobileNet)
         intelligentArray.append(intelligent5)
 
-        let intelligent6 = Intelligent(name: "poseEstimator", object: poseEstimator)
+        let intelligent6 = Intelligent(name: "Pose Estimation", object: poseEstimator)
         intelligentArray.append(intelligent6)
     }
 
