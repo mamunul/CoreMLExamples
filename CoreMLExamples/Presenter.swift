@@ -41,6 +41,7 @@ class Presenter: ObservableObject {
     @Published var intelligentArray = [Intelligent]()
     @Published var output: IntelligenceOutput
     @Published var uiImage: UIImage
+    @Published var loading = false
 
     private let hed = HEDImplementor()
     private let deepLap = DeepLabSegmenter()
@@ -101,6 +102,9 @@ class Presenter: ObservableObject {
 
     private func executeOperation() {
         let startTime = CACurrentMediaTime()
+        DispatchQueue.main.async {
+            self.loading = true
+        }
         DispatchQueue.global().async {
             self.selectedIntelligent.object.execute(in: self.uiImage) { output in
                 if output != nil {
@@ -110,6 +114,7 @@ class Presenter: ObservableObject {
                     DispatchQueue.main.async {
                         self.output = output!
                         self.output.executionTime = Float(interval)
+                          self.loading = false
                     }
                 }
             }

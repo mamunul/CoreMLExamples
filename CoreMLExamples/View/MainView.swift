@@ -20,7 +20,7 @@ struct MainView: View {
         VStack {
             ZStack {
                 ImagePreview(image: $image)
-
+                ActivityIndicatorView(isAnimating: self.$presenterObject.loading)
                 VStack {
                     HStack {
                         Spacer()
@@ -30,6 +30,7 @@ struct MainView: View {
                             Text("Change Photo")
                                 .padding()
                         }
+                        .disabled(self.$presenterObject.loading.wrappedValue)
                     }
                     Spacer()
                 }
@@ -38,6 +39,7 @@ struct MainView: View {
             }
             IntelligenceCategoryView(presenterObject: presenterObject)
                 .padding([.bottom, .top])
+                .disabled(self.$presenterObject.loading.wrappedValue)
         }
         .onReceive(self.presenterObject.$output) { output in
             if let image = output.image {

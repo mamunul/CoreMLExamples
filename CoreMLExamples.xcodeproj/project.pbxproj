@@ -76,6 +76,7 @@
 		EEE39FF924C1F75600317BEE /* IntelligenceCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE39FF824C1F75600317BEE /* IntelligenceCategoryView.swift */; };
 		EEE39FFB24C1F7D800317BEE /* IntelligentConsoleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE39FFA24C1F7D800317BEE /* IntelligentConsoleView.swift */; };
 		EEE39FFD24C1F83700317BEE /* ImagePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE39FFC24C1F83700317BEE /* ImagePreview.swift */; };
+		EEE39FFF24C2001500317BEE /* ActivityIndicatiorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE39FFE24C2001500317BEE /* ActivityIndicatiorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -171,6 +172,7 @@
 		EEE39FF824C1F75600317BEE /* IntelligenceCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntelligenceCategoryView.swift; sourceTree = "<group>"; };
 		EEE39FFA24C1F7D800317BEE /* IntelligentConsoleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntelligentConsoleView.swift; sourceTree = "<group>"; };
 		EEE39FFC24C1F83700317BEE /* ImagePreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePreview.swift; sourceTree = "<group>"; };
+		EEE39FFE24C2001500317BEE /* ActivityIndicatiorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatiorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -309,10 +311,8 @@
 		EE8FD71E24C0569C0095A68F /* View */ = {
 			isa = PBXGroup;
 			children = (
-				EE89217524C1911F00B42480 /* PoseMarkerGenerator.swift */,
+				EEE3A00024C2043A00317BEE /* Extension */,
 				EE47ED3424C04E410097CCDB /* MainView.swift */,
-				EE47ED6224C04FD00097CCDB /* ImagePickerView.swift */,
-				EE89213E24C085CA00B42480 /* UIHelper.swift */,
 				EEE39FF824C1F75600317BEE /* IntelligenceCategoryView.swift */,
 				EEE39FFA24C1F7D800317BEE /* IntelligentConsoleView.swift */,
 				EEE39FFC24C1F83700317BEE /* ImagePreview.swift */,
@@ -381,6 +381,17 @@
 				EE8FD73D24C05FD70095A68F /* MLMultiArray+Image.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		EEE3A00024C2043A00317BEE /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				EE47ED6224C04FD00097CCDB /* ImagePickerView.swift */,
+				EE89213E24C085CA00B42480 /* UIHelper.swift */,
+				EE89217524C1911F00B42480 /* PoseMarkerGenerator.swift */,
+				EEE39FFE24C2001500317BEE /* ActivityIndicatiorView.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -514,6 +525,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EEE39FFF24C2001500317BEE /* ActivityIndicatiorView.swift in Sources */,
 				EE89213924C07A6100B42480 /* YOLOv3Tiny.mlmodel in Sources */,
 				EE8FD72124C0581B0095A68F /* HEDImplementor.swift in Sources */,
 				EE8FD74624C05FD70095A68F /* CVPixelBuffer+Helpers.swift in Sources */,
