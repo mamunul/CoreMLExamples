@@ -14,17 +14,21 @@ import UIKit
 class DepthMapGenerator: Intelligence {
     private let imageSize = CGSize(width: 304, height: 228)
     var modelOptions: [ModelOption]
-    
+
+    enum Options: String {
+        case FCRNFP16, FCRN
+    }
+
     init() {
-        let modelOption1 = ModelOption(modelFileName: "FCRNFP16", modelOptionParameter: nil)
-        let modelOption2 = ModelOption(modelFileName: "FCRN", modelOptionParameter: nil)
+        let modelOption1 = ModelOption(modelFileName: Options.FCRNFP16.rawValue, modelOptionParameter: nil)
+        let modelOption2 = ModelOption(modelFileName: Options.FCRN.rawValue, modelOptionParameter: nil)
         modelOptions = [ModelOption]()
         modelOptions.append(modelOption1)
         modelOptions.append(modelOption2)
     }
 
     func process(image: UIImage, with option: ModelOption, onCompletion: @escaping (IntelligenceOutput?) -> Void) {
-        let output = runModel(image: image)
+        let output = runModel(image: image, option: option)
         let result =
             IntelligenceOutput(
                 image: output,
@@ -37,15 +41,14 @@ class DepthMapGenerator: Intelligence {
         onCompletion(result)
     }
 
-    private func runModel(image: UIImage) -> UIImage? {
-        guard let model = makeModel() else { return nil }
+    private func runModel(image: UIImage, option: ModelOption) -> UIImage? {
+        let model = makeModel(option: option)
 
         let nimage = image.resized(to: imageSize)
         let pixelBuffer = nimage.pixelBuffer(width: Int(nimage.size.width), height: Int(nimage.size.height))
 
         do {
-            let input = FCRNInput(image: pixelBuffer!)
-            let result = try model.prediction(input: input)
+            let result = try model.prediction(image: pixelBuffer!)
 
             let bufferSize = result.depthmap.shape.lazy.map { $0.intValue }.reduce(1, { $0 * $1 })
 
@@ -91,15 +94,44 @@ class DepthMapGenerator: Intelligence {
         return nil
     }
 
-    private func makeModel() -> FCRN? {
-        let modelURL = Bundle.main.url(forResource: "FCRN", withExtension: "mlmodelc")!
-        do {
-            let model = try FCRN(contentsOf: modelURL)
-            return model
-        } catch {
-            print(error)
+    private func makeModel(option: ModelOption) -> IFCRN {
+        var model: IFCRN
+
+        switch Options(rawValue: option.modelFileName) {
+        case .FCRN, .none:
+            model = FCRN()
+        case .FCRNFP16:
+            model = FCRNFP16()
         }
 
-        return nil
+        return model
     }
+}
+
+protocol IFCRN {
+    func prediction(image: CVPixelBuffer) throws -> IFCRNOutput
+}
+
+extension FCRN: IFCRN {
+    func prediction(image: CVPixelBuffer) throws -> IFCRNOutput {
+        let output: FCRNOutput = try prediction(image: image)
+        return output
+    }
+}
+
+extension FCRNFP16: IFCRN {
+    func prediction(image: CVPixelBuffer) throws -> IFCRNOutput {
+        let output: FCRNFP16Output = try prediction(image: image)
+        return output
+    }
+}
+
+protocol IFCRNOutput: MLFeatureProvider {
+    var depthmap: MLMultiArray { get }
+}
+
+extension FCRNOutput: IFCRNOutput {
+}
+
+extension FCRNFP16Output: IFCRNOutput {
 }
