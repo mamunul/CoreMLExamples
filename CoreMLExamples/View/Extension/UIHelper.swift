@@ -10,8 +10,8 @@ import Foundation
 import UIKit
 
 class UIHelper {
-    func createBox(objectBoxArray: [ObjectBox]) {
-        let detectionOverlay: CALayer = CALayer()
+    func createBox(objectBoxArray: [ObjectBox], in image: UIImage) -> UIImage {
+        let detectionOverlay: CALayer = setupLayers(size: image.size)
         for objectBox in objectBoxArray {
             let shapeLayer = createRoundedRectLayerWithBounds(objectBox.bound)
 
@@ -20,6 +20,54 @@ class UIHelper {
             shapeLayer.addSublayer(textLayer)
             detectionOverlay.addSublayer(shapeLayer)
         }
+
+        let img = imageFromLayer(layer: detectionOverlay)
+
+        let result = draw(image: img.cgImage!, on: image.cgImage!)
+        return result
+    }
+
+    func setupLayers(size: CGSize) -> CALayer {
+        let detectionOverlay = CALayer()
+        detectionOverlay.name = "DetectionOverlay"
+        detectionOverlay.bounds = CGRect(x: 0.0,
+                                         y: 0.0,
+                                         width: size.width,
+                                         height: size.height)
+        return detectionOverlay
+    }
+
+    func imageFromLayer(layer: CALayer) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(layer.frame.size, layer.isOpaque, 0)
+        layer.render(in: UIGraphicsGetCurrentContext()!)
+        let outputImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return outputImage!
+    }
+
+    func draw(image: CGImage, on frame: CGImage) -> UIImage {
+        let dstImageSize = CGSize(width: frame.width, height: frame.height)
+        let dstImageFormat = UIGraphicsImageRendererFormat()
+
+        dstImageFormat.scale = 1
+        let renderer = UIGraphicsImageRenderer(size: dstImageSize,
+                                               format: dstImageFormat)
+
+        let dstImage = renderer.image { rendererContext in
+            // Draw the current frame as the background for the new image.
+            draw(image: frame, in: rendererContext.cgContext)
+            draw(image: image, in: rendererContext.cgContext)
+        }
+
+        return dstImage
+    }
+
+    func draw(image: CGImage, in cgContext: CGContext) {
+        cgContext.saveGState()
+        cgContext.scaleBy(x: 1.0, y: -1.0)
+        let drawingRect = CGRect(x: 0, y: -image.height, width: image.width, height: image.height)
+        cgContext.draw(image, in: drawingRect)
+        cgContext.restoreGState()
     }
 
     func createTextSubLayerInBounds(_ box: ObjectBox) -> CATextLayer {

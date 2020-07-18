@@ -30,17 +30,19 @@ class ObjectDetector: Intelligence {
         let modelOption2 = ModelOption(modelFileName: Options.YOLOv3TinyFP16.rawValue, modelOptionParameter: nil)
         let modelOption3 = ModelOption(modelFileName: Options.YOLOv3TinyInt8LUT.rawValue, modelOptionParameter: nil)
         modelOptions = [ModelOption]()
-        
+
         modelOptions.append(modelOption1)
         modelOptions.append(modelOption2)
         modelOptions.append(modelOption3)
     }
 
     func process(image: UIImage, with option: ModelOption, onCompletion: @escaping (IntelligenceOutput?) -> Void) {
-        runModel(image: image, option: option) { _ in // FIXME: generate Image
+        let nimage = image.resized(to: imageSize)
+        runModel(image: nimage, option: option) { boxes in
+            let img = UIHelper().createBox(objectBoxArray: boxes, in: nimage)
             let result =
                 IntelligenceOutput(
-                    image: nil,
+                    image: img,
                     confidence: -0,
                     executionTime: -0,
                     title: "NA",
@@ -52,7 +54,6 @@ class ObjectDetector: Intelligence {
     }
 
     private func runModel(image: UIImage, option: ModelOption, onCompletion: @escaping ([ObjectBox]) -> Void) {
-        let nimage = image.resized(to: imageSize)
         var objectBoxArray = [ObjectBox]()
         guard let modelURL = Bundle.main.url(forResource: option.modelFileName, withExtension: "mlmodelc") else { return }
         var visionModel: VNCoreMLModel?
@@ -64,12 +65,12 @@ class ObjectDetector: Intelligence {
 
         let objectRecognition = VNCoreMLRequest(model: visionModel!, completionHandler: { request, _ in
             if let results = request.results {
-                objectBoxArray = VisionHelper.processResult(results, size: nimage.size)
+                objectBoxArray = VisionHelper.processResult(results, size: image.size)
                 onCompletion(objectBoxArray)
             }
         })
 
-        let imageRequestHandler = VNImageRequestHandler(cgImage: nimage.cgImage!, options: [:])
+        let imageRequestHandler = VNImageRequestHandler(cgImage: image.cgImage!, options: [:])
 
         do {
             try imageRequestHandler.perform([objectRecognition])
