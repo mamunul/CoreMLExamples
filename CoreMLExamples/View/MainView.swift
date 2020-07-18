@@ -22,7 +22,7 @@ struct ModelSelectionView: View {
             HStack {
                 ForEach(modelOptions, id: \.self) { model in
                     HStack {
-                        Text(model.modelFileName).fontWeight(.medium)
+                        Text("\(model.modelFileName) \(model.modelOptionParameter ?? "")").fontWeight(.medium)
                             .padding()
                             .background(self.getBindingInstance(model).wrappedValue.isSelected ? self.selectedBGColor : self.nonSelectedBGColor)
                         Divider().frame(height: self.dividerHeight)

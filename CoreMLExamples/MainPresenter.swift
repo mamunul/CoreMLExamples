@@ -11,7 +11,7 @@ import UIKit
 
 protocol Intelligence {
     var modelOptions: [ModelOption] { get set }
-    func execute(in image: UIImage, onCompletion: @escaping (IntelligenceOutput?) -> Void)
+    func process(image: UIImage, with option: ModelOption, onCompletion: @escaping (IntelligenceOutput?) -> Void)
 }
 
 struct ModelOption: Hashable {
@@ -76,7 +76,7 @@ class MainPresenter: ObservableObject {
         selectedModel = intelligent1.object.modelOptions.first!
 
         uiImage = MainPresenter.from(color: UIColor.gray)
-        selectModel(model: selectedModel)
+        
         intelligentArray.append(intelligent1)
 
         let intelligent2 = Intelligent(name: "Segmentation", object: segmenter)
@@ -93,6 +93,8 @@ class MainPresenter: ObservableObject {
 
         let intelligent6 = Intelligent(name: "Pose Estimation", object: poseEstimator)
         intelligentArray.append(intelligent6)
+        
+        selectModel(model: selectedModel)
     }
 
     func update(image: UIImage) {
@@ -147,7 +149,7 @@ class MainPresenter: ObservableObject {
             self.loading = true
         }
         DispatchQueue.global().async {
-            self.selectedIntelligent.object.execute(in: self.uiImage) { output in
+            self.selectedIntelligent.object.process(image: self.uiImage, with: self.selectedModel) { output in
                 if output != nil {
                     let endTime = CACurrentMediaTime()
                     let interval = (endTime - startTime) * 1000

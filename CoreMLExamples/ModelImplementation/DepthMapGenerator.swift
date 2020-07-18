@@ -23,7 +23,7 @@ class DepthMapGenerator: Intelligence {
         modelOptions.append(modelOption2)
     }
 
-    func execute(in image: UIImage, onCompletion: @escaping (IntelligenceOutput?) -> Void) {
+    func process(image: UIImage, with option: ModelOption, onCompletion: @escaping (IntelligenceOutput?) -> Void) {
         let output = runModel(image: image)
         let result =
             IntelligenceOutput(

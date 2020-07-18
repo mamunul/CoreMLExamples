@@ -13,6 +13,7 @@ import UIKit
 
 class Segmenter: Intelligence {
     var modelOptions: [ModelOption]
+    private let imageSize = CGSize(width: 513, height: 513)
 
     init() {
         let modelOption1 = ModelOption(modelFileName: "DeepLabV3", modelOptionParameter: nil)
@@ -24,8 +25,7 @@ class Segmenter: Intelligence {
         modelOptions.append(modelOption3)
     }
 
-    private let imageSize = CGSize(width: 513, height: 513)
-    func execute(in image: UIImage, onCompletion: @escaping (IntelligenceOutput?) -> Void) {
+    func process(image: UIImage, with option: ModelOption, onCompletion: @escaping (IntelligenceOutput?) -> Void) {
         let output = runModel(image: image)
         let result =
             IntelligenceOutput(

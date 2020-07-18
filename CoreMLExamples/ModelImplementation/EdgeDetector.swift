@@ -18,7 +18,7 @@ enum HEDOptions: String {
 
 class EdgeDetector: Intelligence {
     var modelOptions: [ModelOption]
-    
+
     init() {
         let modelOption1 = ModelOption(modelFileName: "HED_fuse", modelOptionParameter: "upscore-fuse")
         let modelOption2 = ModelOption(modelFileName: "HED_so", modelOptionParameter: "upscore-dsn5")
@@ -35,14 +35,13 @@ class EdgeDetector: Intelligence {
         modelOptions.append(modelOption6)
     }
 
-    
     private let hedMain = HED_fuse()
     private let hedSO = HED_so()
 
     private var modelOption: HEDOptions = .fuse
     private let imageSize = CGSize(width: 500, height: 500)
-    func execute(in image: UIImage, onCompletion: @escaping (IntelligenceOutput?) -> Void) {
-        let output = doInferencePressed(inputImage: image)
+    func process(image: UIImage, with option: ModelOption, onCompletion: @escaping (IntelligenceOutput?) -> Void) {
+        let output = doInferencePressed(inputImage: image, option: option)
         let result =
             IntelligenceOutput(
                 image: output,
@@ -55,7 +54,7 @@ class EdgeDetector: Intelligence {
         onCompletion(result)
     }
 
-    private func doInferencePressed(inputImage: UIImage) -> UIImage? {
+    private func doInferencePressed(inputImage: UIImage, option: ModelOption) -> UIImage? {
         guard let inputPixelBuffer = inputImage.resized(width: Int(imageSize.width), height: Int(imageSize.height))
             .pixelBuffer(width: Int(imageSize.width), height: Int(imageSize.height)) else {
             return nil

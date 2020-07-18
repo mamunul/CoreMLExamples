@@ -33,7 +33,7 @@ class ObjectDetector: Intelligence {
 
     
     
-    func execute(in image: UIImage, onCompletion: @escaping (IntelligenceOutput?) -> Void) {
+    func process(image: UIImage, with option: ModelOption, onCompletion: @escaping (IntelligenceOutput?) -> Void) {
         runModel(image: image) { _ in // FIXME: generate Image
             let result =
                 IntelligenceOutput(

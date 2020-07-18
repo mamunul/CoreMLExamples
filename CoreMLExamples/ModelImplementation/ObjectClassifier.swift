@@ -28,7 +28,7 @@ class ObjectClassifier: Intelligence {
         modelOptions.append(modelOption4)
     }
 
-    func execute(in image: UIImage, onCompletion: @escaping (IntelligenceOutput?) -> Void) {
+    func process(image: UIImage, with option: ModelOption, onCompletion: @escaping (IntelligenceOutput?) -> Void) {
         runVision(image: image) { output in
             let result =
                 IntelligenceOutput(

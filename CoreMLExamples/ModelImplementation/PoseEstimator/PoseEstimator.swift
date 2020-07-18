@@ -28,7 +28,7 @@ class PoseEstimator: Intelligence {
     }
 
 
-    func execute(in image: UIImage, onCompletion: @escaping (IntelligenceOutput?) -> Void) {
+    func process(image: UIImage, with option: ModelOption, onCompletion: @escaping (IntelligenceOutput?) -> Void) {
         let output = runModel(image: image)
 
         let imageView = PoseMarkerGenerator()
