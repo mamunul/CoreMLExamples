@@ -20,21 +20,24 @@ struct ObjectBox {
 class ObjectDetector: Intelligence {
     private let imageSize = CGSize(width: 416, height: 416)
     var modelOptions: [ModelOption]
-    
+
+    enum Options: String {
+        case YOLOv3Tiny, YOLOv3TinyFP16, YOLOv3TinyInt8LUT
+    }
+
     init() {
-        let modelOption1 = ModelOption(modelFileName: "YOLOv3Tiny", modelOptionParameter: nil)
-        let modelOption2 = ModelOption(modelFileName: "YOLOv3TinyFP16", modelOptionParameter: nil)
-        let modelOption3 = ModelOption(modelFileName: "YOLOv3TinyInt8LUT", modelOptionParameter: nil)
+        let modelOption1 = ModelOption(modelFileName: Options.YOLOv3Tiny.rawValue, modelOptionParameter: nil)
+        let modelOption2 = ModelOption(modelFileName: Options.YOLOv3TinyFP16.rawValue, modelOptionParameter: nil)
+        let modelOption3 = ModelOption(modelFileName: Options.YOLOv3TinyInt8LUT.rawValue, modelOptionParameter: nil)
         modelOptions = [ModelOption]()
+        
         modelOptions.append(modelOption1)
         modelOptions.append(modelOption2)
         modelOptions.append(modelOption3)
     }
 
-    
-    
     func process(image: UIImage, with option: ModelOption, onCompletion: @escaping (IntelligenceOutput?) -> Void) {
-        runModel(image: image) { _ in // FIXME: generate Image
+        runModel(image: image, option: option) { _ in // FIXME: generate Image
             let result =
                 IntelligenceOutput(
                     image: nil,
@@ -48,10 +51,10 @@ class ObjectDetector: Intelligence {
         }
     }
 
-    private func runModel(image: UIImage, onCompletion: @escaping ([ObjectBox]) -> Void) {
+    private func runModel(image: UIImage, option: ModelOption, onCompletion: @escaping ([ObjectBox]) -> Void) {
         let nimage = image.resized(to: imageSize)
         var objectBoxArray = [ObjectBox]()
-        guard let modelURL = Bundle.main.url(forResource: "YOLOv3Tiny", withExtension: "mlmodelc") else { return }
+        guard let modelURL = Bundle.main.url(forResource: option.modelFileName, withExtension: "mlmodelc") else { return }
         var visionModel: VNCoreMLModel?
         do {
             visionModel = try VNCoreMLModel(for: MLModel(contentsOf: modelURL))
