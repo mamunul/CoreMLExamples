@@ -21,9 +21,9 @@ class Segmenter: Intelligence {
     }
 
     init() {
-        let modelOption1 = ModelOption(modelFileName: "DeepLabV3", modelOptionParameter: nil)
-        let modelOption2 = ModelOption(modelFileName: "DeepLabV3FP16", modelOptionParameter: nil)
-        let modelOption3 = ModelOption(modelFileName: "DeepLabV3Int8LUT", modelOptionParameter: nil)
+        let modelOption1 = ModelOption(modelFileName: Options.DeepLabV3.rawValue, modelOptionParameter: nil)
+        let modelOption2 = ModelOption(modelFileName: Options.DeepLabV3FP16.rawValue, modelOptionParameter: nil)
+        let modelOption3 = ModelOption(modelFileName: Options.DeepLabV3Int8LUT.rawValue, modelOptionParameter: nil)
         modelOptions = [ModelOption]()
         modelOptions.append(modelOption1)
         modelOptions.append(modelOption2)
