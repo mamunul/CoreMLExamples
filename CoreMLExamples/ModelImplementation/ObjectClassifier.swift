@@ -15,12 +15,16 @@ import Vision
 class ObjectClassifier: Intelligence {
     private let imageSize = CGSize(width: 224, height: 224)
     var modelOptions: [ModelOption]
-    
+
+    enum Options: String {
+        case Resnet50, Resnet50FP16, Resnet50Int8LUT, MobileNet
+    }
+
     init() {
-        let modelOption1 = ModelOption(modelFileName: "Resnet50", modelOptionParameter: nil)
-        let modelOption2 = ModelOption(modelFileName: "Resnet50FP16", modelOptionParameter: nil)
-        let modelOption3 = ModelOption(modelFileName: "Resnet50Int8LUT", modelOptionParameter: nil)
-        let modelOption4 = ModelOption(modelFileName: "MobileNet", modelOptionParameter: nil)
+        let modelOption1 = ModelOption(modelFileName: Options.Resnet50.rawValue, modelOptionParameter: nil)
+        let modelOption2 = ModelOption(modelFileName: Options.Resnet50FP16.rawValue, modelOptionParameter: nil)
+        let modelOption3 = ModelOption(modelFileName: Options.Resnet50Int8LUT.rawValue, modelOptionParameter: nil)
+        let modelOption4 = ModelOption(modelFileName: Options.MobileNet.rawValue, modelOptionParameter: nil)
         modelOptions = [ModelOption]()
         modelOptions.append(modelOption1)
         modelOptions.append(modelOption2)
@@ -29,7 +33,7 @@ class ObjectClassifier: Intelligence {
     }
 
     func process(image: UIImage, with option: ModelOption, onCompletion: @escaping (IntelligenceOutput?) -> Void) {
-        runVision(image: image) { output in
+        runVision(image: image, option: option) { output in
             let result =
                 IntelligenceOutput(
                     image: nil,
@@ -43,7 +47,7 @@ class ObjectClassifier: Intelligence {
         }
     }
 
-    private func runModel(image: UIImage, onCompletion: @escaping () -> Void) {
+    private func runModel(image: UIImage, option: ModelOption, onCompletion: @escaping () -> Void) {
         guard let model = makeModel() else { return }
 
         let nimage = image.resized(to: imageSize)
@@ -55,9 +59,9 @@ class ObjectClassifier: Intelligence {
         }
     }
 
-    func runVision(image: UIImage, onCompletion: @escaping (ObjectBox) -> Void) {
+    private func runVision(image: UIImage, option: ModelOption, onCompletion: @escaping (ObjectBox) -> Void) {
         let nimage = image.resized(to: imageSize)
-        guard let modelURL = Bundle.main.url(forResource: "Resnet50", withExtension: "mlmodelc") else { return }
+        guard let modelURL = Bundle.main.url(forResource: option.modelFileName, withExtension: "mlmodelc") else { return }
         var visionModel: VNCoreMLModel?
         do {
             visionModel = try VNCoreMLModel(for: MLModel(contentsOf: modelURL))
