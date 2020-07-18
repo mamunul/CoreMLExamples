@@ -12,20 +12,25 @@ import CoreML
 import Foundation
 import UIKit
 
-enum HEDOptions: String {
-    case fuse = "upscore-fuse", dsn5 = "upscore-dsn5", dsn4 = "upscore-dsn4", dsn3 = "upscore-dsn3", dsn2 = "upscore-dsn2", dsn1 = "upscore-dsn1"
-}
-
 class EdgeDetector: Intelligence {
     var modelOptions: [ModelOption]
 
+    private let hedMain = HED_fuse()
+    private let hedSO = HED_so()
+
+    private let imageSize = CGSize(width: 500, height: 500)
+
+    enum Options: String {
+        case HED_so, HED_fuse
+    }
+
     init() {
-        let modelOption1 = ModelOption(modelFileName: "HED_fuse", modelOptionParameter: "upscore-fuse")
-        let modelOption2 = ModelOption(modelFileName: "HED_so", modelOptionParameter: "upscore-dsn5")
-        let modelOption3 = ModelOption(modelFileName: "HED_so", modelOptionParameter: "upscore-dsn4")
-        let modelOption4 = ModelOption(modelFileName: "HED_so", modelOptionParameter: "upscore-dsn3")
-        let modelOption5 = ModelOption(modelFileName: "HED_so", modelOptionParameter: "upscore-dsn2")
-        let modelOption6 = ModelOption(modelFileName: "HED_so", modelOptionParameter: "upscore-dsn1")
+        let modelOption1 = ModelOption(modelFileName: Options.HED_fuse.rawValue, modelOptionParameter: "upscore-fuse")
+        let modelOption2 = ModelOption(modelFileName: Options.HED_so.rawValue, modelOptionParameter: "upscore-dsn5")
+        let modelOption3 = ModelOption(modelFileName: Options.HED_so.rawValue, modelOptionParameter: "upscore-dsn4")
+        let modelOption4 = ModelOption(modelFileName: Options.HED_so.rawValue, modelOptionParameter: "upscore-dsn3")
+        let modelOption5 = ModelOption(modelFileName: Options.HED_so.rawValue, modelOptionParameter: "upscore-dsn2")
+        let modelOption6 = ModelOption(modelFileName: Options.HED_so.rawValue, modelOptionParameter: "upscore-dsn1")
         modelOptions = [ModelOption]()
         modelOptions.append(modelOption1)
         modelOptions.append(modelOption2)
@@ -35,11 +40,6 @@ class EdgeDetector: Intelligence {
         modelOptions.append(modelOption6)
     }
 
-    private let hedMain = HED_fuse()
-    private let hedSO = HED_so()
-
-    private var modelOption: HEDOptions = .fuse
-    private let imageSize = CGSize(width: 500, height: 500)
     func process(image: UIImage, with option: ModelOption, onCompletion: @escaping (IntelligenceOutput?) -> Void) {
         let output = doInferencePressed(inputImage: image, option: option)
         let result =
@@ -62,17 +62,17 @@ class EdgeDetector: Intelligence {
 
         let featureProvider: MLFeatureProvider
         do {
-            switch modelOption {
-            case .fuse:
+            switch Options(rawValue: option.modelFileName) {
+            case .HED_fuse, .none:
                 featureProvider = try hedMain.prediction(data: inputPixelBuffer)
-            case .dsn1, .dsn2, .dsn3, .dsn4, .dsn5:
+            case .HED_so:
                 featureProvider = try hedSO.prediction(data: inputPixelBuffer)
             }
         } catch {
             return nil
         }
 
-        guard let outputFeatures = featureProvider.featureValue(for: modelOption.rawValue)?.multiArrayValue else {
+        guard let outputFeatures = featureProvider.featureValue(for: option.modelOptionParameter!)?.multiArrayValue else {
             return nil
         }
 
