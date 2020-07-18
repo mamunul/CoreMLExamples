@@ -16,20 +16,28 @@ class PoseEstimator: Intelligence {
     private let outputStride = 16
     private var poseBuilderConfiguration = PoseBuilderConfiguration()
     var modelOptions: [ModelOption]
-    
+
+    enum Options: String {
+        case PoseNetMobileNet075S8FP16,
+            PoseNetMobileNet100S8FP16,
+            PoseNetMobileNet075S16FP16,
+            PoseNetMobileNet100S16FP16
+    }
+
     init() {
-        let modelOption1 = ModelOption(modelFileName: "DeepLabV3", modelOptionParameter: nil)
-        let modelOption2 = ModelOption(modelFileName: "DeepLabV3FP16", modelOptionParameter: nil)
-        let modelOption3 = ModelOption(modelFileName: "DeepLabV3Int8LUT", modelOptionParameter: nil)
+        let modelOption1 = ModelOption(modelFileName: Options.PoseNetMobileNet075S8FP16.rawValue, modelOptionParameter: nil)
+        let modelOption2 = ModelOption(modelFileName: Options.PoseNetMobileNet100S8FP16.rawValue, modelOptionParameter: nil)
+        let modelOption3 = ModelOption(modelFileName: Options.PoseNetMobileNet075S16FP16.rawValue, modelOptionParameter: nil)
+        let modelOption4 = ModelOption(modelFileName: Options.PoseNetMobileNet100S16FP16.rawValue, modelOptionParameter: nil)
         modelOptions = [ModelOption]()
         modelOptions.append(modelOption1)
         modelOptions.append(modelOption2)
         modelOptions.append(modelOption3)
+        modelOptions.append(modelOption4)
     }
 
-
     func process(image: UIImage, with option: ModelOption, onCompletion: @escaping (IntelligenceOutput?) -> Void) {
-        let output = runModel(image: image)
+        let output = runModel(image: image, option: option)
 
         let imageView = PoseMarkerGenerator()
         let modelInputSize = CGSize(width: 513, height: 513)
@@ -47,8 +55,8 @@ class PoseEstimator: Intelligence {
         onCompletion(result)
     }
 
-    func runModel(image: UIImage) -> [Pose] {
-        guard let model = makeModel() else { return [Pose]() }
+    func runModel(image: UIImage, option: ModelOption) -> [Pose] {
+        let model = makeModel(option: option)
         let nimage = image.resized(to: modelInputSize)
         let pixelBuffer = nimage.pixelBuffer(width: Int(nimage.size.width), height: Int(nimage.size.height))
 
@@ -75,15 +83,71 @@ class PoseEstimator: Intelligence {
         return [Pose]()
     }
 
-    private func makeModel() -> PoseNetMobileNet075S8FP16? {
-        let modelURL = Bundle.main.url(forResource: "PoseNetMobileNet075S8FP16", withExtension: "mlmodelc")
-        do {
-            let model = try PoseNetMobileNet075S8FP16(contentsOf: modelURL!)
-            return model
-        } catch {
-            print(error)
+    private func makeModel(option: ModelOption) -> IPoseNetMobileNet {
+        var model: IPoseNetMobileNet
+
+        switch Options(rawValue: option.modelFileName) {
+        case .PoseNetMobileNet075S16FP16, .none:
+            model = PoseNetMobileNet075S8FP16()
+        case .PoseNetMobileNet075S8FP16:
+            model = PoseNetMobileNet075S8FP16()
+        case .PoseNetMobileNet100S8FP16:
+            model = PoseNetMobileNet100S8FP16()
+        case .PoseNetMobileNet100S16FP16:
+            model = PoseNetMobileNet100S16FP16()
         }
 
-        return nil
+        return model
     }
+}
+
+protocol IPoseNetMobileNet {
+    func prediction(image: CVPixelBuffer) throws -> IPoseNetMobileNetOutput
+}
+
+extension PoseNetMobileNet075S8FP16: IPoseNetMobileNet {
+    func prediction(image: CVPixelBuffer) throws -> IPoseNetMobileNetOutput {
+        let output: PoseNetMobileNet075S8FP16Output = try prediction(image: image)
+        return output
+    }
+}
+
+extension PoseNetMobileNet100S8FP16: IPoseNetMobileNet {
+    func prediction(image: CVPixelBuffer) throws -> IPoseNetMobileNetOutput {
+        let output: PoseNetMobileNet100S8FP16Output = try prediction(image: image)
+        return output
+    }
+}
+
+extension PoseNetMobileNet075S16FP16: IPoseNetMobileNet {
+    func prediction(image: CVPixelBuffer) throws -> IPoseNetMobileNetOutput {
+        let output: PoseNetMobileNet075S16FP16Output = try prediction(image: image)
+        return output
+    }
+}
+
+extension PoseNetMobileNet100S16FP16: IPoseNetMobileNet {
+    func prediction(image: CVPixelBuffer) throws -> IPoseNetMobileNetOutput {
+        let output: PoseNetMobileNet100S16FP16Output = try prediction(image: image)
+        return output
+    }
+}
+
+protocol IPoseNetMobileNetOutput: MLFeatureProvider {
+    var displacementBwd: MLMultiArray { get }
+    var displacementFwd: MLMultiArray { get }
+    var offsets: MLMultiArray { get }
+    var heatmap: MLMultiArray { get }
+}
+
+extension PoseNetMobileNet075S8FP16Output: IPoseNetMobileNetOutput {
+}
+
+extension PoseNetMobileNet100S8FP16Output: IPoseNetMobileNetOutput {
+}
+
+extension PoseNetMobileNet075S16FP16Output: IPoseNetMobileNetOutput {
+}
+
+extension PoseNetMobileNet100S16FP16Output: IPoseNetMobileNetOutput {
 }
