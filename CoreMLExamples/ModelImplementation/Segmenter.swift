@@ -14,6 +14,11 @@ import UIKit
 class Segmenter: Intelligence {
     var modelOptions: [ModelOption]
     private let imageSize = CGSize(width: 513, height: 513)
+    private var options = Options.DeepLabV3
+
+    enum Options: String {
+        case DeepLabV3, DeepLabV3FP16, DeepLabV3Int8LUT
+    }
 
     init() {
         let modelOption1 = ModelOption(modelFileName: "DeepLabV3", modelOptionParameter: nil)
@@ -26,7 +31,7 @@ class Segmenter: Intelligence {
     }
 
     func process(image: UIImage, with option: ModelOption, onCompletion: @escaping (IntelligenceOutput?) -> Void) {
-        let output = runModel(image: image)
+        let output = runModel(image: image, option: option)
         let result =
             IntelligenceOutput(
                 image: output,
@@ -39,8 +44,16 @@ class Segmenter: Intelligence {
         onCompletion(result)
     }
 
-    private func runModel(image: UIImage) -> UIImage? {
-        guard let model = makeModel() else { return nil }
+    private func runModel(image: UIImage, option: ModelOption) -> UIImage? {
+        var model: IDeepLab
+        switch Options(rawValue: option.modelFileName) {
+        case .DeepLabV3, .none:
+            model = DeepLabV3()
+        case .DeepLabV3FP16:
+            model = DeepLabV3FP16()
+        case .DeepLabV3Int8LUT:
+            model = DeepLabV3Int8LUT()
+        }
 
         let nimage = image.resized(to: imageSize)
         let pixelBuffer = nimage.pixelBuffer(width: Int(nimage.size.width), height: Int(nimage.size.height))
@@ -66,4 +79,42 @@ class Segmenter: Intelligence {
 
         return nil
     }
+}
+
+protocol IDeepLab {
+    func prediction(image: CVPixelBuffer) throws -> IDeepLabOutput
+}
+
+extension DeepLabV3: IDeepLab {
+    func prediction(image: CVPixelBuffer) throws -> IDeepLabOutput {
+        let output: DeepLabV3Output = try prediction(image: image)
+        return output
+    }
+}
+
+extension DeepLabV3FP16: IDeepLab {
+    func prediction(image: CVPixelBuffer) throws -> IDeepLabOutput {
+        let output: DeepLabV3FP16Output = try prediction(image: image)
+        return output
+    }
+}
+
+extension DeepLabV3Int8LUT: IDeepLab {
+    func prediction(image: CVPixelBuffer) throws -> IDeepLabOutput {
+        let output: DeepLabV3Int8LUTOutput = try prediction(image: image)
+        return output
+    }
+}
+
+protocol IDeepLabOutput: MLFeatureProvider {
+    var semanticPredictions: MLMultiArray { get }
+}
+
+extension DeepLabV3Output: IDeepLabOutput {
+}
+
+extension DeepLabV3FP16Output: IDeepLabOutput {
+}
+
+extension DeepLabV3Int8LUTOutput: IDeepLabOutput {
 }
