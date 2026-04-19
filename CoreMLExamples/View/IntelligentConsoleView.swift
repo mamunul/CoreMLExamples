@@ -14,16 +14,14 @@ struct IntelligentConsoleView: View {
         VStack {
             Spacer()
             HStack {
-                Text("\(Int(output.executionTime))ms ")
-                Text("\(Int(output.modelSize))MB ")
-                Text("\(Int(output.imageSize.width)) : \(Int(output.imageSize.height))res")
-                Spacer()
+                Text("Model Size:\(Int(output.modelSize))MB ")
+                Text("Image Size:\(Int(output.imageSize.width))x\(Int(output.imageSize.height))")
             }
             HStack {
-                Text("Confidence: \(output.confidence)")
-                Text("Title: \(output.title)")
-                Spacer()
+                Text("ExecutionTime:\(Int(output.executionTime))ms ")
+                Text("Confidence:\(output.confidence)")
             }
+            Text("Title: \(output.title)")
         }
     }
 }
