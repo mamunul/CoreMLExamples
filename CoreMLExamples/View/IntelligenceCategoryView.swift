@@ -15,26 +15,17 @@ struct IntelligenceCategoryView: View {
     private let dividerHeight: CGFloat = 10
 
     var body: some View {
-        ScrollView(.horizontal) {
-            HStack {
-                ForEach(presenter.intelligentArray, id: \.self) { intelligent in
-                    HStack {
-                        Text(intelligent.name).fontWeight(.medium)
-                            .padding()
-                            .background(self.getBindingInstance(intelligent).wrappedValue.isSelected ? self.selectedBGColor : self.nonSelectedBGColor)
-                        Divider().frame(height: self.dividerHeight)
-                    }
-                    .onTapGesture {
-                        self.getBindingInstance(intelligent).wrappedValue.isSelected = true
-                        self.presenter.update(intelligent: intelligent)
-                    }
+        VStack {
+            Picker("Select an Intelligence", selection: $presenter.selectedIntelligent) {
+                ForEach(presenter.intelligentArray, id: \.self) { intelligence in
+                    Text(intelligence.name).tag(intelligence)
                 }
             }
+            .pickerStyle(.menu)
         }
-    }
-
-    func getBindingInstance(_ intelligent: Intelligent) -> Binding<Intelligent> {
-        $presenter.intelligentArray[presenter.intelligentArray.firstIndex(of: intelligent)!]
+        .onChange(of: presenter.selectedIntelligent) { oldValue, newValue in
+            presenter.onIntelligenceSelection()
+        }
     }
 }
 

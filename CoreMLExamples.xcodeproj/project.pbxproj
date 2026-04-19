@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E98BAD8B2F920003009D44AF /* FastViTT8F16.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E98BAD892F920003009D44AF /* FastViTT8F16.mlpackage */; };
+		E98BAD8C2F920003009D44AF /* FastViTMA36F16.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E98BAD882F920003009D44AF /* FastViTMA36F16.mlpackage */; };
+		E98BAD8D2F920003009D44AF /* MobileNetV2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = E98BAD8A2F920003009D44AF /* MobileNetV2.mlmodel */; };
+		E98BAD8E2F920003009D44AF /* DepthAnythingV2SmallF16P6.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E98BAD852F920003009D44AF /* DepthAnythingV2SmallF16P6.mlpackage */; };
+		E98BAD8F2F920003009D44AF /* DepthAnythingV2SmallF16.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E98BAD842F920003009D44AF /* DepthAnythingV2SmallF16.mlpackage */; };
+		E98BAD902F920003009D44AF /* DETRResnet50SemanticSegmentationF16.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E98BAD862F920003009D44AF /* DETRResnet50SemanticSegmentationF16.mlpackage */; };
+		E98BAD912F920003009D44AF /* DETRResnet50SemanticSegmentationF16P8.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E98BAD872F920003009D44AF /* DETRResnet50SemanticSegmentationF16P8.mlpackage */; };
 		EE47ED3124C04E410097CCDB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47ED3024C04E410097CCDB /* AppDelegate.swift */; };
 		EE47ED3324C04E410097CCDB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47ED3224C04E410097CCDB /* SceneDelegate.swift */; };
 		EE47ED3524C04E410097CCDB /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47ED3424C04E410097CCDB /* MainView.swift */; };
@@ -16,43 +23,17 @@
 		EE47ED4824C04E470097CCDB /* CoreMLExamplesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47ED4724C04E470097CCDB /* CoreMLExamplesTests.swift */; };
 		EE47ED5324C04E480097CCDB /* CoreMLExamplesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47ED5224C04E480097CCDB /* CoreMLExamplesUITests.swift */; };
 		EE47ED6124C04EFB0097CCDB /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47ED6024C04EFB0097CCDB /* MainPresenter.swift */; };
-		EE47ED6324C04FD00097CCDB /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47ED6224C04FD00097CCDB /* ImagePickerView.swift */; };
 		EE89213724C078B400B42480 /* ObjectDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89213624C078B400B42480 /* ObjectDetector.swift */; };
 		EE89213924C07A6100B42480 /* YOLOv3Tiny.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EE89213824C07A6100B42480 /* YOLOv3Tiny.mlmodel */; };
 		EE89213B24C07A6800B42480 /* YOLOv3TinyFP16.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EE89213A24C07A6800B42480 /* YOLOv3TinyFP16.mlmodel */; };
 		EE89213D24C07A6C00B42480 /* YOLOv3TinyInt8LUT.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EE89213C24C07A6C00B42480 /* YOLOv3TinyInt8LUT.mlmodel */; };
 		EE89213F24C085CA00B42480 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89213E24C085CA00B42480 /* UIHelper.swift */; };
 		EE89214124C08E7B00B42480 /* DepthMapGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89214024C08E7B00B42480 /* DepthMapGenerator.swift */; };
-		EE89214324C09B6E00B42480 /* FCRNFP16.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EE89214224C09B6E00B42480 /* FCRNFP16.mlmodel */; };
-		EE89214524C09B8100B42480 /* FCRN.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EE89214424C09B8100B42480 /* FCRN.mlmodel */; };
-		EE89214724C0B4F500B42480 /* MobileNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EE89214624C0B4F400B42480 /* MobileNet.mlmodel */; };
-		EE89214924C0B50A00B42480 /* ObjectClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89214824C0B50A00B42480 /* ObjectClassifier.swift */; };
+		EE89214924C0B50A00B42480 /* ImageClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89214824C0B50A00B42480 /* ImageClassifier.swift */; };
 		EE89214F24C0BEAE00B42480 /* Resnet50FP16.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EE89214A24C0BEAD00B42480 /* Resnet50FP16.mlmodel */; };
 		EE89215024C0BEAE00B42480 /* Resnet50Int8LUT.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EE89214B24C0BEAD00B42480 /* Resnet50Int8LUT.mlmodel */; };
-		EE89215124C0BEAE00B42480 /* SqueezeNetInt8LUT.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EE89214C24C0BEAD00B42480 /* SqueezeNetInt8LUT.mlmodel */; };
 		EE89215224C0BEAE00B42480 /* Resnet50.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EE89214D24C0BEAD00B42480 /* Resnet50.mlmodel */; };
-		EE89215324C0BEAE00B42480 /* SqueezeNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EE89214E24C0BEAE00B42480 /* SqueezeNet.mlmodel */; };
-		EE89215824C0C04500B42480 /* PoseNetMobileNet075S16FP16.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EE89215424C0C04500B42480 /* PoseNetMobileNet075S16FP16.mlmodel */; };
-		EE89215924C0C04500B42480 /* PoseNetMobileNet075S8FP16.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EE89215524C0C04500B42480 /* PoseNetMobileNet075S8FP16.mlmodel */; };
-		EE89215A24C0C04500B42480 /* PoseNetMobileNet100S8FP16.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EE89215624C0C04500B42480 /* PoseNetMobileNet100S8FP16.mlmodel */; };
-		EE89215B24C0C04500B42480 /* PoseNetMobileNet100S16FP16.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EE89215724C0C04500B42480 /* PoseNetMobileNet100S16FP16.mlmodel */; };
-		EE89215D24C0C06200B42480 /* PoseEstimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89215C24C0C06200B42480 /* PoseEstimator.swift */; };
-		EE89217624C1911F00B42480 /* PoseMarkerGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89217524C1911F00B42480 /* PoseMarkerGenerator.swift */; };
-		EE89217824C1933B00B42480 /* CGPoint+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89217724C1933B00B42480 /* CGPoint+Extension.swift */; };
 		EE89217A24C1934300B42480 /* CGImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89217924C1934300B42480 /* CGImage+Extension.swift */; };
-		EE89218724C1999400B42480 /* Joint.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89217C24C1999300B42480 /* Joint.swift */; };
-		EE89218824C1999400B42480 /* PoseBuilder+Multiple.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89217D24C1999300B42480 /* PoseBuilder+Multiple.swift */; };
-		EE89218924C1999400B42480 /* PoseBuilder+Single.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89217E24C1999300B42480 /* PoseBuilder+Single.swift */; };
-		EE89218A24C1999400B42480 /* Pose.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89217F24C1999300B42480 /* Pose.swift */; };
-		EE89218B24C1999400B42480 /* PoseBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89218024C1999300B42480 /* PoseBuilder.swift */; };
-		EE89218C24C1999400B42480 /* PoseBuilderConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89218124C1999300B42480 /* PoseBuilderConfiguration.swift */; };
-		EE89218D24C1999400B42480 /* PoseNetOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89218324C1999300B42480 /* PoseNetOutput.swift */; };
-		EE89218E24C1999400B42480 /* PoseNet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89218424C1999300B42480 /* PoseNet.swift */; };
-		EE89218F24C1999400B42480 /* PoseNetInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89218524C1999300B42480 /* PoseNetInput.swift */; };
-		EE8FD72124C0581B0095A68F /* EdgeDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8FD72024C0581B0095A68F /* EdgeDetector.swift */; };
-		EE8FD72624C0587F0095A68F /* HED_so.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EE8FD72324C0587F0095A68F /* HED_so.mlmodel */; };
-		EE8FD72724C0587F0095A68F /* HED_fuse.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EE8FD72424C0587F0095A68F /* HED_fuse.mlmodel */; };
-		EE8FD72824C0587F0095A68F /* HED_so3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EE8FD72524C0587F0095A68F /* HED_so3.mlmodel */; };
 		EE8FD72C24C05CB00095A68F /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8FD72A24C05CB00095A68F /* UIImage+Resize.swift */; };
 		EE8FD73E24C05FD70095A68F /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8FD72F24C05FD70095A68F /* Array+Extensions.swift */; };
 		EE8FD73F24C05FD70095A68F /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8FD73024C05FD70095A68F /* Math.swift */; };
@@ -76,7 +57,6 @@
 		EEE39FF924C1F75600317BEE /* IntelligenceCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE39FF824C1F75600317BEE /* IntelligenceCategoryView.swift */; };
 		EEE39FFB24C1F7D800317BEE /* IntelligentConsoleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE39FFA24C1F7D800317BEE /* IntelligentConsoleView.swift */; };
 		EEE39FFD24C1F83700317BEE /* ImagePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE39FFC24C1F83700317BEE /* ImagePreview.swift */; };
-		EEE39FFF24C2001500317BEE /* ActivityIndicatiorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE39FFE24C2001500317BEE /* ActivityIndicatiorView.swift */; };
 		EEE3A00224C2055000317BEE /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE3A00124C2055000317BEE /* ButtonView.swift */; };
 /* End PBXBuildFile section */
 
@@ -98,6 +78,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E98BAD842F920003009D44AF /* DepthAnythingV2SmallF16.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = DepthAnythingV2SmallF16.mlpackage; sourceTree = "<group>"; };
+		E98BAD852F920003009D44AF /* DepthAnythingV2SmallF16P6.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = DepthAnythingV2SmallF16P6.mlpackage; sourceTree = "<group>"; };
+		E98BAD862F920003009D44AF /* DETRResnet50SemanticSegmentationF16.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = DETRResnet50SemanticSegmentationF16.mlpackage; sourceTree = "<group>"; };
+		E98BAD872F920003009D44AF /* DETRResnet50SemanticSegmentationF16P8.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = DETRResnet50SemanticSegmentationF16P8.mlpackage; sourceTree = "<group>"; };
+		E98BAD882F920003009D44AF /* FastViTMA36F16.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = FastViTMA36F16.mlpackage; sourceTree = "<group>"; };
+		E98BAD892F920003009D44AF /* FastViTT8F16.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = FastViTT8F16.mlpackage; sourceTree = "<group>"; };
+		E98BAD8A2F920003009D44AF /* MobileNetV2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MobileNetV2.mlmodel; sourceTree = "<group>"; };
 		EE47ED2D24C04E410097CCDB /* CoreMLExamples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreMLExamples.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE47ED3024C04E410097CCDB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EE47ED3224C04E410097CCDB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -113,43 +100,17 @@
 		EE47ED5224C04E480097CCDB /* CoreMLExamplesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMLExamplesUITests.swift; sourceTree = "<group>"; };
 		EE47ED5424C04E480097CCDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EE47ED6024C04EFB0097CCDB /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
-		EE47ED6224C04FD00097CCDB /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
 		EE89213624C078B400B42480 /* ObjectDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectDetector.swift; sourceTree = "<group>"; };
 		EE89213824C07A6100B42480 /* YOLOv3Tiny.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = YOLOv3Tiny.mlmodel; sourceTree = "<group>"; };
 		EE89213A24C07A6800B42480 /* YOLOv3TinyFP16.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = YOLOv3TinyFP16.mlmodel; sourceTree = "<group>"; };
 		EE89213C24C07A6C00B42480 /* YOLOv3TinyInt8LUT.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = YOLOv3TinyInt8LUT.mlmodel; sourceTree = "<group>"; };
 		EE89213E24C085CA00B42480 /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		EE89214024C08E7B00B42480 /* DepthMapGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepthMapGenerator.swift; sourceTree = "<group>"; };
-		EE89214224C09B6E00B42480 /* FCRNFP16.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = FCRNFP16.mlmodel; sourceTree = "<group>"; };
-		EE89214424C09B8100B42480 /* FCRN.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = FCRN.mlmodel; sourceTree = "<group>"; };
-		EE89214624C0B4F400B42480 /* MobileNet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MobileNet.mlmodel; sourceTree = "<group>"; };
-		EE89214824C0B50A00B42480 /* ObjectClassifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectClassifier.swift; sourceTree = "<group>"; };
+		EE89214824C0B50A00B42480 /* ImageClassifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageClassifier.swift; sourceTree = "<group>"; };
 		EE89214A24C0BEAD00B42480 /* Resnet50FP16.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Resnet50FP16.mlmodel; sourceTree = "<group>"; };
 		EE89214B24C0BEAD00B42480 /* Resnet50Int8LUT.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Resnet50Int8LUT.mlmodel; sourceTree = "<group>"; };
-		EE89214C24C0BEAD00B42480 /* SqueezeNetInt8LUT.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = SqueezeNetInt8LUT.mlmodel; sourceTree = "<group>"; };
 		EE89214D24C0BEAD00B42480 /* Resnet50.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Resnet50.mlmodel; sourceTree = "<group>"; };
-		EE89214E24C0BEAE00B42480 /* SqueezeNet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = SqueezeNet.mlmodel; sourceTree = "<group>"; };
-		EE89215424C0C04500B42480 /* PoseNetMobileNet075S16FP16.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = PoseNetMobileNet075S16FP16.mlmodel; sourceTree = "<group>"; };
-		EE89215524C0C04500B42480 /* PoseNetMobileNet075S8FP16.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = PoseNetMobileNet075S8FP16.mlmodel; sourceTree = "<group>"; };
-		EE89215624C0C04500B42480 /* PoseNetMobileNet100S8FP16.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = PoseNetMobileNet100S8FP16.mlmodel; sourceTree = "<group>"; };
-		EE89215724C0C04500B42480 /* PoseNetMobileNet100S16FP16.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = PoseNetMobileNet100S16FP16.mlmodel; sourceTree = "<group>"; };
-		EE89215C24C0C06200B42480 /* PoseEstimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoseEstimator.swift; sourceTree = "<group>"; };
-		EE89217524C1911F00B42480 /* PoseMarkerGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PoseMarkerGenerator.swift; sourceTree = "<group>"; };
-		EE89217724C1933B00B42480 /* CGPoint+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extension.swift"; sourceTree = "<group>"; };
 		EE89217924C1934300B42480 /* CGImage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGImage+Extension.swift"; sourceTree = "<group>"; };
-		EE89217C24C1999300B42480 /* Joint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Joint.swift; sourceTree = "<group>"; };
-		EE89217D24C1999300B42480 /* PoseBuilder+Multiple.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PoseBuilder+Multiple.swift"; sourceTree = "<group>"; };
-		EE89217E24C1999300B42480 /* PoseBuilder+Single.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PoseBuilder+Single.swift"; sourceTree = "<group>"; };
-		EE89217F24C1999300B42480 /* Pose.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pose.swift; sourceTree = "<group>"; };
-		EE89218024C1999300B42480 /* PoseBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PoseBuilder.swift; sourceTree = "<group>"; };
-		EE89218124C1999300B42480 /* PoseBuilderConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PoseBuilderConfiguration.swift; sourceTree = "<group>"; };
-		EE89218324C1999300B42480 /* PoseNetOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PoseNetOutput.swift; sourceTree = "<group>"; };
-		EE89218424C1999300B42480 /* PoseNet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PoseNet.swift; sourceTree = "<group>"; };
-		EE89218524C1999300B42480 /* PoseNetInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PoseNetInput.swift; sourceTree = "<group>"; };
-		EE8FD72024C0581B0095A68F /* EdgeDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeDetector.swift; sourceTree = "<group>"; };
-		EE8FD72324C0587F0095A68F /* HED_so.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = HED_so.mlmodel; sourceTree = "<group>"; };
-		EE8FD72424C0587F0095A68F /* HED_fuse.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = HED_fuse.mlmodel; sourceTree = "<group>"; };
-		EE8FD72524C0587F0095A68F /* HED_so3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = HED_so3.mlmodel; sourceTree = "<group>"; };
 		EE8FD72A24C05CB00095A68F /* UIImage+Resize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Resize.swift"; sourceTree = "<group>"; };
 		EE8FD72F24C05FD70095A68F /* Array+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		EE8FD73024C05FD70095A68F /* Math.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
@@ -173,7 +134,6 @@
 		EEE39FF824C1F75600317BEE /* IntelligenceCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntelligenceCategoryView.swift; sourceTree = "<group>"; };
 		EEE39FFA24C1F7D800317BEE /* IntelligentConsoleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntelligentConsoleView.swift; sourceTree = "<group>"; };
 		EEE39FFC24C1F83700317BEE /* ImagePreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePreview.swift; sourceTree = "<group>"; };
-		EEE39FFE24C2001500317BEE /* ActivityIndicatiorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatiorView.swift; sourceTree = "<group>"; };
 		EEE3A00124C2055000317BEE /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -268,46 +228,11 @@
 			isa = PBXGroup;
 			children = (
 				EE8FD74D24C073290095A68F /* Segmenter.swift */,
-				EE8FD72024C0581B0095A68F /* EdgeDetector.swift */,
 				EE89213624C078B400B42480 /* ObjectDetector.swift */,
 				EE89214024C08E7B00B42480 /* DepthMapGenerator.swift */,
-				EE89214824C0B50A00B42480 /* ObjectClassifier.swift */,
-				EE89215E24C190B400B42480 /* PoseEstimator */,
+				EE89214824C0B50A00B42480 /* ImageClassifier.swift */,
 			);
 			path = ModelImplementation;
-			sourceTree = "<group>";
-		};
-		EE89215E24C190B400B42480 /* PoseEstimator */ = {
-			isa = PBXGroup;
-			children = (
-				EE89218224C1999300B42480 /* Model */,
-				EE89217B24C1999300B42480 /* Pose */,
-				EE89215C24C0C06200B42480 /* PoseEstimator.swift */,
-			);
-			path = PoseEstimator;
-			sourceTree = "<group>";
-		};
-		EE89217B24C1999300B42480 /* Pose */ = {
-			isa = PBXGroup;
-			children = (
-				EE89217C24C1999300B42480 /* Joint.swift */,
-				EE89217D24C1999300B42480 /* PoseBuilder+Multiple.swift */,
-				EE89217E24C1999300B42480 /* PoseBuilder+Single.swift */,
-				EE89217F24C1999300B42480 /* Pose.swift */,
-				EE89218024C1999300B42480 /* PoseBuilder.swift */,
-				EE89218124C1999300B42480 /* PoseBuilderConfiguration.swift */,
-			);
-			path = Pose;
-			sourceTree = "<group>";
-		};
-		EE89218224C1999300B42480 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				EE89218324C1999300B42480 /* PoseNetOutput.swift */,
-				EE89218424C1999300B42480 /* PoseNet.swift */,
-				EE89218524C1999300B42480 /* PoseNetInput.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		EE8FD71E24C0569C0095A68F /* View */ = {
@@ -336,27 +261,22 @@
 		EE8FD72224C0583F0095A68F /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				EE89215524C0C04500B42480 /* PoseNetMobileNet075S8FP16.mlmodel */,
-				EE89215424C0C04500B42480 /* PoseNetMobileNet075S16FP16.mlmodel */,
-				EE89215624C0C04500B42480 /* PoseNetMobileNet100S8FP16.mlmodel */,
-				EE89215724C0C04500B42480 /* PoseNetMobileNet100S16FP16.mlmodel */,
+				E98BAD842F920003009D44AF /* DepthAnythingV2SmallF16.mlpackage */,
+				E98BAD852F920003009D44AF /* DepthAnythingV2SmallF16P6.mlpackage */,
+				E98BAD862F920003009D44AF /* DETRResnet50SemanticSegmentationF16.mlpackage */,
+				E98BAD872F920003009D44AF /* DETRResnet50SemanticSegmentationF16P8.mlpackage */,
+				E98BAD882F920003009D44AF /* FastViTMA36F16.mlpackage */,
+				E98BAD892F920003009D44AF /* FastViTT8F16.mlpackage */,
+				E98BAD8A2F920003009D44AF /* MobileNetV2.mlmodel */,
 				EE89214D24C0BEAD00B42480 /* Resnet50.mlmodel */,
 				EE89214A24C0BEAD00B42480 /* Resnet50FP16.mlmodel */,
 				EE89214B24C0BEAD00B42480 /* Resnet50Int8LUT.mlmodel */,
-				EE89214E24C0BEAE00B42480 /* SqueezeNet.mlmodel */,
-				EE89214C24C0BEAD00B42480 /* SqueezeNetInt8LUT.mlmodel */,
-				EE89214624C0B4F400B42480 /* MobileNet.mlmodel */,
-				EE89214424C09B8100B42480 /* FCRN.mlmodel */,
-				EE89214224C09B6E00B42480 /* FCRNFP16.mlmodel */,
 				EE89213824C07A6100B42480 /* YOLOv3Tiny.mlmodel */,
 				EE89213A24C07A6800B42480 /* YOLOv3TinyFP16.mlmodel */,
 				EE89213C24C07A6C00B42480 /* YOLOv3TinyInt8LUT.mlmodel */,
 				EE8FD75024C073420095A68F /* DeepLabV3.mlmodel */,
 				EE8FD75124C073420095A68F /* DeepLabV3FP16.mlmodel */,
 				EE8FD74F24C073420095A68F /* DeepLabV3Int8LUT.mlmodel */,
-				EE8FD72424C0587F0095A68F /* HED_fuse.mlmodel */,
-				EE8FD72324C0587F0095A68F /* HED_so.mlmodel */,
-				EE8FD72524C0587F0095A68F /* HED_so3.mlmodel */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -365,7 +285,6 @@
 			isa = PBXGroup;
 			children = (
 				EE89217924C1934300B42480 /* CGImage+Extension.swift */,
-				EE89217724C1933B00B42480 /* CGPoint+Extension.swift */,
 				EE8FD72A24C05CB00095A68F /* UIImage+Resize.swift */,
 				EE8FD72F24C05FD70095A68F /* Array+Extensions.swift */,
 				EE8FD73024C05FD70095A68F /* Math.swift */,
@@ -389,10 +308,7 @@
 		EEE3A00024C2043A00317BEE /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				EE47ED6224C04FD00097CCDB /* ImagePickerView.swift */,
 				EE89213E24C085CA00B42480 /* UIHelper.swift */,
-				EE89217524C1911F00B42480 /* PoseMarkerGenerator.swift */,
-				EEE39FFE24C2001500317BEE /* ActivityIndicatiorView.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -528,72 +444,52 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EEE39FFF24C2001500317BEE /* ActivityIndicatiorView.swift in Sources */,
 				EE89213924C07A6100B42480 /* YOLOv3Tiny.mlmodel in Sources */,
-				EE8FD72124C0581B0095A68F /* EdgeDetector.swift in Sources */,
 				EE8FD74624C05FD70095A68F /* CVPixelBuffer+Helpers.swift in Sources */,
 				EEE39FFB24C1F7D800317BEE /* IntelligentConsoleView.swift in Sources */,
-				EE89217624C1911F00B42480 /* PoseMarkerGenerator.swift in Sources */,
-				EE89218824C1999400B42480 /* PoseBuilder+Multiple.swift in Sources */,
 				EE8FD74E24C073290095A68F /* Segmenter.swift in Sources */,
 				EE89213724C078B400B42480 /* ObjectDetector.swift in Sources */,
+				E98BAD8B2F920003009D44AF /* FastViTT8F16.mlpackage in Sources */,
+				E98BAD8C2F920003009D44AF /* FastViTMA36F16.mlpackage in Sources */,
+				E98BAD8D2F920003009D44AF /* MobileNetV2.mlmodel in Sources */,
+				E98BAD8E2F920003009D44AF /* DepthAnythingV2SmallF16P6.mlpackage in Sources */,
+				E98BAD8F2F920003009D44AF /* DepthAnythingV2SmallF16.mlpackage in Sources */,
+				E98BAD902F920003009D44AF /* DETRResnet50SemanticSegmentationF16.mlpackage in Sources */,
+				E98BAD912F920003009D44AF /* DETRResnet50SemanticSegmentationF16P8.mlpackage in Sources */,
 				EE89215224C0BEAE00B42480 /* Resnet50.mlmodel in Sources */,
 				EE8FD75424C073420095A68F /* DeepLabV3FP16.mlmodel in Sources */,
-				EE89214524C09B8100B42480 /* FCRN.mlmodel in Sources */,
 				EE89214F24C0BEAE00B42480 /* Resnet50FP16.mlmodel in Sources */,
 				EE8FD73F24C05FD70095A68F /* Math.swift in Sources */,
-				EE89218F24C1999400B42480 /* PoseNetInput.swift in Sources */,
 				EE47ED3124C04E410097CCDB /* AppDelegate.swift in Sources */,
-				EE89218B24C1999400B42480 /* PoseBuilder.swift in Sources */,
 				EE47ED3324C04E410097CCDB /* SceneDelegate.swift in Sources */,
 				EE8FD72C24C05CB00095A68F /* UIImage+Resize.swift in Sources */,
 				EE8FD75324C073420095A68F /* DeepLabV3.mlmodel in Sources */,
 				EE8FD74424C05FD70095A68F /* UIImage+RawBytes.swift in Sources */,
 				EEE39FF924C1F75600317BEE /* IntelligenceCategoryView.swift in Sources */,
-				EE89215124C0BEAE00B42480 /* SqueezeNetInt8LUT.mlmodel in Sources */,
-				EE8FD72724C0587F0095A68F /* HED_fuse.mlmodel in Sources */,
-				EE8FD72624C0587F0095A68F /* HED_so.mlmodel in Sources */,
-				EE89214324C09B6E00B42480 /* FCRNFP16.mlmodel in Sources */,
 				EE8FD74724C05FD70095A68F /* MLModel+Images.swift in Sources */,
 				EE8FD75224C073420095A68F /* DeepLabV3Int8LUT.mlmodel in Sources */,
 				EE8FD73E24C05FD70095A68F /* Array+Extensions.swift in Sources */,
-				EE8FD72824C0587F0095A68F /* HED_so3.mlmodel in Sources */,
-				EE89215824C0C04500B42480 /* PoseNetMobileNet075S16FP16.mlmodel in Sources */,
-				EE89215924C0C04500B42480 /* PoseNetMobileNet075S8FP16.mlmodel in Sources */,
 				EE8FD74524C05FD70095A68F /* MLMultiArray+Helpers.swift in Sources */,
 				EE8FD74124C05FD70095A68F /* Predictions.swift in Sources */,
 				EE89214124C08E7B00B42480 /* DepthMapGenerator.swift in Sources */,
-				EE89218C24C1999400B42480 /* PoseBuilderConfiguration.swift in Sources */,
 				EE8FD74B24C05FD70095A68F /* CGImage+RawBytes.swift in Sources */,
-				EE89218724C1999400B42480 /* Joint.swift in Sources */,
 				EE8FD74C24C05FD70095A68F /* MLMultiArray+Image.swift in Sources */,
 				EE8FD74824C05FD70095A68F /* CoreML+Combine.swift in Sources */,
-				EE89214924C0B50A00B42480 /* ObjectClassifier.swift in Sources */,
-				EE89217824C1933B00B42480 /* CGPoint+Extension.swift in Sources */,
-				EE89218A24C1999400B42480 /* Pose.swift in Sources */,
+				EE89214924C0B50A00B42480 /* ImageClassifier.swift in Sources */,
 				EE47ED6124C04EFB0097CCDB /* MainPresenter.swift in Sources */,
-				EE89218D24C1999400B42480 /* PoseNetOutput.swift in Sources */,
 				EE8FD74024C05FD70095A68F /* UIImage+CVPixelBuffer.swift in Sources */,
-				EE89218E24C1999400B42480 /* PoseNet.swift in Sources */,
 				EE89217A24C1934300B42480 /* CGImage+Extension.swift in Sources */,
-				EE89215D24C0C06200B42480 /* PoseEstimator.swift in Sources */,
-				EE89215A24C0C04500B42480 /* PoseNetMobileNet100S8FP16.mlmodel in Sources */,
 				EEE3A00224C2055000317BEE /* ButtonView.swift in Sources */,
 				EE89215024C0BEAE00B42480 /* Resnet50Int8LUT.mlmodel in Sources */,
 				EEE39FFD24C1F83700317BEE /* ImagePreview.swift in Sources */,
 				EE8FD74924C05FD70095A68F /* CGImage+CVPixelBuffer.swift in Sources */,
 				EE47ED3524C04E410097CCDB /* MainView.swift in Sources */,
-				EE89214724C0B4F500B42480 /* MobileNet.mlmodel in Sources */,
 				EE89213B24C07A6800B42480 /* YOLOv3TinyFP16.mlmodel in Sources */,
-				EE47ED6324C04FD00097CCDB /* ImagePickerView.swift in Sources */,
 				EE89213F24C085CA00B42480 /* UIHelper.swift in Sources */,
 				EE89213D24C07A6C00B42480 /* YOLOv3TinyInt8LUT.mlmodel in Sources */,
-				EE89215B24C0C04500B42480 /* PoseNetMobileNet100S16FP16.mlmodel in Sources */,
 				EE8FD74324C05FD70095A68F /* CGImagePropertyOrientation.swift in Sources */,
 				EE8FD74A24C05FD70095A68F /* NonMaxSuppression.swift in Sources */,
 				EE8FD74224C05FD70095A68F /* UIImage+Extensions.swift in Sources */,
-				EE89215324C0BEAE00B42480 /* SqueezeNet.mlmodel in Sources */,
-				EE89218924C1999400B42480 /* PoseBuilder+Single.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -758,16 +654,22 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_ASSET_PATHS = "\"CoreMLExamples/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 7T6M3H4Q49;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = CoreMLExamples/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 18;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mamunul.CoreMLExamples;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = wilcarddevprofile;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -777,16 +679,22 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_ASSET_PATHS = "\"CoreMLExamples/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 7T6M3H4Q49;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = CoreMLExamples/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 18;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mamunul.CoreMLExamples;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = wilcarddevprofile;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

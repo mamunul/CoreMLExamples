@@ -19,64 +19,73 @@ struct ObjectBox {
 
 class ObjectDetector: Intelligence {
     private let imageSize = CGSize(width: 416, height: 416)
-    var modelOptions: [ModelOption]
+    var modelOptions: [ModelOption] = []
 
-    enum Options: String {
+    enum Options: String, CaseIterable {
         case YOLOv3Tiny, YOLOv3TinyFP16, YOLOv3TinyInt8LUT
     }
 
+    enum ObjectDetectorError: Error {
+        case imageBuffer
+        case predictionError
+        case fileNotFound
+    }
+
     init() {
-        let modelOption1 = ModelOption(modelFileName: Options.YOLOv3Tiny.rawValue, modelOptionParameter: nil)
-        let modelOption2 = ModelOption(modelFileName: Options.YOLOv3TinyFP16.rawValue, modelOptionParameter: nil)
-        let modelOption3 = ModelOption(modelFileName: Options.YOLOv3TinyInt8LUT.rawValue, modelOptionParameter: nil)
-        modelOptions = [ModelOption]()
-
-        modelOptions.append(modelOption1)
-        modelOptions.append(modelOption2)
-        modelOptions.append(modelOption3)
+        for option in Options.allCases {
+            let modelOption1 = ModelOption(modelFileName: option.rawValue)
+            modelOptions.append(modelOption1)
+        }
     }
 
-    func process(image: UIImage, with option: ModelOption, onCompletion: @escaping (IntelligenceOutput?) -> Void) {
+    func process(image: UIImage, with option: ModelOption) async throws -> IntelligenceOutput {
         let nimage = image.resized(to: imageSize)
-        runModel(image: nimage, option: option) { boxes in
-            let img = UIHelper().createBox(objectBoxArray: boxes, in: nimage)
-            let result =
-                IntelligenceOutput(
-                    image: img,
-                    confidence: -0,
-                    executionTime: -0,
-                    title: "NA",
-                    modelSize: 0,
-                    imageSize: self.imageSize
-                )
-            onCompletion(result)
-        }
+
+        let boxArray = try await runModel(image: nimage, option: option)
+
+        let img = UIHelper().createBox(objectBoxArray: boxArray, in: nimage)
+        let output = IntelligenceOutput(
+            image: img,
+            confidence: -0,
+            executionTime: -0,
+            title: "NA",
+            modelSize: 0,
+            imageSize: imageSize
+        )
+        return output
     }
 
-    private func runModel(image: UIImage, option: ModelOption, onCompletion: @escaping ([ObjectBox]) -> Void) {
-        var objectBoxArray = [ObjectBox]()
-        guard let modelURL = Bundle.main.url(forResource: option.modelFileName, withExtension: "mlmodelc") else { return }
-        var visionModel: VNCoreMLModel?
-        do {
-            visionModel = try VNCoreMLModel(for: MLModel(contentsOf: modelURL))
-        } catch {
-            onCompletion(objectBoxArray)
+    private func runModel(image: UIImage, option: ModelOption) async throws -> [ObjectBox] {
+        guard let modelURL = Bundle.main.url(forResource: option.modelFileName, withExtension: "mlmodelc") else {
+            throw ObjectDetectorError.fileNotFound
         }
 
-        let objectRecognition = VNCoreMLRequest(model: visionModel!, completionHandler: { request, _ in
-            if let results = request.results {
-                objectBoxArray = VisionHelper.processResult(results, size: image.size)
-                onCompletion(objectBoxArray)
+        let visionModel = try VNCoreMLModel(for: MLModel(contentsOf: modelURL))
+
+        return try await withCheckedThrowingContinuation { continuation in
+
+            do {
+                let request = VNCoreMLRequest(model: visionModel) { request, error in
+                    if let error = error {
+                        continuation.resume(throwing: error)
+                        return
+                    }
+
+                    guard let results = request.results else {
+                        continuation.resume(returning: [])
+                        return
+                    }
+
+                    let boxes = VisionHelper.processResult(results, size: image.size)
+                    continuation.resume(returning: boxes)
+                }
+
+                let handler = VNImageRequestHandler(cgImage: image.cgImage!, options: [:])
+                try handler.perform([request])
+
+            } catch {
+                continuation.resume(throwing: error)
             }
-        })
-
-        let imageRequestHandler = VNImageRequestHandler(cgImage: image.cgImage!, options: [:])
-
-        do {
-            try imageRequestHandler.perform([objectRecognition])
-        } catch {
-            print(error)
-            onCompletion(objectBoxArray)
         }
     }
 }
@@ -91,11 +100,18 @@ class VisionHelper {
             let topLabelObservation = objectObservation.labels[0]
             let objectBounds = VNImageRectForNormalizedRect(objectObservation.boundingBox, Int(size.width), Int(size.height))
 
-            let box =
-                ObjectBox(
-                    identifier: topLabelObservation.identifier,
-                    confidence: topLabelObservation.confidence,
-                    bound: objectBounds)
+            let flippedRect = CGRect(
+                x: objectBounds.origin.x,
+                y: size.height - objectBounds.origin.y - objectBounds.height,
+                width: objectBounds.width,
+                height: objectBounds.height
+            )
+
+            let box = ObjectBox(
+                identifier: topLabelObservation.identifier,
+                confidence: topLabelObservation.confidence,
+                bound: flippedRect
+            )
 
             objectBoxArray.append(box)
         }

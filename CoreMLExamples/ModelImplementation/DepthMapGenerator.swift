@@ -12,126 +12,95 @@ import SwiftUI
 import UIKit
 
 class DepthMapGenerator: Intelligence {
-    private let imageSize = CGSize(width: 304, height: 228)
+//    private let imageSize = CGSize(width: 304, height: 228)
+    private let imageSize = CGSize(width: 518, height: 392) //518 × 392
     var modelOptions: [ModelOption]
 
+    enum DepthMapGeneratorError: Error {
+        case pixelBufferMake
+        case uiImageInit
+        case fileNotFound
+    }
+
     enum Options: String {
-        case FCRNFP16, FCRN
+        case DepthAnythingV2SmallF16, DepthAnythingV2SmallF16P6
     }
 
     init() {
-        let modelOption1 = ModelOption(modelFileName: Options.FCRNFP16.rawValue, modelOptionParameter: nil)
-        let modelOption2 = ModelOption(modelFileName: Options.FCRN.rawValue, modelOptionParameter: nil)
+        let modelOption1 = ModelOption(modelFileName: Options.DepthAnythingV2SmallF16.rawValue, modelOptionParameter: nil)
+        let modelOption2 = ModelOption(modelFileName: Options.DepthAnythingV2SmallF16P6.rawValue, modelOptionParameter: nil)
         modelOptions = [ModelOption]()
         modelOptions.append(modelOption1)
         modelOptions.append(modelOption2)
     }
 
-    func process(image: UIImage, with option: ModelOption, onCompletion: @escaping (IntelligenceOutput?) -> Void) {
-        let output = runModel(image: image, option: option)
-        let result =
-            IntelligenceOutput(
-                image: output,
-                confidence: -0,
-                executionTime: -0,
-                title: "NA",
-                modelSize: 0,
-                imageSize: imageSize
-            )
-        onCompletion(result)
+    func process(image: UIImage, with option: ModelOption) throws -> IntelligenceOutput {
+        let output = try runModel(image: image, option: option)
+        let result = IntelligenceOutput(
+            image: output,
+            confidence: -0,
+            executionTime: -0,
+            title: "NA",
+            modelSize: 0,
+            imageSize: imageSize
+        )
+        return result
     }
 
-    private func runModel(image: UIImage, option: ModelOption) -> UIImage? {
-        let model = makeModel(option: option)
+    private func runModel(image: UIImage, option: ModelOption) throws -> UIImage {
+        let model = try makeModel(option: option)
 
         let nimage = image.resized(to: imageSize)
-        let pixelBuffer = nimage.pixelBuffer(width: Int(nimage.size.width), height: Int(nimage.size.height))
-
-        do {
-            let result = try model.prediction(image: pixelBuffer!)
-
-            let bufferSize = result.depthmap.shape.lazy.map { $0.intValue }.reduce(1, { $0 * $1 })
-
-            let featurePointer = result.depthmap.dataPointer.assumingMemoryBound(to: Double.self)
-            let dataPointer = UnsafeMutableBufferPointer(start: featurePointer, count: bufferSize)
-
-            var imgData = [UInt8](repeating: 0, count: bufferSize)
-            let inputW = 160
-            let inputH = 128
-
-            for i in 0 ..< inputW {
-                for j in 0 ..< inputH {
-                    let idx = i * inputW + j
-                    if idx >= bufferSize { break }
-                    let value = dataPointer[idx]
-                    imgData[idx] = UInt8(value * (255.0 / 5.0))
-                }
-            }
-
-            let cfbuffer = CFDataCreate(nil, &imgData, bufferSize)!
-            let dataProvider = CGDataProvider(data: cfbuffer)!
-            let colorSpace = CGColorSpaceCreateDeviceGray()
-            let cgImage2 = CGImage(
-                width: inputW,
-                height: inputH,
-                bitsPerComponent: 8,
-                bitsPerPixel: 8,
-                bytesPerRow: inputW,
-                space: colorSpace,
-                bitmapInfo: [],
-                provider: dataProvider,
-                decode: nil,
-                shouldInterpolate: true,
-                intent: .defaultIntent)
-            if cgImage2 != nil {
-                let resultImage = UIImage(cgImage: cgImage2!)
-                return resultImage
-            }
-
-        } catch {
-            print(error)
+        guard let pixelBuffer = nimage.pixelBuffer(width: Int(nimage.size.width), height: Int(nimage.size.height)) else {
+            throw DepthMapGeneratorError.pixelBufferMake
         }
-        return nil
+
+        let result = try model.prediction(image: pixelBuffer)
+        guard let depthImage = UIImage(pixelBuffer: result.depth) else { throw DepthMapGeneratorError.uiImageInit }
+        return depthImage
     }
 
-    private func makeModel(option: ModelOption) -> IFCRN {
-        var model: IFCRN
-
+    private func makeModel(option: ModelOption) throws -> IDepthAnythingV2 {
+        var model: IDepthAnythingV2
+        guard let modelURL = Bundle.main.url(forResource: option.modelFileName, withExtension: "mlmodelc") else {
+            throw DepthMapGeneratorError.fileNotFound
+        }
         switch Options(rawValue: option.modelFileName) {
-        case .FCRN, .none:
-            model = FCRN()
-        case .FCRNFP16:
-            model = FCRNFP16()
+        case .DepthAnythingV2SmallF16, .none:
+            model = try DepthAnythingV2SmallF16(contentsOf: modelURL)
+        case .DepthAnythingV2SmallF16P6:
+            model = try DepthAnythingV2SmallF16P6(contentsOf: modelURL)
         }
 
         return model
     }
 }
 
-protocol IFCRN {
-    func prediction(image: CVPixelBuffer) throws -> IFCRNOutput
+protocol IDepthAnythingV2 {
+    func prediction(image: CVPixelBuffer) throws -> IDepthAnythingV2Output
 }
 
-extension FCRN: IFCRN {
-    func prediction(image: CVPixelBuffer) throws -> IFCRNOutput {
-        let output: FCRNOutput = try prediction(image: image)
+extension DepthAnythingV2SmallF16: IDepthAnythingV2 {
+    func prediction(image: CVPixelBuffer) throws -> IDepthAnythingV2Output {
+        let output: DepthAnythingV2SmallF16Output = try prediction(image: image)
         return output
     }
 }
 
-extension FCRNFP16: IFCRN {
-    func prediction(image: CVPixelBuffer) throws -> IFCRNOutput {
-        let output: FCRNFP16Output = try prediction(image: image)
+extension DepthAnythingV2SmallF16P6: IDepthAnythingV2 {
+    func prediction(image: CVPixelBuffer) throws -> IDepthAnythingV2Output {
+        let output: DepthAnythingV2SmallF16P6Output = try prediction(image: image)
         return output
     }
 }
 
-protocol IFCRNOutput: MLFeatureProvider {
-    var depthmap: MLMultiArray { get }
+protocol IDepthAnythingV2Output: MLFeatureProvider {
+    var depth: CVPixelBuffer { get }
 }
 
-extension FCRNOutput: IFCRNOutput {
+extension DepthAnythingV2SmallF16Output: IDepthAnythingV2Output {
 }
 
-extension FCRNFP16Output: IFCRNOutput {
+//
+extension DepthAnythingV2SmallF16P6Output: IDepthAnythingV2Output {
 }

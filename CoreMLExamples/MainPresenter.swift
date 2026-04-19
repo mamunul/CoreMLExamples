@@ -11,14 +11,13 @@ import UIKit
 
 protocol Intelligence {
     var modelOptions: [ModelOption] { get set }
-    func process(image: UIImage, with option: ModelOption, onCompletion: @escaping (IntelligenceOutput?) -> Void)
+    func process(image: UIImage, with option: ModelOption) async throws -> IntelligenceOutput
 }
 
 struct ModelOption: Hashable {
     var id = UUID()
     var modelFileName: String
-    var modelOptionParameter: String?
-    var isSelected = false
+    var modelOptionParameter: String? = nil
 }
 
 struct IntelligenceOutput {
@@ -30,7 +29,7 @@ struct IntelligenceOutput {
     var imageSize: CGSize
 }
 
-struct Intelligent: Hashable {
+struct Intelligent: Hashable, Equatable {
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
     }
@@ -41,24 +40,22 @@ struct Intelligent: Hashable {
 
     var id = UUID()
     var name: String
-    var object: Intelligence
-    var isSelected = false
+    var intelligence: Intelligence
 }
 
 class MainPresenter: ObservableObject {
     @Published var intelligentArray = [Intelligent]()
     @Published var output: IntelligenceOutput
-    @Published var uiImage: UIImage
-    @Published var loading = false
+    @Published var uiImage: UIImage?
+    @Published var isLoading = false
+    @Published var modelOptions = [ModelOption]()
 
-    private let edgeDetector = EdgeDetector()
     private let segmenter = Segmenter()
     private let objectDetector = ObjectDetector()
     private let depthMapper = DepthMapGenerator()
-    private let classifier = ObjectClassifier()
-    private let poseEstimator = PoseEstimator()
-    @Published var selectedIntelligent: Intelligent
-    private var selectedModel: ModelOption
+    private let classifier = ImageClassifier()
+    @Published var selectedIntelligent: Intelligent?
+    @Published var selectedModel: ModelOption?
 
     init() {
         output =
@@ -70,95 +67,75 @@ class MainPresenter: ObservableObject {
                 modelSize: 0,
                 imageSize: CGSize(width: 0, height: 0)
             )
-        var intelligent1 = Intelligent(name: "Edge Detection", object: edgeDetector)
-        selectedIntelligent = intelligent1
-        intelligent1.isSelected = true
-        selectedModel = intelligent1.object.modelOptions.first!
 
-        uiImage = MainPresenter.from(color: UIColor.gray)
-        
-        intelligentArray.append(intelligent1)
-
-        let intelligent2 = Intelligent(name: "Segmentation", object: segmenter)
+        let intelligent2 = Intelligent(name: "Segmentation", intelligence: segmenter)
         intelligentArray.append(intelligent2)
 
-        let intelligent3 = Intelligent(name: "Object Detection", object: objectDetector)
+        let intelligent3 = Intelligent(name: "Object Detection", intelligence: objectDetector)
         intelligentArray.append(intelligent3)
 
-        let intelligent4 = Intelligent(name: "Depth Mapping", object: depthMapper)
+        let intelligent4 = Intelligent(name: "Depth Mapping", intelligence: depthMapper)
         intelligentArray.append(intelligent4)
 
-        let intelligent5 = Intelligent(name: "Object Classification", object: classifier)
+        let intelligent5 = Intelligent(name: "Image Classification", intelligence: classifier)
         intelligentArray.append(intelligent5)
 
-        let intelligent6 = Intelligent(name: "Pose Estimation", object: poseEstimator)
-        intelligentArray.append(intelligent6)
-        
-        selectModel(model: selectedModel)
+        selectedIntelligent = intelligentArray.first
+        selectedModel = selectedIntelligent?.intelligence.modelOptions.first
+        modelOptions = selectedIntelligent?.intelligence.modelOptions ?? []
     }
 
     func update(image: UIImage) {
         uiImage = image
-        executeOperation()
-    }
-
-    func update(intelligent: Intelligent) {
-        removePreviousSelection(excludeing: intelligent)
-        selectedIntelligent = intelligent
-        selectedModel = intelligent.object.modelOptions.first!
-        removePreviousSelection(excludeing: selectedModel)
-        selectModel(model: selectedModel)
-        executeOperation()
-    }
-
-    func updateIntelligent(model: ModelOption) {
-        selectedModel = model
-        removePreviousSelection(excludeing: selectedModel)
-        selectModel(model: selectedModel)
-        executeOperation()
-    }
-
-    private func selectModel(model: ModelOption) {
-        for index in 0 ..< intelligentArray.count {
-            if let ind = intelligentArray[index].object.modelOptions.firstIndex(where: { model == $0 }) {
-                intelligentArray[index].object.modelOptions[ind].isSelected = true
-            }
+        do {
+            try executeOperation()
+        } catch {
+            print(error)
         }
     }
 
-    private func removePreviousSelection(excludeing it: ModelOption) {
-        for index in 0 ..< intelligentArray.count {
-            if let ind = intelligentArray[index].object.modelOptions.firstIndex(where: { $0.isSelected && it != $0 }) {
-                intelligentArray[index].object.modelOptions[ind].isSelected = false
-            }
+    func onIntelligenceSelection() {
+        modelOptions = selectedIntelligent?.intelligence.modelOptions ?? []
+        selectedModel = modelOptions.first
+
+        do {
+            try executeOperation()
+        } catch {
+            print(error)
         }
     }
 
-    private func removePreviousSelection(excludeing it: Intelligent) {
-        if let index = intelligentArray.firstIndex(where: { $0.isSelected && it != $0 }) {
-            intelligentArray[index].isSelected = false
-            if let ind = intelligentArray[index].object.modelOptions.firstIndex(where: { $0.isSelected }) {
-                intelligentArray[index].object.modelOptions[ind].isSelected = false
-            }
+    func onModelSelection() {
+        do {
+            try executeOperation()
+        } catch {
+            print(error)
         }
     }
 
-    private func executeOperation() {
+    private func executeOperation() throws {
+        guard let uiImage = uiImage else { return }
         let startTime = CACurrentMediaTime()
-        DispatchQueue.main.async {
-            self.loading = true
+        Task { @MainActor in
+            self.isLoading = true
         }
-        DispatchQueue.global().async {
-            self.selectedIntelligent.object.process(image: self.uiImage, with: self.selectedModel) { output in
-                if output != nil {
-                    let endTime = CACurrentMediaTime()
-                    let interval = (endTime - startTime) * 1000
 
-                    DispatchQueue.main.async {
-                        self.output = output!
-                        self.output.executionTime = Float(interval)
-                        self.loading = false
-                    }
+        guard let selectedModel = selectedModel else { return }
+        Task {
+            do {
+                let output = try await selectedIntelligent?.intelligence.process(image: uiImage, with: selectedModel)
+                let endTime = CACurrentMediaTime()
+                let interval = (endTime - startTime) * 1000
+
+                Task { @MainActor in
+                    self.output = output!
+                    self.output.executionTime = Float(interval)
+                    self.isLoading = false
+                }
+            } catch {
+                print(error)
+                Task { @MainActor in
+                    self.isLoading = false
                 }
             }
         }

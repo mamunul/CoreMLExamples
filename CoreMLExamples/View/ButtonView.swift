@@ -18,10 +18,10 @@ struct ButtonView: View {
                 Button(action: {
                     self.showPicker = true
                 }) {
-                    Text("Change Photo")
+                    Text("Upload Photo")
                         .padding()
                 }
-                .disabled(self.$presenter.loading.wrappedValue)
+                .disabled(self.$presenter.isLoading.wrappedValue)
             }
             Spacer()
         }

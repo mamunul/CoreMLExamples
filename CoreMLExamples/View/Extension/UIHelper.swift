@@ -34,16 +34,37 @@ class UIHelper {
                                          y: 0.0,
                                          width: size.width,
                                          height: size.height)
+        detectionOverlay.contentsGravity = .resizeAspectFill
+        detectionOverlay.contentsScale = 1
         return detectionOverlay
     }
-
+    
     func imageFromLayer(layer: CALayer) -> UIImage {
-        UIGraphicsBeginImageContextWithOptions(layer.frame.size, layer.isOpaque, 0)
-        layer.render(in: UIGraphicsGetCurrentContext()!)
-        let outputImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return outputImage!
+        let rendererFormat = UIGraphicsImageRendererFormat()
+        rendererFormat.scale = 1
+
+        let renderer = UIGraphicsImageRenderer(
+            size: layer.bounds.size,
+            format: rendererFormat
+        )
+
+        return renderer.image { context in
+//            let cgContext = context.cgContext
+//
+//              cgContext.translateBy(x: 0, y: layer.bounds.height)
+//              cgContext.scaleBy(x: 1, y: -1)
+
+            layer.render(in: context.cgContext)
+        }
     }
+
+//    func imageFromLayer(layer: CALayer) -> UIImage {
+//        UIGraphicsBeginImageContextWithOptions(layer.frame.size, layer.isOpaque, 0)
+//        layer.render(in: UIGraphicsGetCurrentContext()!)
+//        let outputImage = UIGraphicsGetImageFromCurrentImageContext()
+//        UIGraphicsEndImageContext()
+//        return outputImage!
+//    }
 
     func draw(image: CGImage, on frame: CGImage) -> UIImage {
         let dstImageSize = CGSize(width: frame.width, height: frame.height)
@@ -69,28 +90,45 @@ class UIHelper {
         cgContext.draw(image, in: drawingRect)
         cgContext.restoreGState()
     }
-
+    
     func createTextSubLayerInBounds(_ box: ObjectBox) -> CATextLayer {
         let textLayer = CATextLayer()
         textLayer.name = "Object Label"
-        let formattedString = NSMutableAttributedString(string: String(format: "\(box.identifier)\nConfidence:  %.2f", box.confidence))
-        let largeFont = UIFont(name: "Helvetica", size: 24.0)!
-        formattedString.addAttributes([NSAttributedString.Key.font: largeFont], range: NSRange(location: 0, length: box.identifier.count))
-        textLayer.string = formattedString
-        textLayer.bounds = CGRect(x: 0, y: 0, width: box.bound.size.height - 10, height: box.bound.size.width - 10)
-        textLayer.position = CGPoint(x: box.bound.midX, y: box.bound.midY)
+
+        let text = "\(box.identifier)\nConfidence: \(String(format: "%.2f", box.confidence))"
+
+        let attributed = NSMutableAttributedString(string: text)
+        let font = UIFont.systemFont(ofSize: 24)
+
+        attributed.addAttributes(
+            [.font: font],
+            range: NSRange(location: 0, length: box.identifier.count)
+        )
+
+        textLayer.string = attributed
+        
+        textLayer.frame = CGRect(
+            x: 10,
+            y: box.bound.height - 50,
+            width: box.bound.width - 10,
+            height: 50
+        )
+        
+        textLayer.alignmentMode = .left
+
+        textLayer.foregroundColor = UIColor.black.cgColor
         textLayer.shadowOpacity = 0.7
         textLayer.shadowOffset = CGSize(width: 2, height: 2)
-        textLayer.foregroundColor = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [0.0, 0.0, 0.0, 1.0])
-        textLayer.contentsScale = 2.0 // retina rendering
-        // rotate the layer into screen orientation and scale and mirror
-        textLayer.setAffineTransform(CGAffineTransform(rotationAngle: CGFloat(.pi / 2.0)).scaledBy(x: 1.0, y: -1.0))
+        textLayer.contentsScale = UIScreen.main.scale
+        textLayer.alignmentMode = .left
+        textLayer.isWrapped = true
+
         return textLayer
     }
 
     func createRoundedRectLayerWithBounds(_ bounds: CGRect) -> CALayer {
         let shapeLayer = CALayer()
-        shapeLayer.bounds = bounds
+        shapeLayer.frame = bounds
         shapeLayer.position = CGPoint(x: bounds.midX, y: bounds.midY)
         shapeLayer.name = "Found Object"
         shapeLayer.backgroundColor = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [1.0, 1.0, 0.2, 0.4])

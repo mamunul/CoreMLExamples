@@ -6,26 +6,21 @@ Models are not added with the project. For running this project successfully, yo
 This project is for study purpose, so there may have issues and bugs. suggestions are welcome to improve this project.
 
 
-Used Models in this project are listed below:
+**Used Models in this project are listed below:**
 
-DeepLabV3.mlmodel  
-DeepLabV3FP16.mlmodel  
-DeepLabV3Int8LUT.mlmodel  
-FCRN.mlmodel  
-FCRNFP16.mlmodel  
-HED_fuse.mlmodel  
-HED_so.mlmodel  
-HED_so3.mlmodel  
-MobileNet.mlmodel  
-PoseNetMobileNet075S16FP16.mlmodel  
-PoseNetMobileNet075S8FP16.mlmodel  
-PoseNetMobileNet100S16FP16.mlmodel  
-PoseNetMobileNet100S8FP16.mlmodel  
-Resnet50.mlmodel  
-Resnet50FP16.mlmodel  
-Resnet50Int8LUT.mlmodel  
-SqueezeNet.mlmodel  
-SqueezeNetInt8LUT.mlmodel  
-YOLOv3Tiny.mlmodel  
-YOLOv3TinyFP16.mlmodel  
-YOLOv3TinyInt8LUT.mlmodel  
+DETRResnet50SemanticSegmentationF16.mlpackage
+DETRResnet50SemanticSegmentationF16P8.mlpackage
+DeepLabV3.mlmodel
+DeepLabV3FP16.mlmodel
+DeepLabV3Int8LUT.mlmodel
+DepthAnythingV2SmallF16.mlpackage
+DepthAnythingV2SmallF16P6.mlpackage
+FastViTMA36F16.mlpackage
+FastViTT8F16.mlpackage
+MobileNetV2.mlmodel
+Resnet50.mlmodel
+Resnet50FP16.mlmodel
+Resnet50Int8LUT.mlmodel
+YOLOv3Tiny.mlmodel
+YOLOv3TinyFP16.mlmodel
+YOLOv3TinyInt8LUT.mlmodel
